@@ -1,57 +1,71 @@
-#include "automata.h"
+#include "C:\Users\nuald\source\repos\tp-lab-4\include\automata.h"
 
-void Automata::printState()
+Automata::Automata()
 {
-	cout <<"cur state: " <<  state << endl;
+	chosenNum = -1;
+	key = 1234;
+	state = OFF;
+	m.n = 0;
+	m.dishes = NULL;
+	m.prices = NULL;
 }
-void Automata::printMenu()
+
+states Automata::getState() const
 {
-	for (int i = 0; i < dishes; i++)
-	{
-		cout << i << ") " << menu[i] << endl;
-	}
+	return state;
 }
+
+menu Automata::getMenu() const
+{
+	return m;
+}
+
+int Automata::getCash() const
+{
+	return cash;
+}
+
 void Automata::setMenu(string* strs, int *pr, int N)
 {
-	dishes = N;
-	if (menu)
+	m.n = N;
+	if (m.dishes)
 	{
-		delete[] menu;
-		delete[] prices;
+		delete[] m.dishes;
+		delete[] m.prices;
 
 	}
-	menu = new string[N];
-	prices = new int[N];
+	m.dishes = new string[N];
+	m.prices = new int[N];
 	for (int i = 0; i < N; i++)
 	{
-		menu[i] = strs[i];
-		prices[i] = pr[i];
+		m.dishes[i] = strs[i];
+		m.prices[i] = pr[i];
 	}
 }
 void Automata::setMenu(int N)
 {
-	dishes = N;
-	if (menu)
+	m.n = N;
+	if (m.dishes)
 	{
-		delete[] menu;
-		delete[] prices;
+		delete[] m.dishes;
+		delete[] m.prices;
 
 	}
-	menu = new string[N];
-	prices = new int[N];
+	m.dishes = new string[N];
+	m.prices = new int[N];
 	for (int i = 0; i < N; i++)
 	{
 		string buf = "";
 		cin >> buf;
-		menu[i] = buf;
-		cin >> prices[i];
+		m.dishes[i] = buf;
+		cin >> m.prices[i];
 
 	}
 }
 bool Automata::check()
 {
 	if (chosenNum == -1) return false;
-	return cash == (prices[chosenNum]);
+	return cash == (m.prices[chosenNum]);
 }
 int Automata::cook()
 {
@@ -92,28 +106,35 @@ void Automata::admin(int key)
 	
 }
 
-int Automata::on()
+returns Automata::on()
 {
-	if (state == "WAIT")
+	if (state == OFF)
 	{
-		state = "ON";
-		return 1;
+		if (m.dishes)
+		{
+			state = WAIT;
+		}
+		else
+		{
+			state = ERROR;
+		}
+		return CORRECT;
 	}
 	else
 	{
-		return 0;
+		return MISTAKE;
 	}
 }
-int Automata::off()
+returns Automata::off()
 {
-	if (state == "WAIT")
+	if (state == WAIT)
 	{
-		state = "OFF";
-		return 1;
+		state = OFF;
+		return CORRECT;
 	}
 	else
 	{
-		return 0;
+		return MISTAKE;
 	}
 
 }
