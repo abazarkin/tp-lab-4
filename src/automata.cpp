@@ -1,4 +1,4 @@
-#include "C:\Users\nuald\source\repos\tp-lab-4\include\automata.h"
+#include "..\..\tp-lab-4\include\automata.h"
 
 Automata::Automata()
 {
