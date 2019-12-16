@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include<fstream>
+
 using namespace std;
 
 struct menu
@@ -21,6 +23,7 @@ enum states
 	ACCEPT,
 	CHECK,
 	COOK,
+	READY,
 	ERROR
 };
 
@@ -32,9 +35,9 @@ public:
 	~Automata();
 
 	
-	int coin();
-	int choise();
-	int cansel();
+	returns coin(int sum);
+	returns choise(int Num);
+	returns cansel();
 
 	returns on();
 	returns off();
@@ -43,6 +46,8 @@ public:
 	int getCash() const;
 	menu getMenu() const;
 	
+	returns finish();
+
 	void admin(int key);
 
 private:
@@ -59,14 +64,13 @@ private:
 	
 	void setMenu(string* strs, int* pr, int N);
 	void setMenu(int N);
+	void setMenu(ifstream fin);
+
 	bool check();
-	int cook();
-	int finish();
+	returns cook();
+	
 
 };
 
 
 
-Automata::~Automata()
-{
-}

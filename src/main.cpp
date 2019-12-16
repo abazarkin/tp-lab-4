@@ -4,12 +4,11 @@
 
 
 string firstmenu[]{ "exit", "on" };
-string mainmenu[]{ "exit", "choise", "coin","takeCoffe","Admin" };
+string mainmenu[]{ "exit", "choise", "coin","takeCoffe","Cancel" };
 
 int main()
 {
 	Automata Coffe;
-	
 		cout << "0 - " << firstmenu[0] << endl;
 		cout << "1 - " << firstmenu[1] << endl;
 		int answ;
@@ -20,19 +19,94 @@ int main()
 			Coffe.on();
 			while (WORK)
 			{
-				switch (Coffe.getState())
+				answ = 0;
+
+				if (Coffe.getState() != ERROR)
 				{
-				case WAIT: cout << "Ready for work!" << endl;
-					break;
-				case ERROR: cout << "ERROR" << endl;
-				default:
-					break;
+					cout << "Ready for work!" << endl;
+					menu m1;
+					m1 = Coffe.getMenu();
+					for (int i = 0; i < m1.n; i++)
+					{
+						cout << i + 1 << ") " << m1.dishes[i] << " " << m1.prices[i] << "p" << endl;
+					}
+					cout << "your balance: " << Coffe.getCash() << endl;
+					for (int i = 0; i < 5; i++)
+					{
+						cout << i << " - " << mainmenu[i] << endl;
+					}
+					cin >> answ;
 				}
-				for (int i = 0; i < 5; i++)
+
+				//switch (Coffe.getState())
+				//{
+				//case WAIT: cout << "Ready for work!" << endl;
+				//	menu m1;
+				//	m1 = Coffe.getMenu();
+				//	for (int i = 0; i < m1.n; i++)
+				//	{
+				//		cout << i + 1 << ") " << m1.dishes[i] << " " << m1.prices[i] << "p" << endl;
+				//	}
+				//	for (int i = 0; i < 5; i++)
+				//	{
+				//		cout << i << " - " << mainmenu[i] << endl;
+				//	}
+				//	cin >> answ;
+				//	break;
+				//case ERROR: cout << "ERROR" << endl;
+				//	break;
+				//default:
+				//	break;
+				//}
+				if (answ)
 				{
-					cout << i << " - " << mainmenu[i] << endl;
+					
+					switch (answ)
+					{
+					case 1: //choise
+						if (Coffe.getState() == WAIT)
+						{
+							cout << "Enter some money" << endl;
+						}
+						if ((Coffe.getState() == ACCEPT))
+						{
+							int Num;
+							cout << "Choise: ";
+							cin >> Num;
+							Coffe.choise(Num);
+						}
+						if (Coffe.getState() == ACCEPT)
+						{
+							cout << "Enter some money" << endl;
+						}
+						
+							break;
+					case 2: // coin
+						int sum;
+						cout << "Coins: ";
+						cin >> sum;
+						Coffe.coin(sum);
+						break;
+					case 3: //takeCoffe
+						if (Coffe.getState() == READY)
+						{
+							Coffe.finish();
+						}
+						else
+						{
+							cout << "Its empty here" << endl;
+						}
+						break;
+					default:
+						break;
+					}
+
 				}
-				cin >> answ;
+				else
+				{
+					WORK = false;
+					Coffe.off();
+				}
 				         
 			}
 			

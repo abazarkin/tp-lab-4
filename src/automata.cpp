@@ -3,11 +3,29 @@
 Automata::Automata()
 {
 	chosenNum = -1;
+	cash = 0;
 	key = 1234;
 	state = OFF;
 	m.n = 0;
 	m.dishes = NULL;
 	m.prices = NULL;
+	ifstream fin;
+	fin.open("menu.txt");	
+	//setMenu(fin);
+	fin >> m.n;
+	m.dishes = new string[m.n];
+	m.prices = new int[m.n];
+	for (int i = 0; i < m.n; i++)
+	{
+		fin >> m.prices[i];
+		fin >> m.dishes[i];
+	}
+}
+
+Automata::~Automata()
+{
+	delete[] m.dishes;
+	delete[] m.prices;
 }
 
 states Automata::getState() const
@@ -62,18 +80,44 @@ void Automata::setMenu(int N)
 
 	}
 }
+void Automata::setMenu(ifstream fin)
+{
+	if (m.dishes)
+	{
+		delete[] m.dishes;
+		delete[] m.prices;
+
+	}
+	fin >> m.n;
+	m.dishes = new string[m.n];
+	m.prices = new int[m.n];
+	for (int i = 0; i < m.n; i++)
+	{
+		fin >> m.prices[i];
+		fin >> m.dishes[i];
+	}
+}
+
 bool Automata::check()
 {
 	if (chosenNum == -1) return false;
 	return cash == (m.prices[chosenNum]);
 }
-int Automata::cook()
+returns Automata::cook()
 {
+	state = COOK;
 	cout << "preparing..." << endl;
+	state = READY;
+	return CORRECT;
 }
-int Automata::finish()
+returns Automata::finish()
 {
-
+	if (state == READY)
+	{
+		cansel();
+		return CORRECT;
+	}
+	return MISTAKE;
 }
 
 void Automata::admin(int key)
@@ -139,24 +183,43 @@ returns Automata::off()
 
 }
 
-int Automata::coin()
+returns Automata::coin(int sum)
 {
-	cin >> cash;
-}
-int Automata::choise()
-{
-	printMenu();
-	cin >> chosenNum;
-	chosenNum--;
-	if ((chosenNum >= dishes) || (chosenNum < 0))
+	if (state == WAIT)
 	{
-		cout << "INCORRECT" << endl;
-		chosenNum = -1;
-		return -1;
+		state = ACCEPT;
 	}
-	return 1;
-}
-int Automata::cansel()
-{
 
+	if (state == ACCEPT)
+	{
+		cash += sum;
+		return CORRECT;
+	}
+
+	return MISTAKE;
+}
+returns Automata::choise(int Num)
+{	
+
+	if ((Num >= m.n) || (Num < 0))
+	{
+		return MISTAKE;
+	}
+	chosenNum = Num;
+	if (check())
+	{
+		cook();
+	}
+	return CORRECT;
+}
+returns Automata::cansel()
+{
+	if (state == OFF)
+	{
+		return MISTAKE;
+	}
+	cash = 0;
+	chosenNum = -1;
+	state = WAIT;
+	return CORRECT;
 }
