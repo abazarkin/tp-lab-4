@@ -1,5 +1,4 @@
-#include "..\..\tp-lab-4\include\automata.h"
-
+#include "automata.h"
 
 
 
