@@ -22,7 +22,7 @@ struct Drink{
 	}
 };
 
-static enum STATES {OFF, WAIT, ACCEPT, CHECK, COOK};
+enum STATES {OFF, WAIT, ACCEPT, CHECK, COOK};
 
 
 class Automata {
