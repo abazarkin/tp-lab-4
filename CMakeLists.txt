@@ -17,16 +17,15 @@ set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
-
-set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/Source.cpp
-              ${PROJECT_SOURCE_DIR}/src/Automata.cpp)
+set(SRC_FILES1 ${PROJECT_SOURCE_DIR}/src/Automata.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(Automata_lib ${SRC_FILES})
-add_executable(Automata ${SRC_FILES})
-target_link_libraries(Automata Automata_lib)
+add_library(task1_lib ${SRC_FILES1})
 
+add_executable(task1 ${PROJECT_SOURCE_DIR}/src/main.cpp )
+
+target_link_libraries(task1 task1_lib)
 
 ################################
 # Testing
@@ -54,7 +53,7 @@ if (BUILD_TESTS)
   target_link_libraries(runUnitTests gtest gtest_main)
 
   # Extra linking for the project.
-  #target_link_libraries(runUnitTests Automata_lib)
+  #target_link_libraries(runUnitTests task1_lib task2_lib task3_lib)
 
   # This is so you can do 'make test' to see all your tests run, instead of
   # manually running the executable runUnitTests to see those specific tests.
