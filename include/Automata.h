@@ -22,8 +22,10 @@ struct Drink{
 	}
 };
 
+static enum STATES {OFF, WAIT, ACCEPT, CHECK, COOK};
+
+
 class Automata {
-    static enum STATES {OFF, WAIT, ACCEPT, CHECK, COOK};
 	static vector<string>STATE_DESCRIPTION;
 	static vector<Drink> menu;
     
