@@ -28,4 +28,3 @@ TEST(lab4, task_4){
     int tmp = automata.getCash();
     EXPECT_EQ(0, tmp);
 }
-}
