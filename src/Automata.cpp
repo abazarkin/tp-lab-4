@@ -4,7 +4,6 @@
 
 #include "Automata.h"
 #include <iostream>
-#include <Windows.h>
 
 vector<string> Automata::STATE_DESCRIPTION = { "OFF", "WAIT", "ACCEPT", "CHECK", "COOK" };
 vector<Drink>Automata::menu = { {"Espresso", 1}, {"Americano", 2}, {"Cappuccino", 3}, {"Latte", 4}, {"Macchiato", 5}, {"Ristretto", 6}, {"Lungo", 7} };
@@ -87,7 +86,6 @@ void Automata::cancel() {
 bool Automata::cook() {
 	if (state == CHECK && drink_for_prep != -1) {
 		std::cout << "...sounds of cooking..." << '\n';
-		Sleep(5000);
 		state = COOK;
 		cash -= menu[drink_for_prep].price;
 		finish();
