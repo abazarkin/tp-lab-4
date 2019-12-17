@@ -1,6 +1,6 @@
 //#include "pch.h"
 #include "gtest/gtest.h"
-#include "../StuffyLab3/Automata.h"
+#include "../include/Automata.h"
 #include <vector>
 #include <iostream>
 #include <string>
