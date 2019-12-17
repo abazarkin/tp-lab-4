@@ -1,104 +1,200 @@
+//#include "pch.h"
 #include "gtest/gtest.h"
-#include "task1.h"
-#include "task2.h"
-#include "task3.h"
-#include "task4.h"
-#include "task5.h"
+#include "Automata.h"
 
-// task1
-TEST(lab1,task1_1)
-{
-    unsigned long res=findValue(1,20);
-    EXPECT_EQ(232792560,res);
-}
-TEST(lab1,task1_2)
-{
-    unsigned long res=findValue(1,10);
-    EXPECT_EQ(2520,res);
-}
+//TEST(Test_states, test_all) {
+//	Automata box;
+//	EXPECT_EQ(box.printState(), "OFF");
+//	box.on();
+//	EXPECT_EQ(box.printState(), "WAIT");
+//	box.coin(1);
+//	EXPECT_EQ(box.printState(), "ACCEPT");
+//	box.choice(0);
+//	EXPECT_EQ(box.printState(), "CHECK");
+//	box.cook();
+//	EXPECT_EQ(box.printState(), "WAIT");
+//	box.coin(1);
+//	EXPECT_EQ(box.printState(), "ACCEPT");
+//	box.choice(5);
+//	EXPECT_EQ(box.printState(), "ACCEPT");
+//	box.coin(10);
+//	box.choice(8);
+//	EXPECT_EQ(box.printState(), "ACCEPT");
+//	box.choice(2);
+//	box.choice(4);
+//	EXPECT_EQ(box.printState(), "CHECK");
+//	box.off();
+//	EXPECT_EQ(box.printState(), "OFF");
+//	box.coin(1);
+//	EXPECT_EQ(box.printState(), "OFF");
+//}
 
-// task2
-TEST(lab1,task2_1)
-{
-   EXPECT_EQ(true,checkPrime(2));
-}
-TEST(lab1,task2_2)
-{
-   EXPECT_EQ(true,checkPrime(3));
-}
-TEST(lab1,task2_3)
-{
-   EXPECT_EQ(false,checkPrime(12));
-}
-TEST(lab1,task2_4)
-{
-   unsigned long long res=nPrime(6);
-   EXPECT_EQ(13,res);
-}
-TEST(lab1,task2_5)
-{
-   unsigned long long res=nPrime(500);
-   EXPECT_EQ(3571,res);
-}
-TEST(lab1,task2_6)
-{
-   unsigned long long res=nextPrime(1031);
-   EXPECT_EQ(1033,res);
-}
-TEST(lab1,task2_7)
-{
-   unsigned long long res=nextPrime(3559);
-   EXPECT_EQ(3571,res);
-}
-TEST(lab1,task2_8)
-{
-   unsigned long long res=nextPrime(2);
-   EXPECT_EQ(3,res);
+TEST(Test_states, test_off_1) {
+	Automata box;
+	EXPECT_EQ(box.printState(), "OFF");
 }
 
-// task3
-TEST(lab1,task3_1)
-{
-   unsigned long long res=sumPrime(2000000);
-   unsigned long long expected=142913828922;
-   EXPECT_EQ(expected,res);
-}
-TEST(lab1,task3_2)
-{
-   unsigned long long res=sumPrime(10);
-   unsigned long long expected=17;
-   EXPECT_EQ(expected,res);
+TEST(Test_states, test_wait_1) {
+	Automata box;
+	box.on();
+	EXPECT_EQ(box.printState(), "WAIT");
 }
 
-// task4
-TEST(lab1,task4_1)
-{
-   char *x="123456789";
-   char *y="000000001";
-   char *expected="123456790";
-   char *z=sum(x,y);
-   EXPECT_STREQ(expected,z);
-}
-TEST(lab1,task4_2)
-{
-   char *x="99999999999999999999";
-   char *y="1";
-   char *expected="100000000000000000000";
-   char *z=sum(x,y);
-   EXPECT_STREQ(expected,z);
+TEST(Test_states, test_accept_1) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	EXPECT_EQ(box.printState(), "ACCEPT");
 }
 
-//task5
-TEST(lab1,task5)
-{
-   char *buf="123,456,789";
-   int N=0;
-   char **result=nullptr;
-   split(&result, &N, buf, ',');
-   
-   EXPECT_EQ(3,N);
-   EXPECT_NE(nullptr,result);
-   EXPECT_STREQ("123",result[0]);
-   EXPECT_STREQ("456",result[1]);
-   EXPECT_STREQ("789",result[2]);
+TEST(Test_states, test_check_1) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.choice(0);
+	EXPECT_EQ(box.printState(), "CHECK");
+}
+
+TEST(Test_states, test_wait_2) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.choice(0);
+	box.cook();
+	EXPECT_EQ(box.printState(), "WAIT");
+}
+
+TEST(Test_states, test_accept_2) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.choice(0);
+	box.cook();
+	box.coin(1);
+	EXPECT_EQ(box.printState(), "ACCEPT");
+}
+
+TEST(Test_states, test_accept_3) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.choice(0);
+	box.cook();
+	box.coin(1);
+	box.choice(5);
+	EXPECT_EQ(box.printState(), "ACCEPT");
+}
+
+TEST(Test_states, test_accept_4) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.choice(0);
+	box.cook();
+	box.coin(1);
+	box.choice(5);
+	box.coin(10);
+	EXPECT_EQ(box.printState(), "ACCEPT");
+}
+
+TEST(Test_states, test_accept_5) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.choice(0);
+	box.cook();
+	box.coin(1);
+	box.choice(5);
+	box.coin(10);
+	box.choice(8);
+	EXPECT_EQ(box.printState(), "ACCEPT");
+}
+
+TEST(Test_states, test_check_2) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.choice(0);
+	box.cook();
+	box.coin(1);
+	box.choice(5);
+	box.coin(10);
+	box.choice(8);
+	box.choice(2);
+	EXPECT_EQ(box.printState(), "CHECK");
+}
+
+TEST(Test_states, test_off_2) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.choice(0);
+	box.cook();
+	box.coin(1);
+	box.choice(5);
+	box.off();
+	EXPECT_EQ(box.printState(), "OFF");
+}
+
+TEST(Test_states, test_off_3) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.choice(0);
+	box.cook();
+	box.coin(1);
+	box.choice(5);
+	box.off();
+	box.coin(1);
+	EXPECT_EQ(box.printState(), "OFF");
+}
+
+TEST(Test_states, test_cancel) {
+	Automata box;
+	box.on();
+	box.coin(1);
+	box.cancel();
+	EXPECT_EQ(box.printState(), "WAIT");
+}
+
+TEST(Test_methods, test_coin_off) {
+	Automata box;
+	EXPECT_EQ(box.coin(1), false);
+}
+
+TEST(Test_methods, test_coin_on) {
+	Automata box;
+	box.on();
+	EXPECT_EQ(box.coin(1), true);
+}
+
+TEST(Test_methods, test_choice_off) {
+	Automata box;
+	EXPECT_EQ(box.choice(1), false);
+}
+
+TEST(Test_methods, test_choice_enough_cash) {
+	Automata box;
+	box.on();
+	box.coin(10);
+	EXPECT_EQ(box.choice(3), true);
+}
+
+TEST(Test_methods, test_choice_not_enough_cash) {
+	Automata box;
+	box.on();
+	box.coin(0);
+	EXPECT_EQ(box.choice(3), false);
+}
+
+TEST(Test_methods, test_getCash_off) {
+	Automata box;
+	EXPECT_EQ(box.getCash(), 0);
+}
+
+TEST(Test_methods, test_getCash) {
+	Automata box;
+	box.on();
+	box.coin(15);
+	EXPECT_EQ(box.getCash(), 15);
 }
