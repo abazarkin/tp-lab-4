@@ -31,7 +31,7 @@ void Automata::showMenu(){
 }
 
 void Automata::coin(){
-    if(curSt == wait || curSt == accept){
+    if(curSt == STATE::wait || curSt == accept){
         cout << "Insert your coins: ";
         int ammC;
         cin >> ammC;
@@ -89,7 +89,7 @@ void Automata::finish(){
     if(curSt == STATE::cook){
         cout << "Here is your change: " << this->cash <<' ' << "Have a nice day!"<<'\n';
         this->cash = 0;
-        this->curSt = wait;
+        this->curSt = STATE::wait;
         showMenu();
     }else{
         cout << "Incorrect order";
@@ -97,7 +97,7 @@ void Automata::finish(){
 }
 
 void Automata::cancel(){
-    this->curSt = wait;
+    this->curSt = STATE::wait;
     cout << "Take your cash: " << this->cash << '\n';
     this->cash = 0;
 }
