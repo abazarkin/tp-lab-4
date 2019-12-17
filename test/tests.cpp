@@ -7,23 +7,25 @@ TEST (automata,test1){
     automata.off();
     int odd_money = automata.cancel();
     EXPECT_EQ(0,odd_money);
-    automata.on;
+    automata.on();
     odd_money = automata.cancel();
     EXPECT_EQ(5000,odd_money);
 }
 
-TEST(automata,test2){
+TEST (automata,test2){
     Automata automata;
     automata.on();
-    EXPECT_ANY_THROW(automata.cook("coffee"));
-    EXPECT_ANY_THROW(automata.check("fanta"));
+    automata.coin(1);
+    automata.coin(2);
+    int odd_money = automata.cancel();
+    EXPECT_EQ(3,odd_money);
 }
 
 TEST(automata,test3){
     Automata automata;
-    Automata.on();
-    Automata.coin(200);
-    Automata.choice("coffee");
-    int odd_money = Automata.cancel();
+    automata.on();
+    automata.coin(200);
+    automata.choice("coffee");
+    int odd_money = automata.cancel();
     EXPECT_EQ(160,odd_money);
 }
