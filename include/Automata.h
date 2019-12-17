@@ -22,16 +22,16 @@ public:
         cash=0;
         state=OFF;
     }
-    STATES off();
-    STATES on();
-    STATES cancel();
-    STATES coin(int deposit);
-    STATES choice(int step);
-    STATES cook();
+    void off();
+    void on();
+    void cancel();
+    void coin(int deposit);
+    void choice(int step);
+    void cook();
     void printMenu();
     STATES printState();
     bool check();
-    STATES finish();
+    void finish();
     void refund_of_money();
     int getCash();
 };

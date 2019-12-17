@@ -5,21 +5,19 @@
 #include "string.h"
 using namespace std;
 
-STATES Automata::on(){
+void Automata::on(){
     state = WAIT;
     cout<<"Machine the process started"<<endl;
-    return state;
 }
 
-STATES Automata::off(){
+void Automata::off(){
     if(state==WAIT){
         state=OFF;
         cout<<"The process finished"<<endl;
-        return state;
     }
     else{
         cout<<"The state of machine is supposed to be WAIT"<<endl;
-        return state=ERROR;
+        state=ERROR;
     }
 }
 
@@ -47,18 +45,17 @@ STATES Automata::printState(){
     }
 }
 
-STATES Automata::coin(int deposit) {
+void Automata::coin(int deposit) {
     if (state == WAIT || state == ACCEPT){
         state = ACCEPT;
         cash += deposit ;
+        cout<<"The current balance: " << getCash() <<endl;
     }
     else if ((state != CHECK)){
         cout << "The state of the machine is supposed to be ACCEPT, WAIT or CHECK.\n"
                 "Try again, please!"<<endl;
-        return state = ERROR;
+        state = ERROR;
     }
-    cout<<"The current balance: " << getCash() <<endl;
-    return state;
 
 }
 
@@ -69,27 +66,28 @@ void Automata::printMenu(){
     }
 }
 
-STATES Automata::choice(int step){
+void Automata::choice(int step){
     if(state==ACCEPT)
         state = CHECK;
     else{
         cout<<"The state of machine is supposed to be ACCEPT"<<endl;
-        return state = ERROR;
+        state = ERROR;
+        return;
     }
     position = step;
     if(step>N){
         cout<<"There are only 5 products, please try again"<<endl;
-        return state = ERROR;
+        state = ERROR;
+        return;
     }
     cout<<"Your choice is: "<< menu[step]<<"\nPrice is "<<prices[step]<<endl;
-    return state;
 }
 
 bool Automata::check(){
     return(cash>=prices[position]);
 }
 
-STATES Automata::cook(){
+void Automata::cook(){
     if(state==CHECK || state == ACCEPT){
         if(check()){
             cash -=prices[position];
@@ -102,9 +100,9 @@ STATES Automata::cook(){
     }
     else{
         cout<<"The state of machine is supposed to be CHECK or ACCEPT"<<endl;
-        return state = ERROR;
+        state = ERROR;
+        return;
     }
-    return state;
 }
  int Automata::getCash(){
     return cash;
@@ -115,31 +113,27 @@ void Automata::refund_of_money(){
     cash=0;
 }
 
-STATES Automata::cancel(){
+void Automata::cancel(){
     if ((state != ACCEPT) &&(state != CHECK)) {
         cout << "The state of the machine is supposed to be ACCEPT or CHECK"<<endl;
-        return state = ERROR;
+        state = ERROR;
     } else if (cash == 0) {
         state = WAIT;
-        return state;
     } else {
         cout<<"Offer canceled\n";
         refund_of_money();
         state = WAIT;
-        return state;
     }
 }
 
-STATES Automata::finish(){
+void Automata::finish(){
     if(state == COOK){
         state = WAIT;
         cout<<"Get ur drink"<<endl;
         refund_of_money();
-        return state;
     }
     else{
         cout<<"The state of machine is supposed to be COOK";
         state = ERROR;
-        return state;
     }
 }
