@@ -4,7 +4,7 @@
 #include "gtest/gtest.h"
 #include "Automata.h"
 
-TEST(automata_on, test1){
+/*TEST(automata_on, test1){
     Automata my_purchase;
     my_purchase.on();
     EXPECT_EQ(ON,my_purchase.printState());
@@ -27,7 +27,7 @@ TEST(automata_wrong_choice,test3){
     my_purchase.coin(100);
     my_purchase.choice(6);
     EXPECT_EQ(ERROR,my_purchase.printState());
-}
+}*/
 
 TEST(automata_cash,test4){
     Automata my_purchase;
