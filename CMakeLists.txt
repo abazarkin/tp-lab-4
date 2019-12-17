@@ -16,11 +16,11 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
-set(SRC_FILES1 ${PROJECT_SOURCE_DIR}/src/Automata.cpp)
+set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/Automata.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(task1_lib ${SRC_FILES1})
+add_library(task1_lib ${SRC_FILES})
 
 add_executable(task1 ${PROJECT_SOURCE_DIR}/src/main.cpp )
 
