@@ -10,13 +10,13 @@ TEST (automata,test1){
     automata.on;
     odd_money = automata.cancel();
     EXPECT_EQ(5000,odd_money);
-
+}
 
 TEST(automata,test2){
     Automata automata;
     automata.on();
-    EXPECT_THROW(automata.cook());
-    EXPECT_THROW(automata.check());
+    EXPECT_ANY_THROW(automata.cook("coffee"));
+    EXPECT_ANY_THROW(automata.check("fanta"));
 }
 
 TEST(automata,test3){
