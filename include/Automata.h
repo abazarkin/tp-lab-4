@@ -21,7 +21,7 @@ private:
     bool check(int choice); // проверка наличия необходимой суммы
     void cook(int choice); // имитация процесса приготовления напитка
     void finish(); // завершение обслуживания пользователя
-    int getCash();
+
 
     void setCash(int cash);
     void setState(STATES state);
@@ -35,6 +35,7 @@ public:
     void choice(); // выбор напитка пользователем
     void cancel(); // отмена сеанса обслуживания пользователем
     STATES getState();
+    int getCash();
 };
 
 
