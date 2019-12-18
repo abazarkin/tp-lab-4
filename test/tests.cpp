@@ -152,7 +152,7 @@ TEST(automata, test_16)
     unsigned int con_cost[3] = {1, 2, 3};
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
     aut->coin(2);
-    unsigned int* cond = {0};
+    unsigned int cond[1] = {0};
     EXPECT_EQ(aut->choice(0, cond, 1), 0);
 }
 
@@ -164,7 +164,7 @@ TEST(automata, test_17)
     unsigned int con_cost[3] = {1, 2, 3};
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
     aut->coin(5);
-    unsigned int* cond = {1};
+    unsigned int cond[1] = {1};
     EXPECT_EQ(aut->choice(1, cond, 1), 1);
 }
 
@@ -176,7 +176,7 @@ TEST(automata, test_18)
     unsigned int con_cost[3] = {1, 2, 3};
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
     aut->coin(10);
-    unsigned int* cond = {2};
+    unsigned int cond[1] = {2};
     EXPECT_EQ(aut->choice(2, cond, 1), 4);
 }
 
@@ -188,7 +188,7 @@ TEST(automata, test_19)
     unsigned int con_cost[3] = {1, 2, 3};
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
     aut->coin(10);
-    unsigned int* cond = {0, 1};
+    unsigned int cond[2] = {0, 1};
     EXPECT_EQ(aut->choice(2, cond, 2), 4);
 }
 
