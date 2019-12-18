@@ -28,6 +28,6 @@ TEST(test1,task2)
     aut.coin();
     aut.choice();
     aut.finish();
-    aut.off()
+    aut.off();
     EXPECT_EQ(0,aut.getState());
 }
