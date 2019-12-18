@@ -16,7 +16,7 @@ enum STATES {
 class Automata
 {
 private:
-	int balance;
+	float balance;
 	string menu[10] =
 	{
 		"Doubleshot Espresso",

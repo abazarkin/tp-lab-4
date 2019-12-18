@@ -73,7 +73,7 @@ TEST(coffee_machine, task1_8)
 {
     Automata coffee;
     coffee.on();
-    coffee.coin(6);
+    coffee.coin(6.35);
     coffee.choice(3);
-    EXPECT_DOUBLE_EQ(0.65, coffee.finish());
+    EXPECT_EQ(1, int(coffee.finish()));
 }
