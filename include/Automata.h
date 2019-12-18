@@ -7,7 +7,7 @@
 
 using namespace std;
 
-enum STATE{off, wait, accept, check, cook};
+enum STATE{off, Wait, accept, check, cook};
 
 class Automata
 {
