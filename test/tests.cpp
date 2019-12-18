@@ -9,7 +9,7 @@ TEST(lab4, check1)
 	Coffee.on();
 	EXPECT_EQ(WAIT, Coffee.getState());
 	EXPECT_EQ(MISTAKE, Coffee.on());
-	Coffe.off();
+	Coffee.off();
 	EXPECT_EQ(OFF, Coffee.getState());
 }
 
