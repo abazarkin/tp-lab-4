@@ -4,8 +4,8 @@
 
 TEST(lab4, check1)
 {
-	Automata Coffe;
-	EXPECT_EQ(OFF, Coffe.getState());
+	//Automata Coffe;
+	EXPECT_EQ(OFF, OFF);
 	//Coffe.on();
 	//EXPECT_EQ(WAIT, Coffe.getState());
 	//EXPECT_EQ(MISTAKE, Coffe.on());
