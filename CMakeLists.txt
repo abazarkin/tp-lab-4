@@ -18,10 +18,17 @@ include_directories(${COMMON_INCLUDES})
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/Automata.cpp)
 
 
-set(SRC_FILES1 ${PROJECT_SOURCE_DIR}/src/main.cpp)
 
+
+set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cpp
+              ${PROJECT_SOURCE_DIR}/src/automata.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
+
+add_library(task_lib ${SRC_FILES})
+add_executable(task ${SRC_FILES})
+target_link_libraries(task task_lib)
+
 
 ################################
 # Testing
