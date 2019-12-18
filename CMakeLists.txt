@@ -15,13 +15,14 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 #----------------------------------------------------------------------------
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
-file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/Automata.cpp)
+file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
 
 
 
 set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cpp
-              ${PROJECT_SOURCE_DIR}/src/automata.cpp)
+              ${PROJECT_SOURCE_DIR}/src/Automata.cpp
+              ${PROJECT_SOURCE_DIR}/src/Drink.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
