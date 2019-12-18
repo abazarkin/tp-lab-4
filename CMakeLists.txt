@@ -13,7 +13,7 @@ set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
-set(SRC_FILES1 ${PROJECT_SOURCE_DIR}/src/cofee_machine.cpp)
+set(SRC_FILES1 ${PROJECT_SOURCE_DIR}/src/coffee_machine.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
