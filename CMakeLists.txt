@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 2.8)
 
 # Make PROJECT_SOURCE_DIR, PROJECT_BINARY_DIR, and PROJECT_NAME available.
@@ -18,11 +19,8 @@ include_directories(${COMMON_INCLUDES})
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
 
-
-
 set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cpp
-              ${PROJECT_SOURCE_DIR}/src/Automata.cpp
-              ${PROJECT_SOURCE_DIR}/src/Drink.cpp)
+              ${PROJECT_SOURCE_DIR}/src/Automata.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -57,7 +55,7 @@ if (BUILD_TESTS)
   target_link_libraries(runUnitTests gtest gtest_main)
 
   # Extra linking for the project.
-  target_link_libraries(runUnitTests task1_lib task2_lib task3_lib)
+  #target_link_libraries(runUnitTests task1_lib task2_lib task3_lib)
 
   # This is so you can do 'make test' to see all your tests run, instead of
   # manually running the executable runUnitTests to see those specific tests.
