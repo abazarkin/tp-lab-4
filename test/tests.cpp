@@ -96,48 +96,6 @@ TEST(automata, test_7)
     EXPECT_EQ(aut->getState(), WAIT);
 }
 
-/*
-TEST(automata, test_8)
-{
-    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
-    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
-    unsigned int bev_cost[4] = {1, 2, 3, 4};
-    unsigned int con_cost[3] = {1, 2, 3};
-    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    EXPECT_EQ(aut->getBeverageMenu(), {"Espresso", "Dark roast", "Hot chocolate", "House blend"});
-}
-
-TEST(automata, test_9)
-{
-    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
-    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
-    unsigned int bev_cost[4] = {1, 2, 3, 4};
-    unsigned int con_cost[3] = {1, 2, 3};
-    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    EXPECT_EQ(aut->getCondimentMenu(), {"Milk", "Sugar", "Mocha"});
-}
-
-TEST(automata, test_10)
-{
-    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
-    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
-    unsigned int bev_cost[4] = {1, 2, 3, 4};
-    unsigned int con_cost[3] = {1, 2, 3};
-    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    EXPECT_EQ(aut->getBeveragePrices(), {1, 2, 3, 4});
-}
-
-TEST(automata, test_11)
-{
-    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
-    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
-    unsigned int bev_cost[4] = {1, 2, 3, 4};
-    unsigned int con_cost[3] = {1, 2, 3};
-    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    EXPECT_EQ(aut->getCondimentPrices(), {1, 2, 3});
-}
-*/
-
 TEST(automata, test_12)
 {
     string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
