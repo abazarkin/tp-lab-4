@@ -31,3 +31,13 @@ TEST(test1,task3)
     aut.off();
     EXPECT_EQ(0,aut.getState());
 }
+
+TEST(test1,task4)
+{
+    //is this thing work
+    Automata aut;
+    aut.on();
+    aut.coin(50);
+    aut.cancel();
+    EXPECT_EQ(1,aut.getState());
+}
