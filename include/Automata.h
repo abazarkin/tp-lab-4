@@ -5,15 +5,7 @@
 
 class Automata {
 private:
-    //enum menu {};
-    /*enum prices {Cappuccino = 35, 
-                American = 30, 
-                Black_coffee = 20,
-                Latte = 35,
-                Espresso = 30,
-                Hot_chocolate = 25}; */
-    //enum states {OFF = 0, WAIT, ACCEPT, CHECK, COOK};
-    int cash;
+    unsigned int cash;
     int state;
     int ans;
 
@@ -22,15 +14,16 @@ public:
     ~Automata();
     bool on();
     bool off();
-    bool coins();
+    bool coin(unsigned int coins);
     bool printMenu();
-    void printState();
-    bool choice();
+    void printState() const;
+    bool choice(int local_ans);
     bool check();
     bool cansel();
     bool cook();
     bool finish();
 
+    void printInform() const;
     void processing();
 };
 
