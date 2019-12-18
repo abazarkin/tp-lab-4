@@ -20,7 +20,7 @@ TEST(test1,task2)
     EXPECT_EQ(2,aut.getState());
 }
 
-TEST(test1,task2)
+TEST(test1,task3)
 {
     //is this thing work
     Automata aut;
