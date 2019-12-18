@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../include/coffee_machine.h"
+#include "coffee_machine.h"
 #include <string>
 
 // ON/OFF test
