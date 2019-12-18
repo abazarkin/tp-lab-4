@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="task1"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/C++/tp-lab-4/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="task1">
+				<Option output="D:/C++/tp-lab-4/cmake-build-debug/task1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/C++/tp-lab-4/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/C++/tp-lab-4/include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+					<Add directory="/mingw/lib/gcc/mingw32/6.3.0/../../../../include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 task1"/>
+					<CompileFile command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="task1/fast">
+				<Option output="D:/C++/tp-lab-4/cmake-build-debug/task1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/C++/tp-lab-4/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/C++/tp-lab-4/include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+					<Add directory="/mingw/lib/gcc/mingw32/6.3.0/../../../../include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 task1/fast"/>
+					<CompileFile command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="task1_lib">
+				<Option output="D:/C++/tp-lab-4/cmake-build-debug/libtask1_lib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/C++/tp-lab-4/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/C++/tp-lab-4/include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+					<Add directory="/mingw/lib/gcc/mingw32/6.3.0/../../../../include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 task1_lib"/>
+					<CompileFile command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="task1_lib/fast">
+				<Option output="D:/C++/tp-lab-4/cmake-build-debug/libtask1_lib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/C++/tp-lab-4/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/C++/tp-lab-4/include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw1\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+					<Add directory="/mingw/lib/gcc/mingw32/6.3.0/../../../../include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 task1_lib/fast"/>
+					<CompileFile command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="D:/C++/tp-lab-4/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="D:/C++/tp-lab-4/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/mingw1/bin/mingw32-make.exe -f &quot;D:/C++/tp-lab-4/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/C++/tp-lab-4/include/DarkRoast.h">
+			<Option target="task1_lib"/>
+		</Unit>
+		<Unit filename="D:/C++/tp-lab-4/include/Espresso.h">
+			<Option target="task1_lib"/>
+		</Unit>
+		<Unit filename="D:/C++/tp-lab-4/include/HotChocolate.h">
+			<Option target="task1_lib"/>
+		</Unit>
+		<Unit filename="D:/C++/tp-lab-4/include/Milk.h">
+			<Option target="task1_lib"/>
+		</Unit>
+		<Unit filename="D:/C++/tp-lab-4/include/Mocha.h">
+			<Option target="task1_lib"/>
+		</Unit>
+		<Unit filename="D:/C++/tp-lab-4/src/Automata.cpp">
+			<Option target="task1_lib"/>
+		</Unit>
+		<Unit filename="D:/C++/tp-lab-4/src/main.cpp">
+			<Option target="task1"/>
+		</Unit>
+		<Unit filename="D:/C++/tp-lab-4/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
