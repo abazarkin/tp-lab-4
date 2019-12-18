@@ -11,7 +11,6 @@ TEST(lab4, check1)
 	EXPECT_EQ(MISTAKE, Coffe.on());
 	Coffe.off();
 	EXPECT_EQ(OFF, Coffe.getState());
-	Coffe.~Automata;
 }
 
 TEST(lab4, check2)
