@@ -44,23 +44,23 @@ int Automata::getCash() const
 	return cash;
 }
 
-void Automata::setMenu(string* strs, int *pr, int N)
-{
-	m.n = N;
-	if (m.dishes)
-	{
-		delete[] m.dishes;
-		delete[] m.prices;
-
-	}
-	m.dishes = new string[N];
-	m.prices = new int[N];
-	for (int i = 0; i < N; i++)
-	{
-		m.dishes[i] = strs[i];
-		m.prices[i] = pr[i];
-	}
-}
+//void Automata::setMenu(string* strs, int *pr, int N)
+//{
+//	m.n = N;
+//	if (m.dishes)
+//	{
+//		delete[] m.dishes;
+//		delete[] m.prices;
+//
+//	}
+//	m.dishes = new string[N];
+//	m.prices = new int[N];
+//	for (int i = 0; i < N; i++)
+//	{
+//		m.dishes[i] = strs[i];
+//		m.prices[i] = pr[i];
+//	}
+//}
 
 void Automata::setMenu()
 {
@@ -73,43 +73,43 @@ void Automata::setMenu()
 	m.prices[0] = 60; m.dishes[0] = "coffe4";
 }
 
-void Automata::setMenu(int N)
-{
-	m.n = N;
-	if (m.dishes)
-	{
-		delete[] m.dishes;
-		delete[] m.prices;
-
-	}
-	m.dishes = new string[N];
-	m.prices = new int[N];
-	for (int i = 0; i < N; i++)
-	{
-		string buf = "";
-		cin >> buf;
-		m.dishes[i] = buf;
-		cin >> m.prices[i];
-
-	}
-}
-void Automata::setMenu(ifstream fin)
-{
-	if (m.dishes)
-	{
-		delete[] m.dishes;
-		delete[] m.prices;
-
-	}
-	fin >> m.n;
-	m.dishes = new string[m.n];
-	m.prices = new int[m.n];
-	for (int i = 0; i < m.n; i++)
-	{
-		fin >> m.prices[i];
-		fin >> m.dishes[i];
-	}
-}
+//void Automata::setMenu(int N)
+//{
+//	m.n = N;
+//	if (m.dishes)
+//	{
+//		delete[] m.dishes;
+//		delete[] m.prices;
+//
+//	}
+//	m.dishes = new string[N];
+//	m.prices = new int[N];
+//	for (int i = 0; i < N; i++)
+//	{
+//		string buf = "";
+//		cin >> buf;
+//		m.dishes[i] = buf;
+//		cin >> m.prices[i];
+//
+//	}
+//}
+//void Automata::setMenu(ifstream fin)
+//{
+//	if (m.dishes)
+//	{
+//		delete[] m.dishes;
+//		delete[] m.prices;
+//
+//	}
+//	fin >> m.n;
+//	m.dishes = new string[m.n];
+//	m.prices = new int[m.n];
+//	for (int i = 0; i < m.n; i++)
+//	{
+//		fin >> m.prices[i];
+//		fin >> m.dishes[i];
+//	}
+//}
 
 bool Automata::check()
 {

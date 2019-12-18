@@ -61,10 +61,10 @@ private:
 	
 
 	
-	void setMenu(string* strs, int* pr, int N);
-	void setMenu(int N);
-	void setMenu(ifstream fin);
-
+	//void setMenu(string* strs, int* pr, int N);
+	//void setMenu(int N);
+	//void setMenu(ifstream fin);
+	void setMenu();
 	bool check();
 	returns cook();
 	
