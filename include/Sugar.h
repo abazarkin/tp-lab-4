@@ -12,9 +12,9 @@
 class Sugar : public CondimentDecorator{
 protected:
     Beverage* beverage;
-    int val;
+    unsigned int val;
 public:
-    explicit Sugar(Beverage* beverage, int val){
+    explicit Sugar(Beverage* beverage, unsigned int val){
         this->beverage = beverage;
         this->val = val;
     }
@@ -23,7 +23,7 @@ public:
         return beverage->getDescription() + " + sugar";
     }
 
-    virtual int getCost(){
+    virtual unsigned int getCost(){
         return beverage->getCost() + val;
     }
 };

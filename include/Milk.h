@@ -12,9 +12,9 @@
 class Milk : public CondimentDecorator{
 protected:
     Beverage* beverage;
-    int val;
+    unsigned int val;
 public:
-    explicit Milk(Beverage* beverage, int val){
+    explicit Milk(Beverage* beverage, unsigned int val){
         this->beverage = beverage;
         this->val = val;
     }
@@ -23,7 +23,7 @@ public:
         return beverage->getDescription() + " + milk";
     }
 
-    virtual int getCost(){
+    virtual unsigned int getCost(){
         return beverage->getCost() + val;
     }
 };

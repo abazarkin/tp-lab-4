@@ -13,9 +13,9 @@
 class Mocha : public CondimentDecorator{
 protected:
     Beverage* beverage;
-    int val;
+    unsigned int val;
 public:
-    explicit Mocha(Beverage* beverage, int val){
+    explicit Mocha(Beverage* beverage, unsigned int val){
         this->beverage = beverage;
         this->val = val;
     }
@@ -24,7 +24,7 @@ public:
         return beverage->getDescription() + " + mocha";
     }
 
-    virtual int getCost(){
+    virtual unsigned int getCost(){
         return beverage->getCost() + val;
     }
 };

@@ -12,11 +12,11 @@ using std::string;
 class Beverage{
 protected:
     string description;
-    int cost;
+    unsigned int cost;
 public:
     virtual string getDescription(){
         return description;
     }
-    virtual int getCost() = 0;
+    virtual unsigned int getCost() = 0;
 };
 #endif //TASK1_BEVERAGE_H

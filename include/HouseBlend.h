@@ -10,11 +10,11 @@
 
 class HouseBlend : public Beverage {
 public:
-    explicit HouseBlend(int price){
+    explicit HouseBlend(unsigned int price){
         description = "House blend";
         cost = price;
     }
-    virtual int getCost(){
+    virtual unsigned int getCost(){
         return cost;
     }
 };

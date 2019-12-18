@@ -10,11 +10,11 @@
 
 class Espresso : public Beverage {
 public:
-    explicit Espresso(int price){
+    explicit Espresso(unsigned int price){
         description = "Espresso";
         cost = price;
     }
-    virtual int getCost(){
+    virtual unsigned int getCost(){
         return cost;
     }
 };

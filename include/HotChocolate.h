@@ -9,12 +9,12 @@
 #include "Beverage.h"
 
 class HotChocolate : public Beverage {
-    virtual int getCost(){
+    virtual unsigned int getCost(){
         return cost;
     }
 
 public:
-    explicit HotChocolate(int price){
+    explicit HotChocolate(unsigned int price){
         description = "Hot chocolate";
         cost = price;
     }

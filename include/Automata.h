@@ -21,23 +21,24 @@ private:
     unsigned int cash;
     string* beverage_menu;
     string* condiment_menu;
-    int* beverage_prices;
-    int* condiment_prices;
+    unsigned int* beverage_prices;
+    unsigned int* condiment_prices;
     _state state;
 public:
-    Automata(int*, int*, string*, string*);
+    Automata(unsigned int*, unsigned int*, string*, string*);
     void on();
-    void off();
-    void coin(int);
+    unsigned int off();
+    void coin(unsigned int);
     string* getBeverageMenu();
     string* getCondimentMenu();
-    int* getBeveragePrices();
-    int* getCondimentPrices();
+    unsigned int* getBeveragePrices();
+    unsigned int* getCondimentPrices();
     _state getState();
-    void choice(int main_index, int* condiment_indexes, int n);  // return the overall cost of beverage with all selected condiments
+    unsigned int getCash();
+    unsigned int choice(unsigned int, unsigned int*, unsigned int);  // return the overall cost of beverage with all selected condiments
     bool check(unsigned int);
-    void cancel();
-    void cook(unsigned int, string);
-    void finish();
+    unsigned int cancel();
+    unsigned int cook(unsigned int, string);
+    unsigned int finish();
 };
 #endif //TASK1_AUTOMATA_H

@@ -23,14 +23,19 @@ int main(){
     std::cout << "Order: " << bev->getDescription() << std::endl << "Cost: " << bev->getCost();
     string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
     string con_menu[3] = {"Milk", "Sugar", "Mocha"};
-    int bev_cost[4] = {1, 2, 3, 4};
-    int con_cost[3] = {1, 2, 3};
+    unsigned int bev_cost[4] = {1, 2, 3, 4};
+    unsigned int con_cost[3] = {1, 2, 3};
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    aut->coin(15);
-    int m[2] = {0, 1};
+    /*aut->coin(15);
+    unsigned int m[2] = {0, 1};
     aut->on();
     aut->coin(40);
-    aut->choice(1, m, 2);
+    aut->choice(1, m, 2);*/
+
+    aut->on();
+    aut->coin(1);
+    unsigned int* cond = nullptr;
+    aut->choice(0, cond, 0);
 
     return 0;
 }

@@ -14,7 +14,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-Automata::Automata(int* beverage_prices, int* condiment_prices, string* beverage_menu, string* condiment_menu){
+Automata::Automata(unsigned int* beverage_prices, unsigned int* condiment_prices, string* beverage_menu, string* condiment_menu){
     cash = 0;
     this->beverage_prices = beverage_prices;
     this->condiment_prices = condiment_prices;
@@ -26,12 +26,12 @@ void Automata::on(){
     state = WAIT;
 }
 
-void Automata::off(){
-    cancel();
+unsigned int Automata::off(){
     state = OFF;
+    return cancel();
 }
 
-void Automata::coin(int money){
+void Automata::coin(unsigned int money){
     if (state == WAIT || state == ACCEPT || state == CHECK){
         cash += money;
         state = ACCEPT;
@@ -46,11 +46,11 @@ string* Automata::getCondimentMenu(){
     return condiment_menu;
 }
 
-int* Automata::getBeveragePrices(){
+unsigned int* Automata::getBeveragePrices(){
     return beverage_prices;
 }
 
-int* Automata::getCondimentPrices(){
+unsigned int* Automata::getCondimentPrices(){
     return condiment_prices;
 }
 
@@ -58,7 +58,11 @@ _state Automata::getState(){
     return state;
 }
 
-void Automata::choice(int main_index, int* condiment_indexes, int n){
+unsigned int Automata::getCash(){
+    return cash;
+}
+
+unsigned int Automata::choice(unsigned int main_index, unsigned int* condiment_indexes, unsigned int n){
     Beverage* bev;
 
     // choice of beverages
@@ -76,7 +80,7 @@ void Automata::choice(int main_index, int* condiment_indexes, int n){
     }
 
     // choice of condiments
-    for(int i = 0; i < n; i++){
+    for(unsigned int i = 0; i < n; i++){
         if (condiment_menu[condiment_indexes[i]] == "Milk"){
             bev = new Milk(bev, beverage_prices[condiment_indexes[i]]);
         }
@@ -88,10 +92,10 @@ void Automata::choice(int main_index, int* condiment_indexes, int n){
         }
     }
     if (check(bev->getCost())){
-        cook(bev->getCost(), bev->getDescription());
+        return cook(bev->getCost(), bev->getDescription());
     }
     else{
-        cancel();
+        return cancel();
     }
 }
 
@@ -105,19 +109,21 @@ bool Automata::check(unsigned int needed){
     return false;
 }
 
-void Automata::cancel(){
+unsigned int Automata::cancel(){
+    unsigned int tmp = cash;
     cash = 0;
     state = WAIT;
+    return tmp;
 }
 
-void Automata::cook(unsigned int price, string description){
+unsigned int Automata::cook(unsigned int price, string description){
     state = COOK;
     cout << endl << "Your beverage: " << description << endl << "Cost: " << price << endl;
     cash -= price;
-    finish();
+    return finish();
 }
-void Automata::finish(){
-    state = WAIT;
+unsigned int Automata::finish(){
+    return cancel();
 }
 
 
