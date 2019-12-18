@@ -6,7 +6,7 @@
 TEST(test1,task1)
 {
     Automata aut;
-    aut.on()
+    aut.on();
     EXPECT_EQ(1,aut.getState());
 }
 
