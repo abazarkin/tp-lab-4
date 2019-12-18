@@ -48,7 +48,7 @@ if (BUILD_TESTS)
   ##############
   # Unit Tests
   ##############
-  add_executable(runUnitTests ${TEST_SRC_FILES} src/main.cpp)
+  add_executable(runUnitTests ${TEST_SRC_FILES})
 
   # Standard linking to gtest stuff.
   target_link_libraries(runUnitTests gtest gtest_main)
