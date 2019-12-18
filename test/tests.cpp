@@ -75,5 +75,5 @@ TEST(coffee_machine, task1_8)
     coffee.on();
     coffee.coin(6);
     coffee.choice(3);
-    EXPECT_EQ(0.65, coffee.finish());
+    EXPECT_DOUBLE_EQ(0.65, coffee.finish());
 }
