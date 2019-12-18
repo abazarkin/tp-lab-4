@@ -27,8 +27,10 @@ void Automata::on(){
 }
 
 unsigned int Automata::off(){
+    unsigned int tmp = cash;
+    cash = 0;
     state = OFF;
-    return cancel();
+    return tmp;
 }
 
 void Automata::coin(unsigned int money){

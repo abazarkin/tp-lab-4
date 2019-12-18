@@ -96,6 +96,58 @@ TEST(automata, test_7)
     EXPECT_EQ(aut->getState(), WAIT);
 }
 
+TEST(automata, test_8)
+{
+    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
+    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
+    unsigned int bev_cost[4] = {1, 2, 3, 4};
+    unsigned int con_cost[3] = {1, 2, 3};
+    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
+    aut->on();
+    aut->coin(1);
+    unsigned int* cond = nullptr;
+    EXPECT_EQ(aut->choice(0, cond, 0), 0);
+}
+
+TEST(automata, test_9)
+{
+    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
+    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
+    unsigned int bev_cost[4] = {1, 2, 3, 4};
+    unsigned int con_cost[3] = {1, 2, 3};
+    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
+    aut->on();
+    aut->coin(3);
+    unsigned int* cond = nullptr;
+    EXPECT_EQ(aut->choice(1, cond, 0), 1);
+}
+
+TEST(automata, test_10)
+{
+    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
+    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
+    unsigned int bev_cost[4] = {1, 2, 3, 4};
+    unsigned int con_cost[3] = {1, 2, 3};
+    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
+    aut->on();
+    aut->coin(5);
+    unsigned int* cond = nullptr;
+    EXPECT_EQ(aut->choice(2, cond, 0), 2);
+}
+
+TEST(automata, test_11)
+{
+    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
+    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
+    unsigned int bev_cost[4] = {1, 2, 3, 4};
+    unsigned int con_cost[3] = {1, 2, 3};
+    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
+    aut->on();
+    aut->coin(5);
+    unsigned int* cond = nullptr;
+    EXPECT_EQ(aut->choice(3, cond, 0), 1);
+}
+
 TEST(automata, test_12)
 {
     string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
@@ -103,9 +155,10 @@ TEST(automata, test_12)
     unsigned int bev_cost[4] = {1, 2, 3, 4};
     unsigned int con_cost[3] = {1, 2, 3};
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    aut->coin(1);
-    unsigned int* cond = nullptr;
-    EXPECT_EQ(aut->choice(0, cond, 0), 0);
+    aut->on();
+    aut->coin(2);
+    unsigned int cond[1] = {0};
+    EXPECT_EQ(aut->choice(0, cond, 1), 0);
 }
 
 TEST(automata, test_13)
@@ -115,9 +168,10 @@ TEST(automata, test_13)
     unsigned int bev_cost[4] = {1, 2, 3, 4};
     unsigned int con_cost[3] = {1, 2, 3};
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    aut->coin(3);
-    unsigned int* cond = nullptr;
-    EXPECT_EQ(aut->choice(1, cond, 0), 1);
+    aut->on();
+    aut->coin(5);
+    unsigned int cond[1] = {1};
+    EXPECT_EQ(aut->choice(1, cond, 1), 1);
 }
 
 TEST(automata, test_14)
@@ -127,9 +181,10 @@ TEST(automata, test_14)
     unsigned int bev_cost[4] = {1, 2, 3, 4};
     unsigned int con_cost[3] = {1, 2, 3};
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    aut->coin(5);
-    unsigned int* cond = nullptr;
-    EXPECT_EQ(aut->choice(2, cond, 0), 2);
+    aut->on();
+    aut->coin(10);
+    unsigned int cond[1] = {2};
+    EXPECT_EQ(aut->choice(2, cond, 1), 4);
 }
 
 TEST(automata, test_15)
@@ -139,60 +194,13 @@ TEST(automata, test_15)
     unsigned int bev_cost[4] = {1, 2, 3, 4};
     unsigned int con_cost[3] = {1, 2, 3};
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    aut->coin(5);
-    unsigned int* cond = nullptr;
-    EXPECT_EQ(aut->choice(3, cond, 0), 1);
-}
-
-TEST(automata, test_16)
-{
-    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
-    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
-    unsigned int bev_cost[4] = {1, 2, 3, 4};
-    unsigned int con_cost[3] = {1, 2, 3};
-    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    aut->coin(2);
-    unsigned int cond[1] = {0};
-    EXPECT_EQ(aut->choice(0, cond, 1), 0);
-}
-
-TEST(automata, test_17)
-{
-    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
-    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
-    unsigned int bev_cost[4] = {1, 2, 3, 4};
-    unsigned int con_cost[3] = {1, 2, 3};
-    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    aut->coin(5);
-    unsigned int cond[1] = {1};
-    EXPECT_EQ(aut->choice(1, cond, 1), 1);
-}
-
-TEST(automata, test_18)
-{
-    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
-    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
-    unsigned int bev_cost[4] = {1, 2, 3, 4};
-    unsigned int con_cost[3] = {1, 2, 3};
-    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
-    aut->coin(10);
-    unsigned int cond[1] = {2};
-    EXPECT_EQ(aut->choice(2, cond, 1), 4);
-}
-
-TEST(automata, test_19)
-{
-    string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
-    string con_menu[3] = {"Milk", "Sugar", "Mocha"};
-    unsigned int bev_cost[4] = {1, 2, 3, 4};
-    unsigned int con_cost[3] = {1, 2, 3};
-    Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
+    aut->on();
     aut->coin(10);
     unsigned int cond[2] = {0, 1};
     EXPECT_EQ(aut->choice(2, cond, 2), 4);
 }
 
-TEST(automata, test_20)
+TEST(automata, test_16)
 {
     string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
     string con_menu[3] = {"Milk", "Sugar", "Mocha"};
@@ -204,7 +212,7 @@ TEST(automata, test_20)
     EXPECT_EQ(aut->getCash(), 5);
 }
 
-TEST(automata, test_21)
+TEST(automata, test_17)
 {
     string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
     string con_menu[3] = {"Milk", "Sugar", "Mocha"};
@@ -216,7 +224,7 @@ TEST(automata, test_21)
     EXPECT_EQ(aut->finish(), 5);
 }
 
-TEST(automata, test_22)
+TEST(automata, test_18)
 {
     string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
     string con_menu[3] = {"Milk", "Sugar", "Mocha"};
