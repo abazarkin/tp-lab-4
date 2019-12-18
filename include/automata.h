@@ -48,7 +48,6 @@ public:
 	
 	returns finish();
 
-	void admin(int key);
 
 private:
 	states state;

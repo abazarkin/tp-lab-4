@@ -103,6 +103,7 @@ bool Automata::check()
 	if (chosenNum == -1) return false;
 	return cash == (m.prices[chosenNum]);
 }
+
 returns Automata::cook()
 {
 	state = COOK;
@@ -120,35 +121,6 @@ returns Automata::finish()
 	return MISTAKE;
 }
 
-void Automata::admin(int key)
-{
-	if (key != this->key) {
-		cout << "ACCESS DENIED" << endl;
-		return;
-	}
-	while (true)
-	{
-		int op;
-		cin >> op;
-		switch (op)
-		{
-		case 0: off();
-			break;
-		case 1: on();
-			break;
-		case 2: //set menu
-			break;
-		case 3: //set menu file
-			break;
-		case -1 : //exit
-			return;
-			break;
-		default:
-			break;
-		}
-	}
-	
-}
 
 returns Automata::on()
 {
@@ -164,10 +136,9 @@ returns Automata::on()
 		}
 		return CORRECT;
 	}
-	else
-	{
-		return MISTAKE;
-	}
+	
+		return FAIL;
+	
 }
 returns Automata::off()
 {
@@ -176,11 +147,7 @@ returns Automata::off()
 		state = OFF;
 		return CORRECT;
 	}
-	else
-	{
 		return MISTAKE;
-	}
-
 }
 
 returns Automata::coin(int sum)
@@ -189,34 +156,37 @@ returns Automata::coin(int sum)
 	{
 		state = ACCEPT;
 	}
-
 	if (state == ACCEPT)
 	{
 		cash += sum;
 		return CORRECT;
 	}
-
-	return MISTAKE;
+	return FAIL;
 }
 returns Automata::choise(int Num)
 {	
-
-	if ((Num >= m.n) || (Num < 0))
+	if ((state == ACCEPT))
 	{
-		return MISTAKE;
+		if ((Num >= m.n) || (Num < 0))
+		{
+			return MISTAKE;
+		}
+		chosenNum = Num;
+		if (check())
+		{
+			cook();
+			return CORRECT;
+		}
+		return MISTAKE;	
 	}
-	chosenNum = Num;
-	if (check())
-	{
-		cook();
-	}
-	return CORRECT;
+	return FAIL;
 }
+
 returns Automata::cansel()
 {
 	if (state == OFF)
 	{
-		return MISTAKE;
+		return FAIL;
 	}
 	cash = 0;
 	chosenNum = -1;
