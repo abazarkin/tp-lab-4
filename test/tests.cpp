@@ -44,8 +44,8 @@ TEST(coffee_machine, task1_5)
     coffee.coin(2);
     coffee.coin(2);
     coffee.coin(2);
-    float exp = 8.25;
-    EXPECT_EQ(exp, coffee.coin(1.25));
+    int exp = 9;
+    EXPECT_EQ(exp, coffee.coin(3));
 }
 
 // Not enough money test
@@ -54,7 +54,7 @@ TEST(coffee_machine, task1_6)
     Automata coffee;
     coffee.on();
     coffee.coin(2);
-    string exp = "2";
+    string exp = "2.000000";
     EXPECT_EQ(exp, coffee.choice(1));
 }
 
@@ -75,6 +75,5 @@ TEST(coffee_machine, task1_8)
     coffee.on();
     coffee.coin(6);
     coffee.choice(3);
-    float exp = 0.65;
-    EXPECT_EQ(exp, coffee.finish());
+    EXPECT_EQ(0.65, coffee.finish());
 }
