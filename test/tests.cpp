@@ -96,6 +96,7 @@ TEST(automata, test_7)
     EXPECT_EQ(aut->getState(), WAIT);
 }
 
+/*
 TEST(automata, test_8)
 {
     string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
@@ -135,6 +136,7 @@ TEST(automata, test_11)
     Automata* aut = new Automata(bev_cost, con_cost, bev_menu, con_menu);
     EXPECT_EQ(aut->getCondimentPrices(), {1, 2, 3});
 }
+*/
 
 TEST(automata, test_12)
 {
@@ -256,7 +258,7 @@ TEST(automata, test_21)
     EXPECT_EQ(aut->finish(), 5);
 }
 
-TEST(automata, test_21)
+TEST(automata, test_22)
 {
     string bev_menu[4] = {"Espresso", "Dark roast", "Hot chocolate", "House blend"};
     string con_menu[3] = {"Milk", "Sugar", "Mocha"};
