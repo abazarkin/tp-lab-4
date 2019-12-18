@@ -8,7 +8,7 @@ TEST(lab4, check1)
 	EXPECT_EQ(OFF, Coffee.getState());
 	Coffee.on();
 	EXPECT_EQ(WAIT, Coffee.getState());
-	EXPECT_EQ(MISTAKE, Coffee.on());
+	EXPECT_EQ(FAIL, Coffee.on());
 	Coffee.off();
 	EXPECT_EQ(OFF, Coffee.getState());
 }
@@ -16,7 +16,7 @@ TEST(lab4, check1)
 TEST(lab4, coin_check)
 {
 	Automata A;
-	EXPECT_EQ(FAIL, A.on());
+	EXPECT_EQ(FAIL, A.coin(1));
 	A.on();
 	EXPECT_EQ(CORRECT, A.coin(1));
 	EXPECT_EQ(ACCEPT, A.getState());

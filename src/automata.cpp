@@ -9,17 +9,18 @@ Automata::Automata()
 	m.n = 0;
 	m.dishes = NULL;
 	m.prices = NULL;
-	ifstream fin;
-	fin.open("menu.txt");	
+	setMenu();
+	//ifstream fin;
+	//fin.open("menu.txt");	
 	//setMenu(fin);
-	fin >> m.n;
-	m.dishes = new string[m.n];
-	m.prices = new int[m.n];
-	for (int i = 0; i < m.n; i++)
-	{
-		fin >> m.prices[i];
-		fin >> m.dishes[i];
-	}
+	//fin >> m.n;
+	//m.dishes = new string[m.n];
+	//m.prices = new int[m.n];
+	//for (int i = 0; i < m.n; i++)
+	//{
+	//	fin >> m.prices[i];
+	//	fin >> m.dishes[i];
+	//}
 }
 
 Automata::~Automata()
@@ -60,6 +61,18 @@ void Automata::setMenu(string* strs, int *pr, int N)
 		m.prices[i] = pr[i];
 	}
 }
+
+void Automata::setMenu()
+{
+	m.n = 4;
+	m.dishes = new string[m.n];
+	m.prices = new int[m.n];
+	m.prices[0] = 40; m.dishes[0] = "coffe1";
+	m.prices[0] = 45; m.dishes[0] = "coffe2";
+	m.prices[0] = 50; m.dishes[0] = "coffe3";
+	m.prices[0] = 60; m.dishes[0] = "coffe4";
+}
+
 void Automata::setMenu(int N)
 {
 	m.n = N;
