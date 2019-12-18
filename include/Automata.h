@@ -17,7 +17,7 @@ class Automata
         int curSt;
     public:
         Automata();
-        void on(){this->curSt = wait; showMenu();};
+        void on(){this->curSt = Wait; showMenu();};
         void off(){this->curSt = STATE::off;};
         void coin();
         Drink* getMenu(){return this->menu;};
