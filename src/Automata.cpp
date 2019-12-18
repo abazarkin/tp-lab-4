@@ -30,11 +30,8 @@ void Automata::showMenu(){
     }
 }
 
-void Automata::coin(){
+void Automata::coin(int ammC){
     if(curSt == STATE::Wait || curSt == accept){
-        cout << "Insert your coins: ";
-        int ammC;
-        cin >> ammC;
         this->cash += ammC;
         this->curSt = accept;
     }else{
@@ -42,11 +39,8 @@ void Automata::coin(){
     }
 }
 
-void Automata::choice(){
+void Automata::choice(int drNum){
     if(curSt == accept){
-        int drNum;
-        cout << "Enter a number of drink: ";
-        cin >> drNum;
         this->curSt = STATE::check;
         if(drNum > -1 && drNum < 5 && check(drNum)){
             this->cash -= this->menu[drNum].getPrice();

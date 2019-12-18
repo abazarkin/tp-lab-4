@@ -16,7 +16,7 @@ TEST(test1,task2)
     //is this thing work
     Automata aut;
     aut.on();
-    aut.coin();
+    aut.coin(50);
     EXPECT_EQ(2,aut.getState());
 }
 
@@ -25,8 +25,8 @@ TEST(test1,task3)
     //is this thing work
     Automata aut;
     aut.on();
-    aut.coin();
-    aut.choice();
+    aut.coin(50);
+    aut.choice(0);
     aut.finish();
     aut.off();
     EXPECT_EQ(0,aut.getState());

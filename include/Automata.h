@@ -19,11 +19,11 @@ class Automata
         Automata();
         void on(){this->curSt = Wait; showMenu();};
         void off(){this->curSt = STATE::off;};
-        void coin();
+        void coin(int ammC);
         Drink* getMenu(){return this->menu;};
         void showMenu();
         int getState(){return this->curSt;};
-        void choice();
+        void choice(int drNum);
         void cancel();
         bool check(int chDr);
         void cook();
