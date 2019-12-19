@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../tp-lab-4/Automata.h"
+#include "../include/Automata.h"
 #include <string>
 
 
