@@ -21,7 +21,7 @@ class Automata
 		string on();
 		string off();
 		string coin(const unsigned);
-		string choiñe(const string);
+		string choice(const string);
 		string printMenu();
 		string printState();
 		bool check();

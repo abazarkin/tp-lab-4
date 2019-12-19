@@ -46,7 +46,7 @@ string Automata::coin(const unsigned cash) {
 	
 }
 
-string Automata::choiñe(const string drink) {
+string Automata::choice(const string drink) {
 	for (size_t i = 0; i < 6; i++) {
 		if (drink == menu[i] and state == ACCEPT) {
 			state = CHECK;

@@ -10,7 +10,7 @@ int main() {
 	cout << coffeeMachine.coin(100) << endl;
 	cout << coffeeMachine.coin(100) << endl;
 	cout << coffeeMachine.printState() << endl;
-	cout << coffeeMachine.choiñe("Water")<< endl;
+	cout << coffeeMachine.choice("Water")<< endl;
 	cout << coffeeMachine.cancel() << endl;
 	cout << coffeeMachine.printState() << endl;
 	cout << coffeeMachine.cook() << endl;

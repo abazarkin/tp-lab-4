@@ -40,7 +40,7 @@ TEST_F(drinkTest, coin3) {
 TEST_F(drinkTest, choice_cancel) {
 	coffeMachine.on();
 	coffeMachine.coin(100);
-	EXPECT_EQ("You have ordered Coffee;",coffeMachine.choiñe("Coffee"));
+	EXPECT_EQ("You have ordered Coffee;",coffeMachine.choice("Coffee"));
 	EXPECT_EQ("You`ve canceled the operation;  Your change is: 100;", coffeMachine.cancel());
 	coffeMachine.off();
 }
@@ -48,7 +48,7 @@ TEST_F(drinkTest, choice_cancel) {
 TEST_F(drinkTest, choice_cook) {
 	coffeMachine.on();
 	coffeMachine.coin(100);
-	EXPECT_EQ("You have ordered Coffee;", coffeMachine.choiñe("Coffee"));
+	EXPECT_EQ("You have ordered Coffee;", coffeMachine.choice("Coffee"));
 	EXPECT_EQ("Cooking...\n Coffee is done!;", coffeMachine.cook());
 	EXPECT_EQ("Bon appetit! Your change is: 0;", coffeMachine.finish());
 	coffeMachine.off();
@@ -58,7 +58,7 @@ TEST_F(drinkTest, choice_cook) {
 TEST_F(drinkTest, incorrect_finish) {
 	coffeMachine.on();
 	coffeMachine.coin(100);
-	coffeMachine.choiñe("Coffee");
+	coffeMachine.choice("Coffee");
 	EXPECT_EQ("Can`t finish the operation;", coffeMachine.finish());
 	coffeMachine.off();
 }
@@ -66,7 +66,7 @@ TEST_F(drinkTest, incorrect_finish) {
 TEST_F(drinkTest, incorrect_cancel) {
 	coffeMachine.on();
 	coffeMachine.coin(150);
-	coffeMachine.choiñe("Coffee");
+	coffeMachine.choice("Coffee");
 	coffeMachine.cook();
 	EXPECT_EQ("Can`t cancel the operation;", coffeMachine.cancel());
 	EXPECT_EQ("Bon appetit! Your change is: 50;", coffeMachine.finish());
