@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <vector>
 #include <sstream>
 #include "VendingMachine.h"
@@ -12,9 +13,11 @@ VendingMachine::VendingMachine(std::vector<VendingMachineDrink> drinks, VendingM
     m_drinks = drinks;
     m_logger = logger;
     m_state = VENDINGMACHINESTATE_TURNEDOFF;
+    m_money = 0;
 }
 
 VendingMachineState VendingMachine::GetState() { return m_state; }
+int32_t VendingMachine::GetMoney() { return m_money; }
 
 void VendingMachine::TurnOn()
 {
@@ -57,4 +60,28 @@ void VendingMachine::ShowMenu()
     }
     else
         m_logger->LogInformation("The machine is in an invalid state for this action.");
+}
+void VendingMachine::AddMoney(int32_t money)
+{
+    if (m_state == VENDINGMACHINESTATE_WAITING || m_state == VENDINGMACHINESTATE_ACCEPTINGPAYMENT)
+    {
+        if (m_state == VENDINGMACHINESTATE_WAITING)
+            m_state = VENDINGMACHINESTATE_ACCEPTINGPAYMENT;
+        m_money += money;
+        m_logger->LogInformation("$"s + std::to_string(money) + " accepted."s + "\n"s);
+    }
+    else
+        m_logger->LogInformation("The machine is in an invalid state for this action.");
+}
+void VendingMachine::Abort()
+{
+    if (m_state == VENDINGMACHINESTATE_WAITING)
+        return;
+    else if (m_state == VENDINGMACHINESTATE_ACCEPTINGPAYMENT)
+    {
+        m_state = VENDINGMACHINESTATE_WAITING;
+        m_money = 0;
+        m_logger->LogInformation("$"s + std::to_string(m_money) + " is your money change."s + "\n"s);
+    }
+#warning Handle another states here.
 }
