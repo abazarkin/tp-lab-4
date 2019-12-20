@@ -3,16 +3,18 @@
 
 #include <vector>
 #include "VendingMachineDrink.h"
+#include "VendingMachineLogger.h"
 #include "VendingMachineState.h"
 
 class VendingMachine
 {
 private:
     std::vector<VendingMachineDrink> m_drinks;
+    VendingMachineLogger *m_logger;
     VendingMachineState m_state;
 
 public:
-    VendingMachine(std::vector<VendingMachineDrink> drinks);
+    VendingMachine(std::vector<VendingMachineDrink> drinks, VendingMachineLogger *logger);
 
     VendingMachineState GetState();
 };
