@@ -13,10 +13,12 @@ VendingMachine::VendingMachine(std::vector<VendingMachineDrink> drinks, VendingM
     m_drinks = drinks;
     m_logger = logger;
     m_state = VENDINGMACHINESTATE_TURNEDOFF;
+    m_selectedDrink = VendingMachineDrink(0, 0, ""s);
     m_money = 0;
 }
 
 VendingMachineState VendingMachine::GetState() { return m_state; }
+VendingMachineDrink VendingMachine::GetSelectedDrink() { return m_selectedDrink; }
 int32_t VendingMachine::GetMoney() { return m_money; }
 
 void VendingMachine::TurnOn()
@@ -84,4 +86,25 @@ void VendingMachine::Abort()
         m_logger->LogInformation("$"s + std::to_string(m_money) + " is your money change."s + "\n"s);
     }
 #warning Handle another states here.
+}
+void VendingMachine::SelectDrink(int32_t drinkId)
+{
+    if (m_state == VENDINGMACHINESTATE_ACCEPTINGPAYMENT)
+    {
+        bool drinkIsFound = false;
+        for (VendingMachineDrink drink : m_drinks)
+            if (drink.GetId() == drinkId)
+            {
+                drinkIsFound = true;
+                m_state = VENDINGMACHINESTATE_VALIDATINGPAYMENT;
+                m_selectedDrink = drink;
+                m_logger->LogInformation("The drink you ordered has been found.");
+                break;
+            }
+
+        if (!drinkIsFound)
+            m_logger->LogInformation("The drink you ordered has not been found. Try another one.");
+    }
+    else
+        m_logger->LogInformation("The machine is in an invalid state for this action.");
 }
