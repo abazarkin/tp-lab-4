@@ -17,6 +17,9 @@ public:
     VendingMachine(std::vector<VendingMachineDrink> drinks, VendingMachineLogger *logger);
 
     VendingMachineState GetState();
+
+    void TurnOn();
+    void TurnOff();
 };
 
 #endif // _VENDINGMACHINE_H_
