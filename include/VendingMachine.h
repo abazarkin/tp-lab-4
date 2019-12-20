@@ -20,6 +20,8 @@ public:
 
     void TurnOn();
     void TurnOff();
+
+    void ShowMenu();
 };
 
 #endif // _VENDINGMACHINE_H_
