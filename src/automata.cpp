@@ -106,3 +106,10 @@ void Automata::finish() {
         cout << "Waiting..." << endl;
     } else cout << "Error!" << endl;
 }
+
+double Automata::getCash(){
+    return cash;
+}
+STATES Automata::getState() {
+    return state;
+}

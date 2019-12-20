@@ -25,6 +25,8 @@ public:
     void cancel();
     void cook(int typeOfDrink);
     void finish();
+    double getCash();
+    STATES getState();
 };
 
 #endif //COFFEEMACHINE_AUTOMATA_H
