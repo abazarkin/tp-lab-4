@@ -11,14 +11,13 @@ set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
-
 set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cpp)
-              #${PROJECT_SOURCE_DIR}/src/CoffeeMachine.cpp)
-set(SOURCE_LIB CoffeeMachine.cpp)
+
+set(SOURCE_LIB ${PROJECT_SOURCE_DIR}/src/CoffeeMachine.cpp)
 set(CMAKE_CXX_STANDARD 11)
 
 add_library(task_lib ${SOURCE_LIB})
-#add_library(task_lib ${SRC_FILES})
+
 add_executable(task ${SRC_FILES})
 target_link_libraries(task task_lib)
 
