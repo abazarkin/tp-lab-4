@@ -17,6 +17,8 @@ VendingMachine::VendingMachine(std::vector<VendingMachineDrink> drinks, VendingM
     m_money = 0;
 }
 
+bool VendingMachine::ValidatePayment() { return m_money >= m_selectedDrink.GetPrice(); }
+
 VendingMachineState VendingMachine::GetState() { return m_state; }
 VendingMachineDrink VendingMachine::GetSelectedDrink() { return m_selectedDrink; }
 int32_t VendingMachine::GetMoney() { return m_money; }
@@ -96,13 +98,16 @@ void VendingMachine::SelectDrink(int32_t drinkId)
             if (drink.GetId() == drinkId)
             {
                 drinkIsFound = true;
-                m_state = VENDINGMACHINESTATE_VALIDATINGPAYMENT;
                 m_selectedDrink = drink;
                 m_logger->LogInformation("The drink you ordered has been found.");
                 break;
             }
 
-        if (!drinkIsFound)
+        if (drinkIsFound && ValidatePayment())
+            m_state = VENDINGMACHINESTATE_VALIDATINGPAYMENT;
+        if (drinkIsFound)
+            m_logger->LogInformation("You do not have enough money to purchase this drink. Add money or try selecting another one.");
+        else
             m_logger->LogInformation("The drink you ordered has not been found. Try another one.");
     }
     else
