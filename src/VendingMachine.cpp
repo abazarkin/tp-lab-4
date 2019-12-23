@@ -104,7 +104,7 @@ void VendingMachine::SelectDrink(int32_t drinkId)
             }
 
         if (drinkIsFound && ValidatePayment())
-            m_state = VENDINGMACHINESTATE_VALIDATINGPAYMENT;
+            m_state = VENDINGMACHINESTATE_VALIDATINGORDER;
         if (drinkIsFound)
             m_logger->LogInformation("You do not have enough money to purchase this drink. Add money or try selecting another one.");
         else
