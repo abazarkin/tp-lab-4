@@ -83,11 +83,19 @@ void VendingMachine::Abort()
         return;
     else if (m_state == VENDINGMACHINESTATE_ACCEPTINGPAYMENT)
     {
+        m_logger->LogInformation("$"s + std::to_string(m_money) + " is your money change."s + "\n"s);
         m_state = VENDINGMACHINESTATE_WAITING;
         m_money = 0;
-        m_logger->LogInformation("$"s + std::to_string(m_money) + " is your money change."s + "\n"s);
     }
-#warning Handle another states here.
+    else if (m_state == VENDINGMACHINESTATE_VALIDATINGORDER)
+    {
+        m_logger->LogInformation("$"s + std::to_string(m_money) + " is your money change."s + "\n"s);
+        m_state = VENDINGMACHINESTATE_WAITING;
+        m_selectedDrink = VendingMachineDrink();
+        m_money = 0;
+    }
+    else
+        m_logger->LogInformation("The machine is in an invalid state for this action.");
 }
 void VendingMachine::SelectDrink(int32_t drinkId)
 {
