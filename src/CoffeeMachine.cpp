@@ -1,8 +1,5 @@
 #include "CoffeeMachine.h"
 
-std::string menu[5] = { "Cappuccino", "Latte", "Espresso", "Americano", "Tea" };
-unsigned int prices[5] = { 30,35,35,40,25 };
-
 //constructor
 CoffeeMachine::CoffeeMachine() {
 	cash = 0;

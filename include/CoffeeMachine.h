@@ -1,8 +1,7 @@
 #pragma once
 #include <string>
-#include <Windows.h>
+#include <windows.h>
 #include <iostream>
-#include "gtest/gtest.h"
 
 class CoffeeMachine {
 
@@ -24,8 +23,8 @@ private:
 							"Unable to complete operation",
 							"Not enough money" };
 	unsigned int cash;
-	static std::string menu[5];
-	static unsigned int prices[5];
+	std::string menu[5] = { "Cappuccino", "Latte", "Espresso", "Americano", "Tea" };
+	unsigned int prices[5] = { 30,35,35,40,25 };
 	STATES current_state;
 	int numberSelectedDrink;
 	void printMenu();
