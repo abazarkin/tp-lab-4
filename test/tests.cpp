@@ -3,5 +3,5 @@
 
 TEST(lab4, CoffeeMachine_) {
 	CoffeeMachine Philips();
-	EXPECT_EQ(100, Philis.on());
+	EXPECT_EQ(100, Philips.on());
 }
