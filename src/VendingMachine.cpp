@@ -18,6 +18,11 @@ VendingMachine::VendingMachine(std::vector<VendingMachineDrink> drinks, VendingM
 }
 
 bool VendingMachine::ValidatePayment() { return m_money >= m_selectedDrink.GetPrice(); }
+void VendingMachine::Cook()
+{
+    m_logger->LogInformation("The drink is now being cooked.");
+    m_logger->LogInformation("The drink is ready now.");
+}
 
 VendingMachineState VendingMachine::GetState() { return m_state; }
 VendingMachineDrink VendingMachine::GetSelectedDrink() { return m_selectedDrink; }

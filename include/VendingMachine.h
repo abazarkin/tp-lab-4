@@ -17,6 +17,7 @@ private:
     int32_t m_money;
 
     bool ValidatePayment();
+    void Cook();
 
 public:
     VendingMachine(std::vector<VendingMachineDrink> drinks, VendingMachineLogger *logger);
