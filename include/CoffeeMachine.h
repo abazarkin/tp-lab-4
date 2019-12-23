@@ -2,6 +2,7 @@
 #include <string>
 #include <Windows.h>
 #include <iostream>
+#include "gtest/gtest.h"
 
 class CoffeeMachine {
 
@@ -23,8 +24,8 @@ private:
 							"Unable to complete operation",
 							"Not enough money" };
 	unsigned int cash;
-	std::string menu[5] = { "Cappuccino", "Latte", "Espresso", "Americano", "Tea" };
-	unsigned int prices[5] = { 30,35,35,40,25 };
+	static std::string menu[5];
+	static unsigned int prices[5];
 	STATES current_state;
 	int numberSelectedDrink;
 	void printMenu();
@@ -32,20 +33,12 @@ private:
 public:
 	//constructor
 	CoffeeMachine();
-	//
 	int on();
-	//
 	int off();
-	//
 	int coin(int money);
-	//
 	int choice(int drink);
-	//
 	int check();
-	//
 	int cancel();
-	//
 	int cook();
-	//
 	int finish();
 };
