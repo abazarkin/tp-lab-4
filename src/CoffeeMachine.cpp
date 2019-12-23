@@ -108,7 +108,7 @@ int CoffeeMachine::cook() {
 		changeState(COOK);
 		for (int i = 0; i < 5; i++) {
 			std::cout << i * 20 << "% has cooked\r";
-			Sleep(1800);
+			//Sleep(1800);
 		}
 		std::cout << "100% has cooked" << std::endl;
 		return 100;

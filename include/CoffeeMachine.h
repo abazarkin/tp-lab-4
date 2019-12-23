@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <windows.h>
+//#include <windows.h>
 #include <iostream>
 
 class CoffeeMachine {
