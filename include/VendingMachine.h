@@ -33,6 +33,7 @@ public:
     void AddMoney(int32_t money);
     void Abort();
     void SelectDrink(int32_t drinkId);
+    void Confirm();
 };
 
 #endif // _VENDINGMACHINE_H_
