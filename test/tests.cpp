@@ -1,3 +1,4 @@
+#include "gtest/gtest.h"
 #include "Automata.h"
 
 // Test 1 (1 == 1)
