@@ -8,7 +8,7 @@ TEST(States_test, check_off_state) {
 
 TEST(States_test, check_on_state) {
 	Automata aut;
-	aut.on()
+	aut.on();
 	EXPECT_EQ(aut.print_state(), "ON");
 }
 
@@ -22,7 +22,7 @@ TEST(States_test, check_off_func_state) {
 TEST(States_test, coin_test) {
 	Automata aut;
 	aut.on();
-	aut.coin(50)
+	aut.coin(50);
 	EXPECT_EQ(aut.print_state(), "ACCEPT");
 }
 
@@ -61,7 +61,7 @@ TEST(Funcs_test, cancel_test1) {
 	aut.on();
 	aut.coin(50);
 	EXPECT_EQ(aut.print_state(), "ACCEPT");
-	aut.cancel()
+	aut.cancel();
 	EXPECT_EQ(aut.print_state(), "WAIT");
 }
 
