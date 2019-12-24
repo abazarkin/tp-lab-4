@@ -38,6 +38,7 @@ TEST(lab4, check3)
 	EXPECT_EQ(MISTAKE, A.choise(101));
 	EXPECT_EQ(MISTAKE, A.choise(2));
 	A.coin(39);
+	A.coin(5);
 	EXPECT_EQ(MISTAKE, A.choise(101));
 	EXPECT_EQ(CORRECT, A.choise(1));
 }
