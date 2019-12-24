@@ -47,7 +47,7 @@ void Automata::setMenu()
 bool Automata::check()
 {
 	if (chosenNum == -1) return false;
-	return cash == (m.prices[chosenNum]);
+	return cash > (m.prices[chosenNum]);
 }
 
 returns Automata::cook()

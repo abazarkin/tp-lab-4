@@ -63,7 +63,7 @@ TEST(lab4, finish_check)
 	EXPECT_EQ(MISTAKE, A.finish());
 	A.coin(100);
 	EXPECT_EQ(MISTAKE, A.finish());
-	A.choise(3);
+	A.choise(2);
 	EXPECT_EQ(CORRECT, A.finish());
 }
 
