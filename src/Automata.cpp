@@ -128,3 +128,5 @@ string Automata::get_state() {
              return "CHECK";
         case COOK:
              return "COOK";
+    }
+}
