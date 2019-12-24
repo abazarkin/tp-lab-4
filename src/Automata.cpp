@@ -121,7 +121,7 @@ bool Automata::check() {
 }
 
 States Automata::cancel() {
-    if (state != CHECK || state != ACCEPT) return state;
+    if (state != CHECK && state != ACCEPT) return state;
     state = WAIT;
     curr_choice = 0;
     return state;
