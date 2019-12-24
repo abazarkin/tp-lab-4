@@ -20,8 +20,8 @@ VendingMachine::VendingMachine(std::vector<VendingMachineDrink> drinks, VendingM
 bool VendingMachine::ValidatePayment() { return m_money >= m_selectedDrink.GetPrice(); }
 void VendingMachine::Cook()
 {
-    m_logger->LogInformation("The drink is now being cooked.");
-    m_logger->LogInformation("The drink is ready now.");
+    m_logger->LogInformation("The drink is now being cooked."s + "\n"s);
+    m_logger->LogInformation("The drink is ready now."s + "\n"s);
 }
 
 VendingMachineState VendingMachine::GetState() { return m_state; }
@@ -33,20 +33,20 @@ void VendingMachine::TurnOn()
     if (m_state == VENDINGMACHINESTATE_TURNEDOFF)
     {
         m_state = VENDINGMACHINESTATE_WAITING;
-        m_logger->LogInformation("The machine has been turned on.");
+        m_logger->LogInformation("The machine has been turned on."s + "\n"s);
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action.");
+        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
 }
 void VendingMachine::TurnOff()
 {
     if (m_state == VENDINGMACHINESTATE_WAITING)
     {
         m_state = VENDINGMACHINESTATE_TURNEDOFF;
-        m_logger->LogInformation("The machine has been turned off.");
+        m_logger->LogInformation("The machine has been turned off."s + "\n"s);
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action.");
+        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
 }
 
 void VendingMachine::ShowMenu()
@@ -68,7 +68,7 @@ void VendingMachine::ShowMenu()
         m_logger->LogInformation(text);
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action.");
+        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
 }
 void VendingMachine::AddMoney(int32_t money)
 {
@@ -80,7 +80,7 @@ void VendingMachine::AddMoney(int32_t money)
         m_logger->LogInformation("$"s + std::to_string(money) + " accepted."s + "\n"s);
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action.");
+        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
 }
 void VendingMachine::Abort()
 {
@@ -100,7 +100,7 @@ void VendingMachine::Abort()
         m_money = 0;
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action.");
+        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
 }
 void VendingMachine::SelectDrink(int32_t drinkId)
 {
@@ -112,19 +112,19 @@ void VendingMachine::SelectDrink(int32_t drinkId)
             {
                 drinkIsFound = true;
                 m_selectedDrink = drink;
-                m_logger->LogInformation("The drink you ordered has been found.");
+                m_logger->LogInformation("The drink you ordered has been found."s + "\n"s);
                 break;
             }
 
         if (drinkIsFound && ValidatePayment())
             m_state = VENDINGMACHINESTATE_VALIDATINGORDER;
         if (drinkIsFound)
-            m_logger->LogInformation("You do not have enough money to purchase this drink. Add money or try selecting another one.");
+            m_logger->LogInformation("You do not have enough money to purchase this drink. Add money or try selecting another one."s + "\n"s);
         else
-            m_logger->LogInformation("The drink you ordered has not been found. Try another one.");
+            m_logger->LogInformation("The drink you ordered has not been found. Try another one."s + "\n"s);
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action.");
+        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
 }
 void VendingMachine::Confirm()
 {
@@ -133,10 +133,10 @@ void VendingMachine::Confirm()
         m_state = VENDINGMACHINESTATE_COOKING;
         Cook();
         m_state = VENDINGMACHINESTATE_WAITING;
-        m_logger->LogInformation("$"s + std::to_string(m_money) + " is your money change."s + "\n"s);
+        m_logger->LogInformation("$"s + std::to_string(m_money - m_selectedDrink.GetPrice()) + " is your money change."s + "\n"s);
         m_selectedDrink = VendingMachineDrink();
         m_money = 0;
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action.");
+        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
 }
