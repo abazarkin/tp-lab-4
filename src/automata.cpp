@@ -68,7 +68,8 @@ string Automata::choice(const string& drink) {
     auto it = menu.find(drink);
     if(it == menu.end()) {
         string ret_str;
-		ret_str << "no juice named " << drink;
+		ret_str += "no juice named ";
+		ret_str += drink;
 		return ret_str;
     }
 	else if (!check(drink)){
