@@ -61,4 +61,3 @@ TEST(lab4, cancel_test) {
 	//success
 	EXPECT_EQ(100, Igor.cook());
 }
-*/
