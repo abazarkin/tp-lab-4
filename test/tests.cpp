@@ -27,9 +27,9 @@ TEST(Cash_test, cash_check_test) {
    Automata aut;
    aut.on();
    aut.coin(50);
-   EXPECT_EQ(state, ACCEPT);
+   EXPECT_EQ(aut.get_state, "ACCEPT");
    aut.cancel();
-   EXPECT_EQ(state, WAIT);
+   EXPECT_EQ(aut.get_state, "WAIT");
  }
 
  TEST(Funcs_test, cancel_test2) {
@@ -38,7 +38,7 @@ TEST(Cash_test, cash_check_test) {
    aut.coin(50);
    aut.choice(1);
    aut.check(1);
-   EXPECT_EQ(state, CHECK);
+   EXPECT_EQ(aut.get_state, "CHECK");
  }
 
  TEST(Funcs_test, finish_test) {
@@ -48,6 +48,6 @@ TEST(Cash_test, cash_check_test) {
    aut.choice(3);
    aut.cook(3);
    aut.finish();
-   EXPECT_EQ(state, WAIT);
+   EXPECT_EQ(aut.get_state, "WAIT");
  }
 

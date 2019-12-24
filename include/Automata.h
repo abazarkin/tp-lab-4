@@ -35,6 +35,7 @@ public:
     void cancel();
     void cook(int drink_number);
     void finish();
+    void get_state();
 };
 
 #endif /* Automata_h */

@@ -115,3 +115,16 @@ void Automata::finish(){ // завершение обслуживания пол
     state = STATES::WAIT;
 }
 
+void Automata::get_state() {
+    switch (state) {
+        default:
+        case OFF:
+             return "OFF";
+        case WAIT:
+             return "WAIT";
+        case ACCEPT:
+             return "ACCEPT";
+        case CHECK:
+             return "CHECK";
+        case COOK:
+             return "COOK";
