@@ -6,9 +6,9 @@ TEST(Cash_test, cash_check_test) {
    aut.on();
    aut.coin(50);
    aut.choice(4);
-   EXPECT_EQ(aut.check(), false);
+   EXPECT_EQ(aut.check(4), false);
    aut.choice(1);
-   EXPECT_EQ(aut.check(), true);
+   EXPECT_EQ(aut.check(1), true);
  }
 
  TEST(Cash_test, cash_after_buy_test1) {
@@ -16,10 +16,10 @@ TEST(Cash_test, cash_check_test) {
    aut.on();
    aut.coin(50);
    aut.choice(2);
-   EXPECT_EQ(aut.check(), true);
+   EXPECT_EQ(aut.check(2), true);
    aut.cook();
    aut.choice(2);
-   EXPECT_EQ(aut.check(), true);
+   EXPECT_EQ(aut.check(2), true);
  }
 
 
