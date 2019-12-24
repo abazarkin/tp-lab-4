@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include<fstream>
+#include <stdio.h>
 
 using namespace std;
 
@@ -52,15 +53,9 @@ public:
 private:
 	states state;
 	int cash;
-	
 	menu m;
-
 	int chosenNum;
 	int key;
-
-	
-
-	
 	//void setMenu(string* strs, int* pr, int N);
 	//void setMenu(int N);
 	//void setMenu(ifstream fin);
