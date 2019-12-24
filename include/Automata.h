@@ -16,7 +16,7 @@ public:
     bool off();
     bool coin(unsigned int coins);
     bool printMenu();
-    void printState() const;
+    std::string printState() const;
     bool choice(int local_ans);
     bool check();
     bool cansel();
