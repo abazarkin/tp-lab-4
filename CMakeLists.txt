@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 # Make PROJECT_SOURCE_DIR, PROJECT_BINARY_DIR, and PROJECT_NAME available.
-set(PROJECT_NAME task1) 
+set(PROJECT_NAME lab4)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_FLAGS "-g -Wall")
@@ -16,16 +16,15 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 include_directories(${COMMON_INCLUDES})
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
-
-
-set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cpp
-              ${PROJECT_SOURCE_DIR}/src/automata.cpp)
+set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/Automata.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(task_lib ${SRC_FILES})
-add_executable(task ${SRC_FILES})
-target_link_libraries(task task_lib)
+add_library(lab4_lib ${SRC_FILES})
+
+add_executable(lab4 ${PROJECT_SOURCE_DIR}/src/main.cpp )
+
+target_link_libraries(lab4 lab4_lib)
 
 
 ################################
@@ -48,13 +47,13 @@ if (BUILD_TESTS)
   ##############
   # Unit Tests
   ##############
-  add_executable(runUnitTests ${TEST_SRC_FILES} src/main.cpp src/automata.cpp include/automata.h)
+  add_executable(runUnitTests ${TEST_SRC_FILES})
 
   # Standard linking to gtest stuff.
   target_link_libraries(runUnitTests gtest gtest_main)
 
   # Extra linking for the project.
-  #target_link_libraries(runUnitTests task1_lib task2_lib task3_lib)
+  target_link_libraries(runUnitTests lab4_lib)
 
   # This is so you can do 'make test' to see all your tests run, instead of
   # manually running the executable runUnitTests to see those specific tests.
