@@ -9,7 +9,7 @@ int main() {
 	Igor.coin(money);
 	int number;
 	std::cout << "Choose the drink" << std::endl;
-	std::cin >> number;
+	std::cin >> number;	
 	if (Igor.choice(number) != 100) {
 		Igor.cancel();
 	}

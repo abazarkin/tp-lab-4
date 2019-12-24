@@ -106,11 +106,6 @@ int CoffeeMachine::cancel() {
 int CoffeeMachine::cook() {
 	if (current_state == CHECK) {
 		changeState(COOK);
-		for (int i = 0; i < 5; i++) {
-			std::cout << i * 20 << "% has cooked\r";
-			//Sleep(1800);
-		}
-		std::cout << "100% has cooked" << std::endl;
 		return 100;
 	}
 	else {
@@ -155,11 +150,11 @@ void CoffeeMachine::changeState(STATES state) {
 		std::cout << "CHECK" << std::endl;
 		break;
 	case COOK:
-		std::cout << "COOK" << std::endl << "Your drink is cooking" << std::endl;
+		std::cout << "COOK" << std::endl << "COOKING..." << std::endl;
 		break;
 	case COMPLETE:
 		std::cout << "COMPLETE" << "Take your drink" << std::endl;
 		break;
 	}
 }
-
+unsigned int CoffeeMachine::getCash() { return cash; }

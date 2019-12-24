@@ -29,6 +29,7 @@ private:
 	int numberSelectedDrink;
 	void printMenu();
 	void changeState(STATES state);
+	
 public:
 	//constructor
 	CoffeeMachine();
@@ -40,4 +41,5 @@ public:
 	int cancel();
 	int cook();
 	int finish();
+	unsigned int getCash();
 };
