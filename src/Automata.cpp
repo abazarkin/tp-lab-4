@@ -5,7 +5,7 @@
 
 using namespace std;
 
-static enum STATES { OFF, WAIT, ACCEPT, CHECK, COOK};
+static enum STATES = { OFF, WAIT, ACCEPT, CHECK, COOK};
 static vector<string> menu = {
 	"Espresso",
 	"Americano",
