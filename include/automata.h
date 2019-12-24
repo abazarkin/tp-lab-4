@@ -10,7 +10,7 @@ class Automata
 	
 private:
 
-    static map <string, int> menu {std::make_pair("apple",40)};
+    map <string, int> menu {std::make_pair("apple",40)};
     unsigned int cash, current_operation_cash;
 	
     enum STATES {
