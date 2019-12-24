@@ -17,7 +17,7 @@ TEST(Cash_test, cash_check_test) {
    aut.coin(50);
    aut.choice(2);
    EXPECT_EQ(aut.check(2), true);
-   aut.cook();
+   aut.cook(2);
    aut.choice(2);
    EXPECT_EQ(aut.check(2), true);
  }
@@ -37,7 +37,7 @@ TEST(Cash_test, cash_check_test) {
    aut.on();
    aut.coin(50);
    aut.choice(1);
-   aut.check();
+   aut.check(1);
    EXPECT_EQ(state, "CHECK");
  }
 
@@ -46,7 +46,7 @@ TEST(Cash_test, cash_check_test) {
    aut.on();
    aut.coin(50);
    aut.choice(3);
-   aut.cook();
+   aut.cook(3);
    aut.finish();
    EXPECT_EQ(state, "WAIT");
  }
