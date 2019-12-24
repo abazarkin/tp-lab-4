@@ -19,5 +19,5 @@ box.coin(150);
 box.choice(4);
 box.cook();
 int current_cash = box.getCash();
-EXPECT_EQ(240,current_cash);
+EXPECT_EQ(190,current_cash);
 }
