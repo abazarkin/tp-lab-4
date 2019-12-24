@@ -1,4 +1,4 @@
-#include"automata.h"
+#include"CoffeeMachine.h"
 
 int main() {
 	CoffeeMachine Igor = CoffeeMachine();
