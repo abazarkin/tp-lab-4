@@ -1,7 +1,6 @@
-#include "gtest/gtest.h"
-#include "automata.h"
+#include "CoffeeMachine.h"
 
-TEST(CoffeeMachine, task1_1) {
+TEST(lab4, CoffeeMachine_) {
 	CoffeeMachine Philips = CoffeeMachine();
 	EXPECT_EQ(100, Philips.on());
 }
