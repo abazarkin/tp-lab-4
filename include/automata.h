@@ -29,7 +29,7 @@ private:
 
     string cook(const string&);
     bool check(const string&);
-    string finish(const string&);
+    void finish();
 public:
     Automata();
     bool on();

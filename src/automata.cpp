@@ -36,12 +36,10 @@ bool Automata::coin(unsigned int money){
 }
 
 map<string,int> Automata::printMenu() {
-    if (state == OFF) return map <string, int>{};
     return menu;
 }
 
 string Automata::printState() {
-    if (state == OFF) return "";
     return STATE_NAMES[state];
 }
 
@@ -78,9 +76,9 @@ string Automata::choice(const string& drink) {
 string Automata::cook(const string& drink){
     state = COOK;
     this_thread::sleep_for(chrono::milliseconds(3000));
-    return finish(drink);
-}
-string Automata::finish(const string& drink) {
-    state = WAIT;
+    finish();
     return drink;
+}
+void Automata::finish() {
+    state = WAIT;
 }
