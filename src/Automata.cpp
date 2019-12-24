@@ -20,46 +20,33 @@ Automata::~Automata() {
 
 bool Automata::on() {
     if (state == WAIT){
-        std::cout << "Automat is already on!" << std::endl;
         return false;
     }
     state = WAIT;
-    std::cout << "Automat is switched on!" << std::endl;
     return true;    
 }
 
 bool Automata::off() {
     if (state == OFF) {
-        std::cout << "Automat is already off!" << std::endl;
         return false;
     }
     state = OFF;
-    std::cout << "Automat is switched off!" << std::endl;
     return true;
 }
 
 bool Automata::coin(unsigned int coins){
-    if (state == OFF) {
-        std::cout << "Automat is already off!" << std::endl;
-        return false;
-    }
-    else if (state == WAIT || state == ACCEPT) {
-        //unsigned int coins;
-        //std::cout << "Enter coins: ";
-        //std::cin >> coins;
+    if (state == WAIT || state == ACCEPT) {
         cash += abs(coins);
         state = ACCEPT;
         return true;
     }
     else {
-        std::cout << "ERROR!" << std::endl;
         return false; 
     }
 }
 
 bool Automata::printMenu() {
     if (state == OFF){
-        std::cout << "Automat is already off!" << std::endl;
         return false;
     }
     for (int i = 0; i < menu.size(); i++)
@@ -67,66 +54,38 @@ bool Automata::printMenu() {
     return true;
 }
 
-void Automata::printState() const {
+std::string Automata::printState() const {
     std::cout << "State = " << Nstates[state] << std::endl;
+    return Nstates[state];
 }
  
 bool Automata::choice(int local_ans) {
-    if (state == OFF){
-        std::cout << "Automat is already off!" << std::endl;
-        return false;
-    }
-    else if (state == ACCEPT){
-    //int local_ans;
-        while (true)
-        {
-            //std::cout << "Select a drink or press 9 to display the menu again: ";
-            //std::cin >> local_ans; 
-            if(local_ans > -1 && local_ans < 7)
-                break;
-            else if (local_ans == 9)
-                printMenu();
-            else 
-                std::cout << "Incorrect answer, try again, pls..." << std::endl;    
-        }
+    if (state == ACCEPT){ 
         ans = local_ans;
         state = CHECK;
         return true;
     }
     else {
-        std::cout << "ERROR!" << std::endl;
         return false; 
     }
 }
 
 bool Automata::check() {
-    if (state == OFF){
-        std::cout << "Automat is already off!" << std::endl;
-        return false;
-    }
-    else if (state == CHECK) {
+    if (state == CHECK) {
         if (cash >= prices[ans])
-            
             return true;
         else {
-            std::cout << "You have not enough money" << std::endl;
             return false;    
         }
     }
     else {
-        std::cout << "ERROR!" << std::endl;
         return false; 
     }
 }
 
 
 bool Automata::cansel() {
-    if (state == OFF){
-        std::cout << "Automat is already off!" << std::endl;
-        return false;
-    }
-    else if (state == WAIT) {
-        std::cout << "ERROR!" << std::endl;
+    if (state == WAIT || state == OFF) {
         return false;
     }
     state = WAIT;
@@ -135,31 +94,24 @@ bool Automata::cansel() {
 }
 
 bool Automata::cook() {
-    if (state == OFF){
-        std::cout << "Automat is already off!" << std::endl;
-        return false;
-    }
-    else if (state == CHECK) {
+    if (state == CHECK) {
         state = COOK;
-        processing();
         cash -= prices[ans];
         return true; 
     }
     else {
-        std::cout << "ERROR!" << std::endl;
         return false; 
     }
 }
 
 bool Automata::finish() {
-    if (state == OFF){
-        std::cout << "Automat is already off!" << std::endl;
-        return false;
+    if (state == COOK){
+        std::cout << "Return your " << cash << " coins" << std::endl;
+        cash = 0;
+        ans = -1;
+        return true;
     }
-    std::cout << "Return your " << cash << " coins" << std::endl;
-    cash = 0;
-    ans = -1;
-    return true;
+    return false;
 }
 
 void Automata::printInform() const {
