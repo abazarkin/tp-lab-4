@@ -41,7 +41,7 @@ TEST(lab4, check_test) {
 	//error
 	EXPECT_EQ(5, Igor.check());
 
-	CoffeeMachine Philips = CoffeeMchine();
+	CoffeeMachine Philips = CoffeeMachine();
 	Philips.on();
 	Philips.coin(40);
 	Philips.choice(1);
