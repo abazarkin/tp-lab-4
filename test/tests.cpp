@@ -9,7 +9,7 @@ TEST(States_test, check_off_state) {
 TEST(States_test, check_on_state) {
 	Automata aut;
 	aut.on();
-	EXPECT_EQ(aut.print_state(), "ON");
+	EXPECT_EQ(aut.print_state(), "WAIT");
 }
 
 TEST(States_test, check_off_func_state) {
@@ -88,7 +88,7 @@ TEST(Menu_test, menu_test) {
 	std::string str = "1: Water 10 R\n2: Soda 15 R\n3: Green tea 15 R\n4: Black tea 15 R\n5: Espresso 30 R\n6: Latte 45 R\n7: Cappuccino 50 R\n8: Double espresso 60 R\n9: Double latte 75 R\n10: Mocaccino 100 R\n";
 	Automata aut;
 	aut.on();
-	EXPECT_EQ(aut.print_state(), str);
+	EXPECT_EQ(aut.print_menu(), str);
 }
 
 
