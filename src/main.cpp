@@ -37,26 +37,6 @@ int main()
 					cin >> answ;
 				}
 
-				//switch (Coffe.getState())
-				//{
-				//case WAIT: cout << "Ready for work!" << endl;
-				//	menu m1;
-				//	m1 = Coffe.getMenu();
-				//	for (int i = 0; i < m1.n; i++)
-				//	{
-				//		cout << i + 1 << ") " << m1.dishes[i] << " " << m1.prices[i] << "p" << endl;
-				//	}
-				//	for (int i = 0; i < 5; i++)
-				//	{
-				//		cout << i << " - " << mainmenu[i] << endl;
-				//	}
-				//	cin >> answ;
-				//	break;
-				//case ERROR: cout << "ERROR" << endl;
-				//	break;
-				//default:
-				//	break;
-				//}
 				if (answ)
 				{
 					

@@ -10,17 +10,6 @@ Automata::Automata()
 	m.dishes = NULL;
 	m.prices = NULL;
 	setMenu();
-	//ifstream fin;
-	//fin.open("menu.txt");	
-	//setMenu(fin);
-	//fin >> m.n;
-	//m.dishes = new string[m.n];
-	//m.prices = new int[m.n];
-	//for (int i = 0; i < m.n; i++)
-	//{
-	//	fin >> m.prices[i];
-	//	fin >> m.dishes[i];
-	//}
 }
 
 Automata::~Automata()
@@ -44,24 +33,6 @@ int Automata::getCash() const
 	return cash;
 }
 
-//void Automata::setMenu(string* strs, int *pr, int N)
-//{
-//	m.n = N;
-//	if (m.dishes)
-//	{
-//		delete[] m.dishes;
-//		delete[] m.prices;
-//
-//	}
-//	m.dishes = new string[N];
-//	m.prices = new int[N];
-//	for (int i = 0; i < N; i++)
-//	{
-//		m.dishes[i] = strs[i];
-//		m.prices[i] = pr[i];
-//	}
-//}
-
 void Automata::setMenu()
 {
 	m.n = 4;
@@ -73,44 +44,6 @@ void Automata::setMenu()
 	m.prices[3] = 60; m.dishes[3] = "coffe4";
 }
 
-//void Automata::setMenu(int N)
-//{
-//	m.n = N;
-//	if (m.dishes)
-//	{
-//		delete[] m.dishes;
-//		delete[] m.prices;
-//
-//	}
-//	m.dishes = new string[N];
-//	m.prices = new int[N];
-//	for (int i = 0; i < N; i++)
-//	{
-//		string buf = "";
-//		cin >> buf;
-//		m.dishes[i] = buf;
-//		cin >> m.prices[i];
-//
-//	}
-//}
-//void Automata::setMenu(ifstream fin)
-//{
-//	if (m.dishes)
-//	{
-//		delete[] m.dishes;
-//		delete[] m.prices;
-//
-//	}
-//	fin >> m.n;
-//	m.dishes = new string[m.n];
-//	m.prices = new int[m.n];
-//	for (int i = 0; i < m.n; i++)
-//	{
-//		fin >> m.prices[i];
-//		fin >> m.dishes[i];
-//	}
-//}
-
 bool Automata::check()
 {
 	if (chosenNum == -1) return false;
@@ -120,7 +53,8 @@ bool Automata::check()
 returns Automata::cook()
 {
 	state = COOK;
-	cout << "preparing..." << endl;
+	//cout << "preparing..." << endl;
+	_sleep(300);
 	state = READY;
 	return CORRECT;
 }
