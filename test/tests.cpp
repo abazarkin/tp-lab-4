@@ -19,7 +19,7 @@ TEST(Cash_test, cash_check_test) {
    EXPECT_EQ(aut.check(2), true);
    aut.cook(2);
    aut.choice(2);
-   EXPECT_EQ(aut.check(2), true);
+   EXPECT_EQ(aut.check(2), false);
  }
 
 
