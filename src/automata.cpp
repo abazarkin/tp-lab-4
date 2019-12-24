@@ -68,9 +68,9 @@ void Automata::setMenu()
 	m.dishes = new string[m.n];
 	m.prices = new int[m.n];
 	m.prices[0] = 40; m.dishes[0] = "coffe1";
-	m.prices[0] = 45; m.dishes[0] = "coffe2";
-	m.prices[0] = 50; m.dishes[0] = "coffe3";
-	m.prices[0] = 60; m.dishes[0] = "coffe4";
+	m.prices[1] = 45; m.dishes[1] = "coffe2";
+	m.prices[2] = 50; m.dishes[2] = "coffe3";
+	m.prices[3] = 60; m.dishes[3] = "coffe4";
 }
 
 //void Automata::setMenu(int N)
