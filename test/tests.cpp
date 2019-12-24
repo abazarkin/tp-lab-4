@@ -5,7 +5,7 @@
 TEST(lab4, task1){
     Automata shop = Automata();
     shop.on();
-    EXPECT_EQ(WAIT, shop.getState())
+    EXPECT_EQ(WAIT, shop.getState());
 }
 
 // Test 2 (0 == 0)
@@ -13,7 +13,7 @@ TEST(lab4, task2){
     Automata shop = Automata();
     shop.on();
     shop.off();
-    EXPECT_EQ(OFF, shop.getState())
+    EXPECT_EQ(OFF, shop.getState());
 }
 
 // Test 3 (2 == 2)
