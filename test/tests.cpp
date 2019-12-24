@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "CoffeeMachine.h"
+#include "automata.h"
 
 TEST(CoffeeMachine, task1_1) {
 	CoffeeMachine Philips = CoffeeMachine();
