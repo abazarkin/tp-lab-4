@@ -115,7 +115,7 @@ void Automata::finish(){ // завершение обслуживания пол
     state = STATES::WAIT;
 }
 
-void Automata::get_state() {
+string Automata::get_state() {
     switch (state) {
         default:
         case OFF:
