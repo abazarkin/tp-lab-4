@@ -39,7 +39,7 @@ TEST(Test_states, test_cansel_1) {
 	obj.on()
 		obj.coin(10)
 		obj.coin(5)
-		obj.cansel()
+		obj.cancel()
 		EXPECT_EQ(obj.printState(), "WAIT")
 }
 
@@ -58,7 +58,7 @@ TEST(Test_states, test_cansel_2) {
 		obj.coin(10)
 		obj.coin(5)
 		obj.choice(1)
-		obj.cansel()
+		obj.cancel()
 		EXPECT_EQ(obj.printState(), "WAIT")
 }
 

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-static enum STATES { OFF, WAIT, ACCEPT, CHECK, COOK };
+static enum STATES { OFF, WAIT, ACCEPT, CHECK, COOK};
 static vector<string> menu = {
 	"Espresso",
 	"Americano",
@@ -13,7 +13,7 @@ static vector<string> menu = {
 	"Cappuccino",
 	"Hot chocolate",
 	"Cocoa" };
-static vector<int> prices = { 30, 35, 50, 45, 35, 30 };
+static vector<int> prices = { 35, 30, 20, 35, 30, 25 };
 static vector<string> typeOfState = { "OFF", "WAIT", "ACCEPT", "CHECK", "COOK" };
 
 Automata::Automata()
