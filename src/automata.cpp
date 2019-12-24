@@ -53,8 +53,7 @@ bool Automata::check()
 returns Automata::cook()
 {
 	state = COOK;
-	//cout << "preparing..." << endl;
-	_sleep(300);
+	cout << "preparing..." << endl;
 	state = READY;
 	return CORRECT;
 }
