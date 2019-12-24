@@ -15,9 +15,10 @@ int main() {
     automata.choice("fanta");
     automata.coin(123);
     automata.choice("fanta");
-    automata.choice("coffee");
+    string coffee = automata.choice("coffee");
+    cout<<coffee<<endl;
     automata.printState();
-    int odd_money = automata.cancel();
+    unsigned int odd_money = automata.cancel();
     cout<<odd_money<<endl;
     automata.off();
 

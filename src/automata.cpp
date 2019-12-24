@@ -4,51 +4,56 @@
 #include <automata.h>
 #include <chrono>
 #include <thread>
-std::string Automata::STATE_NAMES[5] = {"OFF","WAIT","ACCEPT","CHECK","COOK"};
+#include <string>
+using namespace std;
+string Automata::STATE_NAMES[5] = {"OFF","WAIT","ACCEPT","CHECK","COOK"};
 Automata::Automata(){
     cash = 0;
     current_operation_cash = 0;
     state = OFF;
 }
 
-void Automata::on() {
-    if (state == OFF) state = WAIT;
+bool Automata::on() {
+    if (state == OFF){
+        state = WAIT;
+        return true;
+    }
+    return false;
 }
-void Automata::off(){
+bool Automata::off(){
+    if (state == COOK || state==CHECK)return false;
     state = OFF;
+    return true;
+
 }
-void Automata::coin(unsigned int money){
-    if (state == OFF) return;
-    if (state != ACCEPT && state != WAIT){
-        std::cout << "WAIT FOR OTHER OPERATIONS PLEASE"<<std::endl;
-        return;
+bool Automata::coin(unsigned int money){
+    if (state == ACCEPT || state == WAIT){
+        state = ACCEPT;
+        current_operation_cash += money;
+        return true;
     }
-    state = ACCEPT;
-    current_operation_cash += money;
+    return false;
 }
 
-void Automata::printMenu() {
-    if (state == OFF) return;
-    std::cout<<"MENU"<<std::endl;
-    for(auto it = menu.begin(); it != menu.end(); ++it){
-        std::cout << it->first << ":" << it->second << std::endl;
-    }
+map<string,int> Automata::printMenu() {
+    if (state == OFF) return map <string, int>{};
+    return menu;
 }
 
-void Automata::printState() {
-    if (state == OFF) return;
-    std::cout <<"STATE: "<<STATE_NAMES[state]<<std::endl;
+string Automata::printState() {
+    if (state == OFF) return "";
+    return STATE_NAMES[state];
 }
 
-int Automata::cancel() {
+unsigned int Automata::cancel() {
     if (state == OFF) return 0;
-    std::cout << "CANCELLING..."<<std::endl;
-    int tmp = current_operation_cash;
+    cout << "CANCELLING..."<<endl;
+    unsigned int tmp = current_operation_cash;
     current_operation_cash = 0;
     state = WAIT;
     return tmp;
 }
-bool Automata::check(std::string drink) {
+bool Automata::check(const string& drink) {
     state = CHECK;
     if (current_operation_cash < menu[drink]) {
         state = ACCEPT;
@@ -57,28 +62,25 @@ bool Automata::check(std::string drink) {
     return true;
 }
 
-void Automata::choice(std::string drink) {
-    if (state == OFF) return;
+string Automata::choice(const string& drink) {
+    if (state == OFF) return "";
     auto it = menu.find(drink);
     if(it == menu.end()) {
-        std::cout<<"THERE IS NO SUCH DRINK"<<std::endl;
+        return "NO SUCH DRINK";
     }else if (!check(drink)){
-        std::cout<<"U NEED TO PAY "<<menu[drink] - current_operation_cash <<" MORE TO BUY THIS DRINK"<<std::endl;
+        return "U NEED TO PAY " + to_string(menu[drink] - current_operation_cash) + " MORE TO BUY THIS DRINK";
     }else{
         cash += menu[drink];
         current_operation_cash -= menu[drink];
-        cook(drink);
+        return cook(drink);
     }
 }
-void Automata::cook(std::string drink){
+string Automata::cook(const string& drink){
     state = COOK;
-    std::cout << "COOKIN...'" << std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
-    std::cout << "GET UR TASTIEST " << drink << std::endl;
-    finish();
+    this_thread::sleep_for(chrono::milliseconds(3000));
+    return finish(drink);
 }
-void Automata::finish() {
+string Automata::finish(const string& drink) {
     state = WAIT;
-    std::cout<<"U HAVE "<<current_operation_cash<<" ON THE BALANCE"<<std::endl;
-    std::cout<<"PRESS CANCEL IF U WANT TO TAKE MONEY BACK"<<std::endl;
+    return drink;
 }

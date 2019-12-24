@@ -7,17 +7,16 @@
 #pragma once
 #include <iostream>
 #include <map>
-#include <string>
-
+using namespace std;
 class Automata
 {
 private:
-    std::map <std::string, int> menu {{"coffee",40},
+    map <string, int> menu {{"coffee",40},
                             {"tea",35},
                             {"fanta",60},
                             {"beer",100}};
 
-    int cash, current_operation_cash;
+    unsigned int cash, current_operation_cash;
     enum STATES {
         OFF,
         WAIT,
@@ -25,20 +24,20 @@ private:
         CHECK,
         COOK
     };
-    static std::string STATE_NAMES[5];
+    static string STATE_NAMES[5];
     STATES state;
 
-    void cook(std::string);
-    bool check(std::string);
-    void finish();
+    string cook(const string&);
+    bool check(const string&);
+    string finish(const string&);
 public:
     Automata();
-    void on();
-    void off();
-    void coin(unsigned int);
-    void printMenu();
-    void printState();
-    int cancel();
-    void choice(std::string);
+    bool on();
+    bool off();
+    bool coin(unsigned int);
+    map<string,int> printMenu();
+    string printState();
+    unsigned int cancel();
+    string choice(const string&);
 };
 #endif //TASK1_AUTOMATA_H
