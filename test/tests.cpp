@@ -2,7 +2,7 @@
 #include "automata.h"
 
 TEST (automata,test1){
-    Automata automata;
+    Automata automata();
     automata.on();
     automata.coin(2000);
     automata.off();
