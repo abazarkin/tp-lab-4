@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "automata.h"
+#include "Automata.h"
 #include <string>
 
 TEST(automata_cash,test3){
