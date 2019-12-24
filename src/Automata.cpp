@@ -109,6 +109,7 @@ bool Automata::finish() {
         std::cout << "Return your " << cash << " coins" << std::endl;
         cash = 0;
         ans = -1;
+        state = WAIT
         return true;
     }
     return false;
