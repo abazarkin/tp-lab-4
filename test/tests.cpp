@@ -69,38 +69,38 @@ TEST(Test_states, test_coin_2) {
    EXPECT_EQ(obj.printState(), "ACCEPT");
 }
 
-TEST(Test_states, test_canсel_1) {
+TEST(Test_states, test_cancel_1) {
    Automata obj;
    obj.on();
    obj.coin(10);
    obj.coin(5);
-   obj.canсel();
+   obj.cancel();
    EXPECT_EQ(obj.printState(), "WAIT");
 }
 
-TEST(Test_states, test_canсel_2) {
+TEST(Test_states, test_cancel_2) {
    Automata obj;
    obj.on();
    obj.coin(10);
    obj.coin(5);
    obj.choice(1);
-   obj.canсel();
+   obj.cancel();
    EXPECT_EQ(obj.printState(), "WAIT");
 }
 
-TEST(Test_states, test_canсel_3) {
+TEST(Test_states, test_cancel_3) {
    Automata obj;
    obj.on();
-   EXPECT_EQ(obj.canсel(), false);
+   EXPECT_EQ(obj.cancel(), false);
 }
 
-TEST(Test_states, test_canсel_4) {
+TEST(Test_states, test_cancel_4) {
    Automata obj;
    obj.on();
    obj.coin(50);
    obj.choice(1);
    obj.cook();
-   EXPECT_EQ(obj.canсel(), false);
+   EXPECT_EQ(obj.cancel(), false);
 }
 
 
