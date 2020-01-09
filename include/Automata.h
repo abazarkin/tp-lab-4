@@ -19,7 +19,7 @@ public:
     std::string printState() const;
     bool choice(int local_ans);
     bool check();
-    bool cansel();
+    bool canсel();
     bool cook();
     bool finish();
 
