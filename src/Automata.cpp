@@ -86,7 +86,7 @@ bool Automata::check() {
 }
 
 
-bool Automata::canсel() {
+bool Automata::cancel() {
     if (state == ACCEPT || state == CHECK) {
         state = WAIT;
         ans = -1;
