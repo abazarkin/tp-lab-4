@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     obj.printInform();
     obj.check();
     obj.printInform();
-    obj.cansel();
+    obj.cancel();
     obj.printInform();
 
     obj.coin(100);
