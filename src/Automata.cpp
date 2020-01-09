@@ -19,7 +19,7 @@ Automata::~Automata() {
 }
 
 bool Automata::on() {
-    if (state == WAIT){
+    if (state != OFF){
         return false;
     }
     state = WAIT;
@@ -37,7 +37,9 @@ bool Automata::off() {
 bool Automata::coin(unsigned int coins){
     if (state == WAIT || state == ACCEPT) {
         cash += abs(coins);
-        state = ACCEPT;
+        if (state == WAIT) {
+            state = ACCEPT;
+        }
         return true;
     }
     else {
@@ -84,17 +86,19 @@ bool Automata::check() {
 }
 
 
-bool Automata::cansel() {
-    if (state == WAIT || state == OFF) {
+bool Automata::canсel() {
+    if (state == ACCEPT || state == CHECK) {
+        state = WAIT;
+        ans = -1;
+        return true;
+    }
+    else {
         return false;
     }
-    state = WAIT;
-    ans = -1;
-    return true;
 }
 
 bool Automata::cook() {
-    if (state == CHECK) {
+    if (state == CHECK && cash-prices[ans] >= 0) {
         state = COOK;
         cash -= prices[ans];
         return true; 
@@ -109,7 +113,6 @@ bool Automata::finish() {
         std::cout << "Return your " << cash << " coins" << std::endl;
         cash = 0;
         ans = -1;
-        state = WAIT;
         return true;
     }
     return false;
