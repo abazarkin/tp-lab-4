@@ -2,6 +2,8 @@
 
 int main()
 {
+	int my_money = 15;
+
 	Automata Drinks_Maker = Automata();
 	Drinks_Maker.printState();
 	Drinks_Maker.on();
@@ -9,23 +11,32 @@ int main()
 	cout << endl;
 
 	Drinks_Maker.printMenu();
-	Drinks_Maker.coin(15);
-	Drinks_Maker.choice(1);
+	Drinks_Maker.coin(my_money);
+	my_money = Drinks_Maker.choice(1);
+	cout << "my money = " << my_money << endl;
+
+	cout << endl;
+	my_money += 25;
+	cout << "my money = " << my_money << endl;
+
+	Drinks_Maker.coin(my_money);
+	my_money = Drinks_Maker.choice(1);
+	cout << "my money = " << my_money << endl;
+
+	cout << endl;
+	my_money += 100;
+	cout << "my money = " << my_money << endl;
+
+	Drinks_Maker.coin(my_money);
+	my_money = Drinks_Maker.choice(2);
+	
 
 	cout << endl;
 
-	Drinks_Maker.coin(40);
-	Drinks_Maker.choice(1);
+	Drinks_Maker.coin(80);
+	my_money = Drinks_Maker.cancel();
+	cout << "my money = " << my_money << endl;
 
-	cout << endl;
-
-	Drinks_Maker.coin(100);
-	Drinks_Maker.choice(2);
-
-	cout << endl;
-
-	Drinks_Maker.coin(100);
-	Drinks_Maker.cancel();
-
-	Drinks_Maker.off();
+	my_money += Drinks_Maker.off();
+	cout << "my money = " << my_money << endl;
 }

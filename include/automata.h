@@ -20,16 +20,16 @@ private:
 	
 	bool check(int drink);
 	void cook(int drink);
-	void finish();
+	int finish();
 public:
 	Automata();
 	void on();
-	void off();
+	int off();
 	void coin(int money);
 	void printMenu();
 	void printState();
-	void choice(int drink);
-	void cancel();
+	int choice(int drink);
+	int cancel();
 };
 
 #endif

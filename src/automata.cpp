@@ -18,10 +18,11 @@ void Automata::on()
 		cout << "The automata is already on" << endl;
 }
 
-void Automata::off()
+int Automata::off()
 {
 	if (state == WAIT)
 	{
+		return finish();
 		state = OFF;
 		cout << "Automata is off" << endl;
 	}
@@ -73,25 +74,27 @@ bool Automata::check(int drink)
 		cout << "You can't check it" << endl;
 }
 
-void Automata::choice(int drink)
+int Automata::choice(int drink)
 {
 	if (state != OFF)
+	{
 		state = CHECK;
+		if ((drink >= 0) && (drink < menu.size()))
+		{
+			if (check(drink))
+				cook(drink);
+			else
+			{
+				cout << "You havn't enough money" << endl;
+				return finish();
+			}
+		}
+		else
+			cout << "Choose another item" << endl;
+	}		
 	else
 		cout << "You can't choose drinks now" << endl;
-
-	if ((drink >= 0) && (drink < menu.size()))
-	{
-		if (check(drink))
-			cook(drink);
-		else
-		{
-			cout << "You havn't enough money" << endl;
-			finish();
-		}	
-	}
-	else
-		cout << "Choose another item" << endl;
+	return 0;
 }
 
 void Automata::cook(int drink)
@@ -102,27 +105,32 @@ void Automata::cook(int drink)
 		cash -= prices[drink];
 		cout << "Enjoy your drink!" << endl;
 		cout << "And now your balance: " << cash << " rub" << endl;
-		finish();
 	}
 	else
 		cout << "Something is going wrong" << endl;
 }
 
-void Automata::cancel()
+int Automata::cancel()
 {
 	if (state == ACCEPT || state == CHECK)
 	{
 		state == WAIT;
 		cout << "The operation is cancelled" << endl;
-		finish();
+		return finish();
 	}
 	else
+	{
 		cout << "You can't cancel this operation" << endl;
+		return 0;
+	}
+		
 }
 
-void Automata::finish()
+int Automata::finish()
 {
 		state = WAIT;
+		int money = cash;
 		cout << "You can take your money: " << cash << endl;
 		cash = 0;
+		return money;
 }
