@@ -19,11 +19,11 @@ file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
 
 set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/main.cpp
-			  ${PROJECT_SOURCE_DIR}/src/Automata.cpp)
+			  ${PROJECT_SOURCE_DIR}/src/automata.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(task_lib ${SRC_FILES}/src/Automata.cpp)
+add_library(task_lib ${SRC_FILES}/src/automata.cpp)
 add_executable(task ${PROJECT_SOURCE_DIR}/src/main.cpp)
 target_link_libraries(task task_lib)
 
