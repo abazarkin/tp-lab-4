@@ -21,16 +21,19 @@ private:
     std::vector <std::string> menu = {"Latte", "Cappuccino", "Espresso", "Water", "Tea", "Purple drank"};
     std::vector <unsigned int> prices = {10, 15, 13, 8, 9, 228};
     States state;
+    int current_choice;
+    std::vector <std::string> StatesNames {"OFF", "WAIT", "ACCEPT", "CHECK", "COOK"};
 public:
     Automata();
     States on();
     States off();
-    States coin();
+    States coin(unsigned int);
     std::string printMenu();
     std::string printState();
-    unsigned int choice();
+    void choice(unsigned int);
     bool check();
-    States cook();
+    States cancel();
+    bool cook();
     States finish();
 };
 
