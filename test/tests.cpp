@@ -9,3 +9,33 @@ TEST(automata, if_cancel)
 	int money = automat.cancel();
 	EXPECT_EQ(130, money);
 }
+
+//должен вернуть если недостаточно
+TEST(automata, if_not_enough)
+{
+	Automata automat = Automata();
+	automat.on();
+	automat.coin(13);
+	int money = automat.choice(1);
+	EXPECT_EQ(13, money);
+}
+
+//если сумма равна цене
+TEST(automata, if_equal)
+{
+	Automata automat = Automata();
+	automat.on();
+	automat.coin(40);
+	int money = automat.choice(1);
+	EXPECT_EQ(0, money);
+}
+
+//если сумма больше цены
+TEST(automata, if_more)
+{
+	Automata automat = Automata();
+	automat.on();
+	automat.coin(100);
+	int money = automat.choice(1);
+	EXPECT_EQ(60, money);
+}
