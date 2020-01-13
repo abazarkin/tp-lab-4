@@ -7,15 +7,14 @@
 
 using namespace std;
 
-static enum STATES {OFF, WAIT, ACCEPT, CHECK, COOK};
-static vector<string> states = {"OFF", "WAIT", "ACCEPT", "CHECK", "COOK"};
-
 class Automata
 {
 private:
 	int cash;
 	vector<string> menu = {"Tea", "Coffee", "Milk", "Water", "Juice"};
 	vector<int> prices = { 30, 40, 35, 20, 35 };
+	enum STATES { OFF, WAIT, ACCEPT, CHECK, COOK };
+	vector<string> states = { "OFF", "WAIT", "ACCEPT", "CHECK", "COOK" };
 	STATES state;
 	
 	bool check(int drink);
