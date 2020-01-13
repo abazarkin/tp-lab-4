@@ -20,14 +20,9 @@ void Automata::on()
 
 int Automata::off()
 {
-	if (state == WAIT)
-	{
-		return finish();
-		state = OFF;
-		cout << "Automata is off" << endl;
-	}
-	else
-		cout << "You can't off the automata" << endl;
+	return finish();
+	state = OFF;
+	cout << "Automata is off" << endl;
 }
 
 void Automata::coin(int money)
