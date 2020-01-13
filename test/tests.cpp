@@ -44,7 +44,7 @@ TEST(automata, if_more)
 //если заказов больше одного
 TEST(automata, more_than_one)
 {
-	AAutomata automat = Automata();
+	Automata automat = Automata();
 	automat.on();
 	automat.coin(100);
 	int money = automat.choice(1);
