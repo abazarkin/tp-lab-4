@@ -56,14 +56,22 @@ int automata::coin(int money)
 	{
 		state = ACCEPT;
 		printState();
-		if (money > 0) cash += money;
-		cout << "Now, It's mine: " << cash << "\n";
-		return -1;
+		if (money > 0)
+		{
+			cash += money;
+			cout << "Now, It's mine: " << cash << "\n";
+			return -1;
+		}
+		else
+		{
+			cout << "Where's my money? Oo \n";
+			return 2;
+		}
 	}
 	else
 	{
-		cout << "Where's my money? Oo \n";
-		return 2;
+		cout << "You can't do this now. -.- \n";
+		return 6;
 	}
 }
 
