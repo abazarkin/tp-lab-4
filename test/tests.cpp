@@ -12,8 +12,7 @@ TEST(lab4,task1_2)
 {
 	automata L = automata();
 	L.on();
-	L.coin(-12);
-	EXPECT_EQ(2, L.coin()); // no eq
+	EXPECT_EQ(2, L.coin(-12)); // no eq
 }
 
 TEST(lab4,task1_3)
