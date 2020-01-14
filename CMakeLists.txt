@@ -10,7 +10,6 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 # include_directories(${COMMON_INCLUDES}) in other CMakeLists.txt files.
 # set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 
-
 #----------------------------------------------------------------------------
 # Define project sources and includes
 #----------------------------------------------------------------------------
@@ -19,7 +18,7 @@ include_directories(${COMMON_INCLUDES})
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
 
-set(SRC_FILES1 ${PROJECT_SOURCE_DIR}/src/Automata.cpp
+set(SRC_FILES1 ${PROJECT_SOURCE_DIR}/src/Automata.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
