@@ -5,17 +5,12 @@ int main()
 	int money, num, l = -1;
 	automata lulerz = automata();
 	lulerz.on();
-	lulerz.on();
-	cin >> money;
-	lulerz.coin(money);
-
-	lulerz.printSugarLvl();
-	lulerz.add_sugar();
+	//cin >> money;
+	lulerz.coin(100);
 	lulerz.add_sugar();
 	lulerz.printSugarLvl();
-	lulerz.add_sugar();
-	cout << "Drink number?" << "\n";
-	cin >> num;
+	//cout << "Drink number?" << "\n";
+	//cin >> num;
 	if (lulerz.choice(num) != -1) 
 	{ 
 		lulerz.cancel();
