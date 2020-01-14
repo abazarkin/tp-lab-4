@@ -93,7 +93,7 @@ int Automata::check(int ch)
 		std::cout << "Checked." << std::endl;
 		cash -= prices[ch - 1];
 		std::cout << "Your " << menu[ch - 1] << " is being cooked \n";
-		return 1;
+		return cash;
 	}
 	else
 	{
