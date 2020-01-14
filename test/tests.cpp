@@ -11,15 +11,6 @@ TEST(Automata, buy1)
 	int res = automat.choice(2);
     EXPECT_EQ(20,res);
 }
-TEST(Automata, buy2)
-{
-    Automata automat = Automata();
-	automat.on();
-	automat.coin(150);
-	int res = automat.choice(1);
-    EXPECT_EQ(150,res);
-}
-
 TEST(Automata, cancel1)
 {
     Automata automat = Automata();
@@ -34,18 +25,6 @@ TEST(Automata, cancel2)
 	automat.on();
 	int res = automat.cancel();
     EXPECT_EQ(-1,res);
-}
-TEST(Automata, buy_buy)
-{
-    Automata automat = Automata();
-	int money;
-	automat.on();
-	automat.coin(150);
-	money = automat.choice(3);
-	EXPECT_EQ(50, money);
-	automat.coin(20);
-	money = automat.choice(4);
-    EXPECT_EQ(0, money);
 }
 
 TEST(Automata, state1)
