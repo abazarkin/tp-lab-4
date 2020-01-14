@@ -11,7 +11,7 @@ int main()
 	lulerz.printSugarLvl();
 	//cout << "Drink number?" << "\n";
 	//cin >> num;
-	if (lulerz.choice(num) != -1) 
+	if (lulerz.choice(5) != -1) 
 	{ 
 		lulerz.cancel();
 	}
