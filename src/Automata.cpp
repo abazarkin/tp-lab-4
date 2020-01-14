@@ -1,6 +1,5 @@
 #include "Automata.h"
 #include <fstream>
-#include <Windows.h>
 Automata::Automata()
 {
 	cash = 0;
@@ -107,15 +106,7 @@ void Automata::cook()
 {
 	if (state == CHECK)
 		state = COOK;
-	std::cout << "Waiting.. 0%" << std::endl;
-	Sleep(1000);
-	std::cout << "Waiting.. 25%" << std::endl;
-	Sleep(1000);
-	std::cout << "Waiting.. 50%" << std::endl;
-	Sleep(1000);
-	std::cout << "Waiting.. 75%" << std::endl;
-	Sleep(1000);
-	std::cout << "Waiting.. 100%" << std::endl;
+	std::cout << "Waiting.." << std::endl;
 	finish();
 }
 
