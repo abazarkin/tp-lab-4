@@ -10,4 +10,5 @@ int main()
 	automat.cook();
 	automat.finish();
 	automat.off();
+	std::cout << automat.getState() << std::endl;
 }
