@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
-#include "windows.h"
+//#include "windows.h"
 
 
 using namespace std;
@@ -131,12 +131,12 @@ void Automata::cook() {
 	printState();
 	std::cout << "\n" << "Your drink is preparing now";
 	std::cout << "\n" << ".";
-	Sleep(1000);
+	//Sleep(1000);
 	std::cout << "\n" << "..";
-	Sleep(2000);
+//	Sleep(2000);
 	std::cout << "\n" << "...";
-	Sleep(3000);
-	Beep(523, 350);
+	//Sleep(3000);
+//	Beep(523, 350);
 	std::cout << "\n" << "Your drink is ready";
 }// - имитация процесса приготовления напитка;
 
