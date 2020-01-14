@@ -1,5 +1,4 @@
 #include "Automata.h"
-#include <fstream>
 Automata::Automata()
 {
 	cash = 0;
@@ -12,7 +11,7 @@ void Automata::on()
 	{
 		state = WAIT;
 		cash = 0;
-		std::cout << "Automat is ready for working" << std::endl;
+		std::cout << "Automat is ready for working \n";
 	}
 	else
 		return;
@@ -49,56 +48,57 @@ void Automata::getMenu()
 		std::cout << i+1 << ". " << menu[i] << " --- " << prices[i] << std::endl;
 	}
 }
-
-void Automata::getState()
+std::string Automata::getState()
 {
 	switch (state)
 	{
 	case OFF:
-		std::cout << "OFF";
+		return "OFF";
 
 	case WAIT:
-		std::cout << "WAIT";
+		return "WAIT";
 
 	case ACCEPT:
-		std::cout << "ACCEPT";
+		return "ACCEPT";
 
 	case CHECK:
-		std::cout << "CHECK";
+		return "CHECK";
 
 	case COOK:
-		std::cout << "COOK";
+		return "COOK";
+	default:
+		return "NO STATE";
 	}
 }
 
-void Automata::choice(int ch)
+int Automata::choice(int ch)
 {
-	if (state == OFF)
-		return;
+	if (state == OFF || ch >= menu.size() || ch <= 0)
+		return -1;
 	else
 	{
-		check(ch);
+		return check(ch);
 	}
 }
 
-void Automata::check(int ch)
+int Automata::check(int ch)
 {
 	if (state == ACCEPT)
 		state = CHECK;
 	else
-		return;
+		return -1;
 	std::cout << "Checking.." << std::endl;
 	if (prices[ch - 1] <= cash)
 	{
 		std::cout << "Checked." << std::endl;
 		cash -= prices[ch - 1];
 		std::cout << "Your " << menu[ch - 1] << " is being cooked \n";
-		cook();
+		return 1;
 	}
 	else
 	{
 		std::cout << "You have not enough money \n";
-		cancel();
+		return 0;
 	}
 }
 
@@ -107,26 +107,31 @@ void Automata::cook()
 	if (state == CHECK)
 		state = COOK;
 	std::cout << "Waiting.." << std::endl;
-	finish();
 }
 
 int Automata::finish()
 {
-	std::cout << "Your drink is ready. Take it!\n" << std::endl;
-	state = WAIT;
-	std::cout << "Take your money\n";
+	if (state == COOK)
+		state = WAIT;
+	else
+		return -1;
 	int money = cash;
 	return money;
 }
 
-void Automata::cancel()
+int Automata::cancel()
 {
 	if (state == ACCEPT || state == CHECK)
 	{
 		state = WAIT;
-		std::cout << "Operation is cancelled";
+		std::cout << "Operation is cancelled\n";
+		int money = cash;
+		return money;
 	}
 	else
-		std::cout << "Error";
+	{
+		std::cout << "Error\n";
+		return -1;
+	}
 }
 
