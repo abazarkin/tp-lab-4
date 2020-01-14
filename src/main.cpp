@@ -1,5 +1,4 @@
 #include "automata.h"
-#include <conio.h>
 
 int main()
 {
@@ -34,6 +33,5 @@ int main()
 		}
 	}
 	lulerz.off();
-	_getch();
 	return 0;
 }
