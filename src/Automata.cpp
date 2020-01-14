@@ -13,7 +13,7 @@ Automata::Automata() {
 	state = 1;
 }//конструктор
 
-void Automata::on(){
+void Automata::on() {
 	if (state == 1) {
 		std::cout << "\n" << "Machine is already ON";
 		return;
@@ -26,11 +26,15 @@ void Automata::off() {
 	std::cout << "\n" << "Have a nice day!";
 	state = 0;
 	printState();
-	exit(1);
+	//exit(1);
 }// - выключение автомата;
 
 int Automata::coin(int _cash) {
 	state = 2;
+	if (_cash < 0) {
+		std::cout << "\n" << "Incorrect number!";
+		return -1;
+	}
 	printState();
 	if (_cash == 0) {
 		cancel();
@@ -48,8 +52,8 @@ void Automata::printMenu() {
 	}
 } //- отображение меню с напитками и ценами для пользователя;
 
-void Automata::printState() {
-	if (state==0) {
+int Automata::printState() {
+	if (state == 0) {
 		std::cout << "\n" << "OFF" << "\n";
 	}
 
@@ -68,6 +72,7 @@ void Automata::printState() {
 	if (state == 4) {
 		std::cout << "\n" << "COOK" << "\n";
 	}
+	return(state);
 }// - отображение текущего состояния для пользователя;	
 
 void Automata::choice() {
@@ -96,16 +101,16 @@ void Automata::choice() {
 		coin(_cash);
 	}
 	//if (check(choice)) {
-		cook();
-		state = 1;
-		finish();
+	cook();
+	state = 1;
+	finish();
 	//}
 } //- выбор напитка пользователем;
 
 bool Automata::check(int _i) {
 	state = 3;
 	printState();
-	if (prices[_i]>cash) {
+	if (prices[_i] > cash) {
 		std::cout << "\n" << "Not enough money";
 		return false;
 	}
@@ -115,26 +120,27 @@ bool Automata::check(int _i) {
 	}
 }// - проверка наличия необходимой суммы;
 
-void Automata::cancel() {
-	std::cout << "\n" << "Take your money - "<<cash;
-	off();
+int Automata::cancel() {
+	std::cout << "\n" << "Take your money - " << cash;
+	return cash;
+	//off();
 }// - отмена сеанса обслуживания пользователем;
 
 void Automata::cook() {
-	 state = 4;
-	 printState();
-	 std::cout << "\n" << "Your drink is preparing now";
-	 std::cout << "\n" << ".";
-	 Sleep(1000);
-	 std::cout << "\n" << "..";
-	 Sleep(2000);
-	 std::cout << "\n" << "...";
-	 Sleep(3000);
-	 Beep(523, 350);
-	 std::cout << "\n" << "Your drink is ready";
+	state = 4;
+	printState();
+	std::cout << "\n" << "Your drink is preparing now";
+	std::cout << "\n" << ".";
+	Sleep(1000);
+	std::cout << "\n" << "..";
+	Sleep(2000);
+	std::cout << "\n" << "...";
+	Sleep(3000);
+	Beep(523, 350);
+	std::cout << "\n" << "Your drink is ready";
 }// - имитация процесса приготовления напитка;
 
 void Automata::finish() {
-	 std::cout << "\n" << "Take your money - " << cash;
-	 off();
+	std::cout << "\n" << "Take your money - " << cash;
+	off();
 }// - завершение обслуживания пользователя.
