@@ -30,6 +30,7 @@ public:
     States coin(unsigned int);
     std::string printMenu();
     std::string printState();
+    int printBalance();
     void choice(unsigned int);
     bool check();
     States cancel();

@@ -36,8 +36,6 @@ std::string Automata::printState()
 
 States Automata::coin(unsigned int val)
 {
-    if (this->state != WAIT || this->state != ACCEPT)
-        return this->state;
     this->state = ACCEPT;
     this->cash += val;
     return this->state;
@@ -47,8 +45,13 @@ std::string Automata::printMenu()
 {
     std::string rmenu = "";
     for (int i=0; i<this->menu.size(); i++)
-        rmenu += this->menu[i] + " — $" + std::to_string(this->prices[i]) + "\n";
+        rmenu += std::to_string(i+1) + ". " + this->menu[i] + " — $" + std::to_string(this->prices[i]) + "\n";
     return rmenu;
+}
+
+int Automata::printBalance()
+{
+    return this->cash;
 }
 
 void Automata::choice(unsigned int val)
