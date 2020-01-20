@@ -8,7 +8,7 @@ TEST(TestS, task1)
 {
 	Automata automata;
 	automata.on();
-	EXPECT_EQ(20, automata..coin(20));
+	EXPECT_EQ(20, automata.coin(20));
 	automata.off();
 }
 TEST(TestS,task2)
