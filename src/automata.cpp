@@ -1,85 +1,134 @@
 #include "automata.h"
+#include "string_def.h" //library with defined strings
 #include <string>
 
 using namespace std;
 
-string Automata::STATE_NAMES[5] = {"OFF","WAIT","ACCEPT","CHECK","COOK"};
-
-
 Automata::Automata(){
     cash = 0;
-    current_operation_cash = 0;
     state = OFF;
+	cached_state = WAIT;
+	cached_cash = 0;
+	menu_names = _menu_names_;
+	menu_prices = _menu_prices_;
+}
+
+void Automata::console() {
+	if (state == OFF) return;
+	string command = "";
+
+	while (command != "off") {
+		command = "";
+		cout << ">>>";
+		cin >> command;
+		if (command == "on") {
+			on();
+		}
+		else if (command == "off") {
+			off();
+		}
+		else if (command == "coin") {
+			coin();
+		}
+		else if (command == "menu") {
+			menu();
+		}
+		else if (command == "return_money") {
+			return_money();
+		}
+		else if (command == "cook") {
+			cook();
+		}
+		else if (command == "choice") {
+			choice();
+		}
+	}
 }
 
 void Automata::on() {
-    if (state == OFF){
-        state = WAIT;
-    }
+	if (state != OFF) return;
+	state = cached_state;
+	cash = cached_cash;
+	console();
 }
 
 void Automata::off(){
+	cached_state = state;
+	cached_cash = cash;
+	cout << _off_ << endl;
     state = OFF;
 }
 
-void Automata::coin(unsigned int money){
-    if (state == ACCEPT || state == WAIT){
-        state = ACCEPT;
-        current_operation_cash += money;
-    }
+void Automata::coin(){
+	cout << _add_coin_message_;
+	int money;
+	cin >> money;
+	if (state != OFF && state != COOK) {
+		cash += money;
+	}
 }
 
-map<string, int> Automata::printMenu() {
-    return menu;
+void Automata::menu() {
+	int count = 0;
+	for (int i = 1; i <= menu_names.size(); i++) {
+		cout << i << ": " << menu_names[i-1] << " ::: " << menu_prices[i-1] << " rub" << endl;
+	}
 }
 
-string Automata::printState() {
-    return STATE_NAMES[state];
+void Automata::cancel() {
+    if (state == OFF) return; 
+	if (state == ACCEPT) {
+		cout << _cancel_ << cash << endl;
+		number_choice = 0;
+		state = WAIT;
+	}
 }
 
-unsigned int Automata::cancel() {
-    if (state == OFF) return 0;
-    cout << "cancel" <<endl;
-    unsigned int tmp = current_operation_cash;
-    current_operation_cash = 0;
-    state = WAIT;
-    return tmp;
+void Automata::return_money() {
+	if (state == OFF) return;
+	if (state == WAIT) {
+		cout << _return_money_ << cash << endl;
+		cash = 0;
+	}
+	if (state == ACCEPT) {
+		state = WAIT;
+		number_choice = 0;
+	}
 }
 
-bool Automata::check(const string& drink) {
-    state = CHECK;
-    if (current_operation_cash < menu[drink]) {
-        state = ACCEPT;
-        return false;
-    }
-    return true;
+void Automata::choice() {
+	if (state == OFF) {
+		return;
+	}
+	menu();
+	cout << _choice_;
+	int choice_tmp;
+	cin >> choice_tmp;
+	if (choice_tmp > 0 && choice_tmp <= menu_names.size()) {
+		if (menu_prices[choice_tmp-1] > cash) {
+			cout << _not_enough_money_ << cash - menu_prices[choice_tmp-1] << endl;
+			state = WAIT;
+			return;
+		}
+		number_choice = choice_tmp;
+		state = ACCEPT;
+		return;
+	}
+	if (choice_tmp == 0) {
+		return;
+	}
+	cout << _error_choice_ << endl;
+	state = WAIT;
 }
 
-string Automata::choice(const string& drink) {
-    if (state == OFF) return "";
-    auto it = menu.find(drink);
-    if(it == menu.end()) {
-        string ret_str;
-		ret_str += "no juice named ";
-		ret_str += drink;
-		return ret_str;
-    }
-	else if (!check(drink)){
-        return "need " + to_string(menu[drink] - current_operation_cash) + " $ more";
-    }
-	else{
-        cash += menu[drink];
-        current_operation_cash -= menu[drink];
-        return cook(drink);
-    }
-}
-
-string Automata::cook(const string& drink){
-    state = COOK;
-    finish();
-    return drink;
-}
-
-void Automata::finish() {
-    state = WAIT;
+void Automata::cook(){
+	if (state == WAIT) {
+		choice();
+	}
+	if (state == ACCEPT) {
+		state = COOK;
+		cout << _cook_ << menu_names[number_choice-1] << endl;
+		cout << _cook_done_ << endl;
+	}
+	state = WAIT;
 }

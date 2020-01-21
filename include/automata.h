@@ -2,17 +2,13 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <vector>
 using namespace std;
 
 
 class Automata
 {
-	
 private:
-
-    map <string, int> menu {std::make_pair("apple",40)};
-    unsigned int cash, current_operation_cash;
-	
     enum STATES {
         OFF,
         WAIT,
@@ -20,22 +16,26 @@ private:
         CHECK,
         COOK
     };
-	
-    static string STATE_NAMES[5];
+
     STATES state;
+	STATES cached_state;
 
-    string cook(const string&);
-    bool check(const string&);
-    void finish();
-	
+	int cash;
+	int cached_cash;
+	int number_choice;
+
+	std::vector<std::string> menu_names;
+	std::vector<int> menu_prices;
+
 public:
-
     Automata();
     void on();
     void off();
-    void coin(unsigned int);
-    map<string,int> printMenu();
-    string printState();
-    unsigned int cancel();
-    string choice(const string&);
+	void console();
+    void coin();
+    void menu();
+    void cancel();
+    void choice();
+	void cook();
+	void return_money();
 };
