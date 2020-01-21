@@ -1,15 +1,21 @@
 #include "gtest/gtest.h"
 #include "automata.h"
 
-TEST (automata,test1){
+TEST (automata,test1_create){
     Automata* automata = new Automata();
-    automata->on();
-    automata->coin(2000);
-    automata->off();
-    int odd_money = automata->cancel();
-    EXPECT_EQ(0,odd_money);
-    automata->on();
-    odd_money = automata->cancel();
-    EXPECT_EQ(2000,odd_money);
+	EXPECT_FALSE(automata == nullptr);
+	EXPECT_EQ(OFF, automata->state);
 }
+
+TEST(automata, test1_on_off) {
+	Automata* automata = new Automata();
+	automata->on();
+	EXPECT_TRUE(automata->condition);
+	automata->coin(123);
+	automata->off();
+	EXPECT_TRUE(0, automata->cancel());
+	automata->on();
+	EXPECT_TRUE(123, automata->cancel());
+}
+
 

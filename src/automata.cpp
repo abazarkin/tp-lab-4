@@ -12,29 +12,21 @@ Automata::Automata(){
     state = OFF;
 }
 
-bool Automata::on() {
+void Automata::on() {
     if (state == OFF){
         state = WAIT;
-        return true;
     }
-    return false;
 }
 
-bool Automata::off(){
-    if (state == COOK || state==CHECK){
-		return false;
-	}
+void Automata::off(){
     state = OFF;
-    return true;
 }
 
-bool Automata::coin(unsigned int money){
+void Automata::coin(unsigned int money){
     if (state == ACCEPT || state == WAIT){
         state = ACCEPT;
         current_operation_cash += money;
-        return true;
     }
-    return false;
 }
 
 map<string, int> Automata::printMenu() {

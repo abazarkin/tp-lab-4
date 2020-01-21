@@ -31,9 +31,9 @@ private:
 public:
 
     Automata();
-    bool on();
-    bool off();
-    bool coin(unsigned int);
+    void on();
+    void off();
+    void coin(unsigned int);
     map<string,int> printMenu();
     string printState();
     unsigned int cancel();
