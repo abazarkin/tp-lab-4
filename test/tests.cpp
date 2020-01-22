@@ -30,7 +30,7 @@ TEST(lab4,task3)
 	unsigned int money = 30;
 	unsigned int current_cash = Nescafe.coin(money);
 	current_cash = Nescafe.coin(25);
-	Nescafe.choice(2);
+	Nescafe.choice(3);
 	unsigned int res = Nescafe.change();
 	unsigned int expected = 10;
 	EXPECT_EQ(expected, res);
@@ -54,7 +54,7 @@ TEST(lab4,task5)
 	Nescafe.on();
 	unsigned int money = 30;
 	unsigned int current_cash = Nescafe.coin(money);
-	bool res = Nescafe.check(4);
+	bool res = Nescafe.check(2);
 	bool expected = false;
 	EXPECT_EQ(expected, res);
 }
