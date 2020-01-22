@@ -1,7 +1,7 @@
 #include "Automata.h"
 #include <iostream>
 #include <string>
-#include <windows.h>
+//#include <windows.h>
 
 using namespace std;
 
@@ -111,7 +111,7 @@ void Automata::cook(unsigned int num)
 		for (int i = 1; i < 6; i++)
 		{
 			cout << i << "..." << endl;
-			Sleep(1000);
+			//Sleep(1000);
 		}
 		finish();
 	}
