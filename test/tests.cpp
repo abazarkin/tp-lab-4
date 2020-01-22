@@ -3,7 +3,7 @@
 
 
 
-TEST(lab4, test1)
+TEST(lab4,task1)
 {
 	Automata Nescafe;
 	Nescafe.on();
@@ -12,7 +12,7 @@ TEST(lab4, test1)
 	EXPECT_EQ(money, current_cash);
 }
 
-TEST(lab4, test1)
+TEST(lab4,task2)
 {
 	Automata Nescafe;
 	Nescafe.on();
@@ -23,7 +23,7 @@ TEST(lab4, test1)
 	EXPECT_EQ(expected, current_cash);
 }
 
-TEST(lab4, test3)
+TEST(lab4,task3)
 {
 	Automata Nescafe;
 	Nescafe.on();
@@ -36,19 +36,19 @@ TEST(lab4, test3)
 	EXPECT_EQ(expected, res);
 }
 
-TEST(lab4, test4)
+TEST(lab4,task4)
 {
 	Automata Nescafe;
 	Nescafe.on();
 	unsigned int money = 30;
 	unsigned int current_cash = Nescafe.coin(money);
-	cuurent_cash = Nescafe.coin(25);
+	current_cash = Nescafe.coin(25);
 	bool res = Nescafe.check(3);
 	bool expected = true;
 	EXPECT_EQ(expected, res);
 }
 
-TEST(lab4, test5)
+TEST(lab4,task5)
 {
 	Automata Nescafe;
 	Nescafe.on();
@@ -59,7 +59,7 @@ TEST(lab4, test5)
 	EXPECT_EQ(expected, res);
 }
 
-TEST(lab4, test6)
+TEST(lab4,task6)
 {
 	Automata Nescafe;
 	Nescafe.on();
