@@ -37,7 +37,7 @@ TEST (Automata, balance1) {
 TEST (Automata, balance2) {
 	Automata nescafe;
 	nescafe.on();
-	nescafe.coin(300)
+	nescafe.coin(300);
 	int balance = nescafe.coin(6);
 	EXPECT_EQ(306, balance);
 }
