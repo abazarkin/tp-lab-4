@@ -6,22 +6,20 @@
 #include "VendingMachineLogger.h"
 #include "VendingMachineState.h"
 
-using namespace std::string_literals;
-
 VendingMachine::VendingMachine(std::vector<VendingMachineDrink> drinks, VendingMachineLogger *logger)
 {
     m_drinks = drinks;
     m_logger = logger;
     m_state = VENDINGMACHINESTATE_TURNEDOFF;
-    m_selectedDrink = VendingMachineDrink(0, 0, ""s);
+    m_selectedDrink = VendingMachineDrink(0, 0, "");
     m_money = 0;
 }
 
 bool VendingMachine::ValidatePayment() { return m_money >= m_selectedDrink.GetPrice(); }
 void VendingMachine::Cook()
 {
-    m_logger->LogInformation("The drink is now being cooked."s + "\n"s);
-    m_logger->LogInformation("The drink is ready now."s + "\n"s);
+    m_logger->LogInformation(std::string("The drink is now being cooked.") + "\n");
+    m_logger->LogInformation(std::string("The drink is ready now.") + "\n");
 }
 
 VendingMachineState VendingMachine::GetState() { return m_state; }
@@ -33,20 +31,20 @@ void VendingMachine::TurnOn()
     if (m_state == VENDINGMACHINESTATE_TURNEDOFF)
     {
         m_state = VENDINGMACHINESTATE_WAITING;
-        m_logger->LogInformation("The machine has been turned on."s + "\n"s);
+        m_logger->LogInformation(std::string("The machine has been turned on.") + "\n");
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
+        m_logger->LogInformation(std::string("The machine is in an invalid state for this action.") + "\n");
 }
 void VendingMachine::TurnOff()
 {
     if (m_state == VENDINGMACHINESTATE_WAITING)
     {
         m_state = VENDINGMACHINESTATE_TURNEDOFF;
-        m_logger->LogInformation("The machine has been turned off."s + "\n"s);
+        m_logger->LogInformation(std::string("The machine has been turned off.") + "\n");
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
+        m_logger->LogInformation(std::string("The machine is in an invalid state for this action.") + "\n");
 }
 
 void VendingMachine::ShowMenu()
@@ -54,21 +52,21 @@ void VendingMachine::ShowMenu()
     if (m_state != VENDINGMACHINESTATE_TURNEDOFF)
     {
         std::string text;
-        text += "Menu:"s + "\n"s;
-        text += " Id   "s + "|"s + " Name             "s + "|"s + " Price "s + "|"s + "\n"s;
+        text += std::string("Menu:") + "\n";
+        text += std::string(" Id   ") + "|" + " Name             " + "|" + " Price " + "|" + "\n";
         for (VendingMachineDrink drink : m_drinks)
         {
             std::ostringstream stringBuilder;
-            stringBuilder << " "s + std::to_string(drink.GetId()) + std::string(4 - std::to_string(drink.GetId()).length(), ' ') + " "s + "|"s;
-            stringBuilder << " "s + drink.GetName() + std::string(16 - drink.GetName().length(), ' ') + " "s + "|"s;
-            stringBuilder << " "s + "$"s + std::to_string(drink.GetPrice()) + std::string(4 - std::to_string(drink.GetPrice()).length(), ' ') + " "s + "|"s;
-            stringBuilder << "\n"s;
+            stringBuilder << std::string(" ") + std::to_string(drink.GetId()) + std::string(4 - std::to_string(drink.GetId()).length(), ' ') + " " + "|";
+            stringBuilder << std::string(" ") + drink.GetName() + std::string(16 - drink.GetName().length(), ' ') + " " + "|";
+            stringBuilder << std::string(" ") + "$" + std::to_string(drink.GetPrice()) + std::string(4 - std::to_string(drink.GetPrice()).length(), ' ') + " " + "|";
+            stringBuilder << std::string("\n");
             text += stringBuilder.str();
         }
         m_logger->LogInformation(text);
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
+        m_logger->LogInformation(std::string("The machine is in an invalid state for this action.") + "\n");
 }
 void VendingMachine::AddMoney(int32_t money)
 {
@@ -77,10 +75,10 @@ void VendingMachine::AddMoney(int32_t money)
         if (m_state == VENDINGMACHINESTATE_WAITING)
             m_state = VENDINGMACHINESTATE_ACCEPTINGPAYMENT;
         m_money += money;
-        m_logger->LogInformation("$"s + std::to_string(money) + " accepted."s + "\n"s);
+        m_logger->LogInformation(std::string("$") + std::to_string(money) + " accepted." + "\n");
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
+        m_logger->LogInformation(std::string("The machine is in an invalid state for this action.") + "\n");
 }
 void VendingMachine::Abort()
 {
@@ -88,19 +86,19 @@ void VendingMachine::Abort()
         return;
     else if (m_state == VENDINGMACHINESTATE_ACCEPTINGPAYMENT)
     {
-        m_logger->LogInformation("$"s + std::to_string(m_money) + " is your money change."s + "\n"s);
+        m_logger->LogInformation(std::string("$") + std::to_string(m_money) + " is your money change." + "\n");
         m_state = VENDINGMACHINESTATE_WAITING;
         m_money = 0;
     }
     else if (m_state == VENDINGMACHINESTATE_VALIDATINGORDER)
     {
-        m_logger->LogInformation("$"s + std::to_string(m_money) + " is your money change."s + "\n"s);
+        m_logger->LogInformation(std::string("$") + std::to_string(m_money) + " is your money change." + "\n");
         m_state = VENDINGMACHINESTATE_WAITING;
         m_selectedDrink = VendingMachineDrink();
         m_money = 0;
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
+        m_logger->LogInformation(std::string("The machine is in an invalid state for this action.") + "\n");
 }
 void VendingMachine::SelectDrink(int32_t drinkId)
 {
@@ -112,19 +110,19 @@ void VendingMachine::SelectDrink(int32_t drinkId)
             {
                 drinkIsFound = true;
                 m_selectedDrink = drink;
-                m_logger->LogInformation("The drink you ordered has been found."s + "\n"s);
+                m_logger->LogInformation(std::string("The drink you ordered has been found.") + "\n");
                 break;
             }
 
         if (drinkIsFound && ValidatePayment())
             m_state = VENDINGMACHINESTATE_VALIDATINGORDER;
         else if (drinkIsFound)
-            m_logger->LogInformation("You do not have enough money to purchase this drink. Add money or try selecting another one."s + "\n"s);
+            m_logger->LogInformation(std::string("You do not have enough money to purchase this drink. Add money or try selecting another one.") + "\n");
         else
-            m_logger->LogInformation("The drink you ordered has not been found. Try another one."s + "\n"s);
+            m_logger->LogInformation(std::string("The drink you ordered has not been found. Try another one.") + "\n");
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
+        m_logger->LogInformation(std::string("The machine is in an invalid state for this action.") + "\n");
 }
 void VendingMachine::Confirm()
 {
@@ -133,10 +131,10 @@ void VendingMachine::Confirm()
         m_state = VENDINGMACHINESTATE_COOKING;
         Cook();
         m_state = VENDINGMACHINESTATE_WAITING;
-        m_logger->LogInformation("$"s + std::to_string(m_money - m_selectedDrink.GetPrice()) + " is your money change."s + "\n"s);
+        m_logger->LogInformation(std::string("$") + std::to_string(m_money - m_selectedDrink.GetPrice()) + " is your money change." + "\n");
         m_selectedDrink = VendingMachineDrink();
         m_money = 0;
     }
     else
-        m_logger->LogInformation("The machine is in an invalid state for this action."s + "\n"s);
+        m_logger->LogInformation(std::string("The machine is in an invalid state for this action.") + "\n");
 }

@@ -1,7 +1,6 @@
+#include <string>
 #include "gtest/gtest.h"
 #include "StreamVendingMachineLogger.h"
-
-using namespace std::string_literals;
 
 TEST(StreamVendingMachineLogger, LogInformation_Test1)
 {
@@ -29,9 +28,9 @@ TEST(StreamVendingMachineLogger, LogError_Test1)
 
     logger.LogError("Some Error Text");
 
-    EXPECT_EQ("An error has encountered:"s + "\n"s
-        + "Some Error Text"s + "\n"s
-        + "The vending machine will reboot now."s + "\n"s, streamWriter.str());
+    EXPECT_EQ(std::string("An error has encountered:") + "\n"
+        + "Some Error Text" + "\n"
+        + "The vending machine will reboot now." + "\n", streamWriter.str());
 }
 TEST(StreamVendingMachineLogger, LogError_Test2)
 {
@@ -40,7 +39,7 @@ TEST(StreamVendingMachineLogger, LogError_Test2)
 
     logger.LogError("Another Error Text");
 
-    EXPECT_EQ("An error has encountered:"s + "\n"s
-        + "Another Error Text"s + "\n"s
-        + "The vending machine will reboot now."s + "\n"s, streamWriter.str());
+    EXPECT_EQ(std::string("An error has encountered:") + "\n"
+        + "Another Error Text" + "\n"
+        + "The vending machine will reboot now." + "\n", streamWriter.str());
 }

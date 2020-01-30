@@ -2,8 +2,6 @@
 #include "TestCommons.h"
 #include "VendingMachine.h"
 
-using namespace std::string_literals;
-
 TEST(VendingMachine, TurnOn)
 {
     std::ostringstream streamWriter = std::ostringstream();
@@ -13,7 +11,7 @@ TEST(VendingMachine, TurnOn)
     vendingMachine.TurnOn();
 
     ASSERT_EQ(VENDINGMACHINESTATE_WAITING, vendingMachine.GetState());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n", streamWriter.str());
 }
 TEST(VendingMachine, TurnOn_TwoSequentialCalls)
 {
@@ -25,8 +23,8 @@ TEST(VendingMachine, TurnOn_TwoSequentialCalls)
     vendingMachine.TurnOn();
 
     ASSERT_EQ(VENDINGMACHINESTATE_WAITING, vendingMachine.GetState());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "The machine is in an invalid state for this action."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "The machine is in an invalid state for this action." + "\n", streamWriter.str());
 }
 
 TEST(VendingMachine, TurnOff)
@@ -39,8 +37,8 @@ TEST(VendingMachine, TurnOff)
     vendingMachine.TurnOff();
 
     ASSERT_EQ(VENDINGMACHINESTATE_TURNEDOFF, vendingMachine.GetState());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "The machine has been turned off."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "The machine has been turned off." + "\n", streamWriter.str());
 }
 TEST(VendingMachine, TurnOff_TwoSequentialCalls)
 {
@@ -53,9 +51,9 @@ TEST(VendingMachine, TurnOff_TwoSequentialCalls)
     vendingMachine.TurnOff();
 
     ASSERT_EQ(VENDINGMACHINESTATE_TURNEDOFF, vendingMachine.GetState());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "The machine has been turned off."s + "\n"s
-        + "The machine is in an invalid state for this action."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "The machine has been turned off." + "\n"
+        + "The machine is in an invalid state for this action." + "\n", streamWriter.str());
 }
 
 TEST(VendingMachine, ShowMenu)
@@ -67,12 +65,12 @@ TEST(VendingMachine, ShowMenu)
     vendingMachine.TurnOn();
     vendingMachine.ShowMenu();
 
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "Menu:"s + "\n"s
-        + " Id   "s + "|"s + " Name             "s + "|"s + " Price "s + "|"s + "\n"s
-        + " 0    "s + "|"s + " Water            "s + "|"s + " $1    "s + "|"s + "\n"s
-        + " 1    "s + "|"s + " Tea              "s + "|"s + " $2    "s + "|"s + "\n"s
-        + " 2    "s + "|"s + " Coffee           "s + "|"s + " $5    "s + "|"s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "Menu:" + "\n"
+        + " Id   " + "|" + " Name             " + "|" + " Price " + "|" + "\n"
+        + " 0    " + "|" + " Water            " + "|" + " $1    " + "|" + "\n"
+        + " 1    " + "|" + " Tea              " + "|" + " $2    " + "|" + "\n"
+        + " 2    " + "|" + " Coffee           " + "|" + " $5    " + "|" + "\n", streamWriter.str());
 }
 
 TEST(VendingMachine, AddMoney)
@@ -86,8 +84,8 @@ TEST(VendingMachine, AddMoney)
 
     ASSERT_EQ(VENDINGMACHINESTATE_ACCEPTINGPAYMENT, vendingMachine.GetState());
     ASSERT_EQ(5, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$5 accepted."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "$5 accepted." + "\n", streamWriter.str());
 }
 TEST(VendingMachine, AddMoney_TwoSequentialCalls)
 {
@@ -101,9 +99,9 @@ TEST(VendingMachine, AddMoney_TwoSequentialCalls)
 
     ASSERT_EQ(VENDINGMACHINESTATE_ACCEPTINGPAYMENT, vendingMachine.GetState());
     ASSERT_EQ(15, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$5 accepted."s + "\n"s
-        + "$10 accepted."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "$5 accepted." + "\n"
+        + "$10 accepted." + "\n", streamWriter.str());
 }
 
 TEST(VendingMachine, SelectDrink)
@@ -118,9 +116,9 @@ TEST(VendingMachine, SelectDrink)
 
     ASSERT_EQ(VENDINGMACHINESTATE_VALIDATINGORDER, vendingMachine.GetState());
     ASSERT_EQ(5, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$5 accepted."s + "\n"s
-        + "The drink you ordered has been found."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "$5 accepted." + "\n"
+        + "The drink you ordered has been found." + "\n", streamWriter.str());
 }
 TEST(VendingMachine, SelectDrink_TwoSequentialCalls)
 {
@@ -135,10 +133,10 @@ TEST(VendingMachine, SelectDrink_TwoSequentialCalls)
 
     ASSERT_EQ(VENDINGMACHINESTATE_VALIDATINGORDER, vendingMachine.GetState());
     ASSERT_EQ(5, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$5 accepted."s + "\n"s
-        + "The drink you ordered has been found."s + "\n"s
-        + "The machine is in an invalid state for this action."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "$5 accepted." + "\n"
+        + "The drink you ordered has been found." + "\n"
+        + "The machine is in an invalid state for this action." + "\n", streamWriter.str());
 }
 TEST(VendingMachine, SelectDrink_NotEnoughMoney)
 {
@@ -152,10 +150,10 @@ TEST(VendingMachine, SelectDrink_NotEnoughMoney)
 
     ASSERT_EQ(VENDINGMACHINESTATE_ACCEPTINGPAYMENT, vendingMachine.GetState());
     ASSERT_EQ(1, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$1 accepted."s + "\n"s
-        + "The drink you ordered has been found."s + "\n"s
-        + "You do not have enough money to purchase this drink. Add money or try selecting another one."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "$1 accepted." + "\n"
+        + "The drink you ordered has been found." + "\n"
+        + "You do not have enough money to purchase this drink. Add money or try selecting another one." + "\n", streamWriter.str());
 }
 TEST(VendingMachine, SelectDrink_NoDrinkFound)
 {
@@ -169,9 +167,9 @@ TEST(VendingMachine, SelectDrink_NoDrinkFound)
 
     ASSERT_EQ(VENDINGMACHINESTATE_ACCEPTINGPAYMENT, vendingMachine.GetState());
     ASSERT_EQ(1, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$1 accepted."s + "\n"s
-        + "The drink you ordered has not been found. Try another one."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "$1 accepted." + "\n"
+        + "The drink you ordered has not been found. Try another one." + "\n", streamWriter.str());
 }
 
 TEST(VendingMachine, Confirm)
@@ -187,12 +185,12 @@ TEST(VendingMachine, Confirm)
 
     ASSERT_EQ(VENDINGMACHINESTATE_WAITING, vendingMachine.GetState());
     ASSERT_EQ(0, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$5 accepted."s + "\n"s
-        + "The drink you ordered has been found."s + "\n"s
-        + "The drink is now being cooked."s + "\n"s
-        + "The drink is ready now."s + "\n"s
-        + "$4 is your money change."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "$5 accepted." + "\n"
+        + "The drink you ordered has been found." + "\n"
+        + "The drink is now being cooked." + "\n"
+        + "The drink is ready now." + "\n"
+        + "$4 is your money change." + "\n", streamWriter.str());
 }
 TEST(VendingMachine, Confirm_TwoSequentialCalls)
 {
@@ -208,13 +206,13 @@ TEST(VendingMachine, Confirm_TwoSequentialCalls)
 
     ASSERT_EQ(VENDINGMACHINESTATE_WAITING, vendingMachine.GetState());
     ASSERT_EQ(0, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$5 accepted."s + "\n"s
-        + "The drink you ordered has been found."s + "\n"s
-        + "The drink is now being cooked."s + "\n"s
-        + "The drink is ready now."s + "\n"s
-        + "$4 is your money change."s + "\n"s
-        + "The machine is in an invalid state for this action."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string( "The machine has been turned on.") + "\n"
+        + "$5 accepted." + "\n"
+        + "The drink you ordered has been found." + "\n"
+        + "The drink is now being cooked." + "\n"
+        + "The drink is ready now." + "\n"
+        + "$4 is your money change." + "\n"
+        + "The machine is in an invalid state for this action." + "\n", streamWriter.str());
 }
 
 TEST(VendingMachine, Abort_AcceptingPayment)
@@ -229,9 +227,9 @@ TEST(VendingMachine, Abort_AcceptingPayment)
 
     ASSERT_EQ(VENDINGMACHINESTATE_WAITING, vendingMachine.GetState());
     ASSERT_EQ(0, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$5 accepted."s + "\n"s
-        + "$5 is your money change."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "$5 accepted." + "\n"
+        + "$5 is your money change." + "\n", streamWriter.str());
 }
 TEST(VendingMachine, Abort_ValidatingOrder)
 {
@@ -246,8 +244,8 @@ TEST(VendingMachine, Abort_ValidatingOrder)
 
     ASSERT_EQ(VENDINGMACHINESTATE_WAITING, vendingMachine.GetState());
     ASSERT_EQ(0, vendingMachine.GetMoney());
-    ASSERT_EQ("The machine has been turned on."s + "\n"s
-        + "$5 accepted."s + "\n"s
-        + "The drink you ordered has been found."s + "\n"s
-        + "$5 is your money change."s + "\n"s, streamWriter.str());
+    ASSERT_EQ(std::string("The machine has been turned on.") + "\n"
+        + "$5 accepted." + "\n"
+        + "The drink you ordered has been found." + "\n"
+        + "$5 is your money change." + "\n", streamWriter.str());
 }
