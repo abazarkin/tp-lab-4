@@ -4,9 +4,9 @@
 
 TEST(VendingMachine, TurnOn)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
 
@@ -15,9 +15,9 @@ TEST(VendingMachine, TurnOn)
 }
 TEST(VendingMachine, TurnOn_TwoSequentialCalls)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.TurnOn();
@@ -29,9 +29,9 @@ TEST(VendingMachine, TurnOn_TwoSequentialCalls)
 
 TEST(VendingMachine, TurnOff)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.TurnOff();
@@ -42,9 +42,9 @@ TEST(VendingMachine, TurnOff)
 }
 TEST(VendingMachine, TurnOff_TwoSequentialCalls)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.TurnOff();
@@ -58,9 +58,9 @@ TEST(VendingMachine, TurnOff_TwoSequentialCalls)
 
 TEST(VendingMachine, ShowMenu)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.ShowMenu();
@@ -75,9 +75,9 @@ TEST(VendingMachine, ShowMenu)
 
 TEST(VendingMachine, AddMoney)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(5);
@@ -89,9 +89,9 @@ TEST(VendingMachine, AddMoney)
 }
 TEST(VendingMachine, AddMoney_TwoSequentialCalls)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(5);
@@ -106,9 +106,9 @@ TEST(VendingMachine, AddMoney_TwoSequentialCalls)
 
 TEST(VendingMachine, SelectDrink)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(5);
@@ -122,9 +122,9 @@ TEST(VendingMachine, SelectDrink)
 }
 TEST(VendingMachine, SelectDrink_TwoSequentialCalls)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(5);
@@ -140,9 +140,9 @@ TEST(VendingMachine, SelectDrink_TwoSequentialCalls)
 }
 TEST(VendingMachine, SelectDrink_NotEnoughMoney)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(1);
@@ -157,9 +157,9 @@ TEST(VendingMachine, SelectDrink_NotEnoughMoney)
 }
 TEST(VendingMachine, SelectDrink_NoDrinkFound)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(1);
@@ -174,9 +174,9 @@ TEST(VendingMachine, SelectDrink_NoDrinkFound)
 
 TEST(VendingMachine, Confirm)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(5);
@@ -194,9 +194,9 @@ TEST(VendingMachine, Confirm)
 }
 TEST(VendingMachine, Confirm_TwoSequentialCalls)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(5);
@@ -217,9 +217,9 @@ TEST(VendingMachine, Confirm_TwoSequentialCalls)
 
 TEST(VendingMachine, Abort_AcceptingPayment)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(5);
@@ -233,9 +233,9 @@ TEST(VendingMachine, Abort_AcceptingPayment)
 }
 TEST(VendingMachine, Abort_ValidatingOrder)
 {
-    std::ostringstream streamWriter = std::ostringstream();
-    TestVendingMachineLogger logger = TestVendingMachineLogger(&streamWriter);
-    VendingMachine vendingMachine = VendingMachine(drinks, &logger);
+    std::ostringstream streamWriter;
+    TestVendingMachineLogger logger(&streamWriter);
+    VendingMachine vendingMachine(drinks, &logger);
 
     vendingMachine.TurnOn();
     vendingMachine.AddMoney(5);
