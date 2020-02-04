@@ -8,7 +8,7 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 
 # If you want your own include/ directory, set this, and then you can do
 # include_directories(${COMMON_INCLUDES}) in other CMakeLists.txt files.
-# set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
+set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 
 #----------------------------------------------------------------------------
 # Define project sources and includes
@@ -54,7 +54,7 @@ if (BUILD_TESTS)
   target_link_libraries(runUnitTests gtest gtest_main)
 
   # Extra linking for the project.
-  #target_link_libraries(runUnitTests task1_lib task2_lib task3_lib)
+  target_link_libraries(runUnitTests task_lib)
 
   # This is so you can do 'make test' to see all your tests run, instead of
   # manually running the executable runUnitTests to see those specific tests.
