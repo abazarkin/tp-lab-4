@@ -33,7 +33,7 @@ TEST(lab4,task3)
 {
     auto t = Automata();
     States tmp = t.getState();
-    EXPECT_EQ(STATES::OFF, tmp);
+    EXPECT_EQ(States::OFF, tmp);
 }
 
 //task_4
@@ -42,7 +42,7 @@ TEST(lab4,task4)
     auto t = Automata();
     t.on();
     States tmp = t.getState();
-    EXPECT_EQ(STATES::WAIT, tmp);
+    EXPECT_EQ(States::WAIT, tmp);
 }
 
 
