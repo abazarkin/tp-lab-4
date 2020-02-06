@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 //#include "windows.h"
-#include "automata.h"
+#include "Automata.h"
 
 
 int main(){
@@ -14,5 +14,6 @@ int main(){
     t.choice(3);
     t.coin(100);
     t.choice(3);
+    int res = t.getChange();
     return 0;
 }
