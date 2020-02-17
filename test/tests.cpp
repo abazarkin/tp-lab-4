@@ -10,7 +10,7 @@ TEST(Test_states, test_creation) {
 TEST(Test_states, test_on) {
   Automata a;
   a.on();
-  EXPECT_EQ(a.printState(), "ON");
+  EXPECT_EQ(a.printState(), "WAIT");
 }
  
  
@@ -38,20 +38,12 @@ TEST(Test_states, test_cancel_1) {
   EXPECT_EQ(a.printState(), "WAIT");
 }
 
-TEST(Test_states, test_choice) {
-  Automata a;
-  a.on();
-  a.coin(10);
-  a.coin(123);
-  a.choice(1);
-  EXPECT_EQ(a.printState(), "CHECK");
-}
 
 TEST(Test_states, test_cook) {
   Automata a;
   a.on();
   a.coin(10);
-  a.choice(1);
+  a.choice(0);
   a.cook();
   EXPECT_EQ(a.printState(), "COOK");
 }
