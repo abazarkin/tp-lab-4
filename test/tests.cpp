@@ -3,7 +3,7 @@
 
 TEST(lab4, task1) 
 {
-	Automata automata();
+	Automata automata;
 	automata.on();
 	EXPECT_EQ("Coffee", automata.choice("Coffee"));
 	automata.off();
@@ -11,7 +11,7 @@ TEST(lab4, task1)
 
 TEST(lab4, task2)
 {
-	Automata automata();
+	Automata automata;
 	automata.on();
 	EXPECT_EQ("Tea", automata.choice("Tea"));
 	automata.off();
@@ -19,7 +19,7 @@ TEST(lab4, task2)
 
 TEST(lab4, task3)
 {
-	Automata automata();
+	Automata automata;
 	automata.on();
 	EXPECT_EQ("Milk", automata.choice("Milk"));
 	automata.off();
@@ -27,7 +27,7 @@ TEST(lab4, task3)
 
 TEST(lab4, task4)
 {
-	Automata automata();
+	Automata automata;
 	automata.on();
 	EXPECT_EQ("Espresso", automata.choice("Espresso"));
 	automata.off();
@@ -35,7 +35,7 @@ TEST(lab4, task4)
 
 TEST(lab4, task5)
 {
-	Automata automata();
+	Automata automata;
 	automata.on();
 	EXPECT_EQ("Chocolate", automata.choice("Chocolate"));
 	automata.off();
@@ -43,7 +43,7 @@ TEST(lab4, task5)
 
 TEST(lab4, task6)
 {
-	Automata automata();
+	Automata automata;
 	automata.on();
 	EXPECT_EQ("Water", automata.choice("Water"));
 	automata.off();
