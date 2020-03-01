@@ -20,8 +20,6 @@ TEST (automata,test1_system){
 TEST(automata, test1_on_off) {
 	Automata* automata = new Automata();
 	automata->on();
-	automata->coin(123);
-	automata->off();
 }
 
 
