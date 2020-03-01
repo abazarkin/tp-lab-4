@@ -49,7 +49,7 @@ void Automata::on() {
 	if (state != OFF) return;
 	state = cached_state;
 	cash = cached_cash;
-	console();
+	//console();
 }
 
 void Automata::off(){
