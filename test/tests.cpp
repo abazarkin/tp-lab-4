@@ -1,10 +1,10 @@
 #include "gtest/gtest.h"
 #include "automata.h"
+#include "string_def.h"
 
-TEST (automata,test1_create){
+TEST (automata,test1_system){
     Automata* automata = new Automata();
 	EXPECT_FALSE(automata == nullptr);
-	EXPECT_EQ(OFF, automata->state);
 	EXPECT_FALSE( _cook_.empty());
 	EXPECT_FALSE( _off_.empty());
 	EXPECT_FALSE( _add_coin_message_.empty());
