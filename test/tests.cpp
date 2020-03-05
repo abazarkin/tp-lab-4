@@ -24,7 +24,7 @@ TEST(lab4, automata_3)
 	Automata atm;
 	atm.on();
 	atm.coin(100);
-	int change atm.finish();
+	int change=atm.finish();
 	EXPECT_EQ(change, -1);
 }
 
