@@ -28,6 +28,6 @@ public:
 	bool check(int);
 	void cancel();
 	void cook();
-	void finish();
+	int finish();
 };
 #endif

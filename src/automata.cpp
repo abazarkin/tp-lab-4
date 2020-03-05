@@ -89,18 +89,20 @@ void Automata::cook()
 	cout << "Drink is ready" << endl;
 }
 
-void Automata::finish()
+int Automata::finish()
 {
 	if (state == States::COOK)
 	{
 		state = States::WAIT;
-		
+		int change = cash;
 		cout << "Your change:" << cash << endl;
 		cash = 0;
+		return change;
 	}
 	else
 	{
 		cout << "Unable to finish right now" << endl;
+		return -1;
 	}
 }
 
