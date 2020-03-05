@@ -18,7 +18,8 @@ include_directories(${COMMON_INCLUDES})
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 
 
-set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/automata.cpp)
+set(SRC_FILES ${PROJECT_SOURCE_DIR}/src/automata.cpp
+		${PROJECT_SOURCE_DIR}/src/main.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
