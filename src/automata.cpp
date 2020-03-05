@@ -1,4 +1,4 @@
-#include "automata.h"
+#include "../include/automata.h"
 
 Automata::Automata()
 {
