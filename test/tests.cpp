@@ -16,6 +16,5 @@ TEST(lab4, automata_2)
 	atm.on();
 	atm.coin(10);
 	bool flag = atm.check(3);
-	delete atm;
 	EXPECT_EQ(flag, true);
 }
