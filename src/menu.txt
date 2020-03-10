@@ -1,0 +1,8 @@
+Cappuccino
+Latte
+Espresso
+Americano
+Iced_Coffee
+Decaf 
+Vanilla_Cappuccino
+Nut_Cappuccino
