@@ -10,6 +10,7 @@ TEST(test1,StateOFF )
 
 TEST(test2,TestCoin){
 Automata* c=new Automata ("s","b");
+c->on();
 c->coin(45);
 	EXPECT_EQ(c->GetCash(), 45);
 }
