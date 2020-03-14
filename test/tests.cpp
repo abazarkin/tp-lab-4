@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "Automata.cpp"
+#include "Automata.h"
 
 
 // task1
