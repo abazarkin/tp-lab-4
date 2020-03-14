@@ -5,7 +5,7 @@
 // task1
 TEST(lab4,task1_1)
 {
-	Automata* automat= New Automata();
+	Automata* automat= new Automata();
 	automat->coin(50);
 
     EXPECT_EQ(1, automat->check(25));
