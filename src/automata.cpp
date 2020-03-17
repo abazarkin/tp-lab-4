@@ -67,9 +67,13 @@ int Automata::choice(int drink)
 
 bool Automata::check(int drink)
 {
-    state = CHECK;
-    if(cash >= prices[drink]) return true;
-    else return false;
+    if (state == ACCEPT || state == CHECK || state == COOK)
+	{
+        state = CHECK;
+        if(cash >= prices[drink]) return true;
+        else return false;
+    }
+    else cout << "You are not able check it" << endl;
 }
 
 int Automata::cancel()
@@ -83,16 +87,20 @@ int Automata::cancel()
 	else
 	{
 		cout << "You can't cancel this operation" << endl;
-		return 0;
+		return finish();
 	}
 		
 }
 
 void Automata::cook(int drink)
 {
-    state = COOK;
-    int money = cash;
-    money -= prices[drink];
+    if (state == CHECK)
+	{
+        state = COOK;
+        int money = cash;
+        money -= prices[drink];
+    }
+    else cout << "You can`t cook right now" << endl;
 }
 
 int Automata::finish()

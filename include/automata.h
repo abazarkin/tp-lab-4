@@ -12,7 +12,7 @@ class Automata
 private:
     int cash;
     vector<string> drinks = {"tea", "coffee", "water", "milk", "hot chocolate"};
-    vector<int> prices = {30, 40, 10, 25, 40};
+    vector<int> prices = { 30, 40, 35, 20, 35 };
     enum States {OFF, WAIT, ACCEPT, CHECK, COOK};
     vector<string> states = {"OFF", "WAIT", "ACCEPT", "CHECK", "COOK"};
     States state;
