@@ -1,0 +1,15 @@
+Espresso
+Doppio
+Lungo
+Ristretto
+Macchiatto
+Corretto
+Con Panna
+Romano
+Cappuccino
+Americano
+Caffe Latte
+Flat White
+Marocchino
+Moch
+Bicerin
