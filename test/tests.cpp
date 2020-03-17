@@ -4,7 +4,7 @@
 TEST(lab4,task1)
 {
    std::vector<std::string> menu = {"Drink 1", "Drink 2", "Drink 3"};
-   std::vector<int> prices = {10, 15, 25};
+   std::vector<unsigned> prices = {10, 15, 25};
    Automata automata(menu, prices);
    automata.on();
    automata.coin(14);
