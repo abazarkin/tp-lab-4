@@ -97,5 +97,6 @@ void Automata::cook(int drink)
 
 int Automata::finish()
 {
-
+    cout << "Take your coin back:" << cash << endl;
+    return cash;
 }
