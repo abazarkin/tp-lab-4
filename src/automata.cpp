@@ -50,7 +50,7 @@ void Automata::PrintState()
 
 int Automata::choice(int drink)
 {
-    if (check(drink))
+    if (check(drink) == true)
     {
         cook(drink);
         int money = cash;
@@ -73,7 +73,11 @@ bool Automata::check(int drink)
         if(cash >= prices[drink]) return true;
         else return false;
     }
-    else cout << "You are not able check it" << endl;
+    else 
+        {
+            cout << "You are not able check it" << endl;
+            return false;
+        }
 }
 
 int Automata::cancel()
