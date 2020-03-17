@@ -7,7 +7,7 @@ TEST(automata, if_cancel)
 	automat.on();
 	automat.coin(130);
 	int money = automat.cancel();
-	EXPECT_EQ(130, money);
+	EXPECT_EQ(130, cash);
 }
 
 TEST(automata, if_not_enough)
@@ -15,8 +15,8 @@ TEST(automata, if_not_enough)
 	Automata automat = Automata();
 	automat.on();
 	automat.coin(13);
-	int money = automat.choice(1);
-	EXPECT_EQ(13, money);
+	int cash = automat.choice(1);
+	EXPECT_EQ(13, cash);
 }
 
 TEST(automata, if_equal)
@@ -24,8 +24,8 @@ TEST(automata, if_equal)
 	Automata automat = Automata();
 	automat.on();
 	automat.coin(40);
-	int money = automat.choice(1);
-	EXPECT_EQ(0, money);
+	int cash = automat.choice(1);
+	EXPECT_EQ(0, cash);
 }
 
 TEST(automata, if_more)
@@ -33,9 +33,9 @@ TEST(automata, if_more)
 	Automata automat = Automata();
 	automat.on();
 	automat.coin(100);
-	int money = automat.choice(1);
-	money = automat.off();
-	EXPECT_EQ(60, money);
+	int cash = automat.choice(1);
+	cash = automat.off();
+	EXPECT_EQ(60, cash);
 }
 
 TEST(automata, more_than_one)
@@ -43,8 +43,8 @@ TEST(automata, more_than_one)
 	Automata automat = Automata();
 	automat.on();
 	automat.coin(100);
-	int money = automat.choice(1);
-	money = automat.choice(1);
-	money += automat.off();
-	EXPECT_EQ(20, money);
+	int cash = automat.choice(1);
+	cash = automat.choice(1);
+	cash += automat.off();
+	EXPECT_EQ(20, cash);
 }
