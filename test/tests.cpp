@@ -46,5 +46,5 @@ TEST(automata, more_than_one)
 	int cash = automat.choice(1);
 	cash = automat.choice(1);
 	cash += automat.off();
-	EXPECT_EQ(20, cash);
+	EXPECT_EQ(40, cash);
 }
