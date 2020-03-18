@@ -54,10 +54,9 @@ int Automata::choice(int drink)
     if (check(drink) == true)
     {
         cook(drink);
-        int money = cash;
-        money -= prices[drink];
+        cash -= prices[drink];
         cout << "You have " << cash << " coins" << endl;
-        return money;
+        return cash;
     }
     else 
     {
