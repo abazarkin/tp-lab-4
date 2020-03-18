@@ -4,7 +4,7 @@
 Automata::Automata()
 {
     cash = 0;
-    state = WAIT;
+    state = OFF;
 }
 
 void Automata::on()
@@ -30,6 +30,7 @@ void Automata::coin(int money)
     {
         cash += money;
         cout << "Added " << money << "coins\n" << "You have " << cash << " coins on balance" << endl;
+        state = ACCEPT;
     }
     else cout << "Can`t add coin" << endl;
 }
@@ -102,8 +103,7 @@ void Automata::cook(int drink)
     if (state == CHECK)
 	{
         state = COOK;
-        int money = cash;
-        money -= prices[drink];
+        cout << "Your drink is ready" << endl;
     }
     else cout << "You can`t cook right now" << endl;
 }
@@ -111,5 +111,6 @@ void Automata::cook(int drink)
 int Automata::finish()
 {
     cout << "Take your coin back:" << cash << endl;
+    state = WAIT;
     return cash;
 }
