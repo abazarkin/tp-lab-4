@@ -61,6 +61,7 @@ int Automata::choice(int drink)
     else 
     {
         cout << "You don`t have enough coins" << endl;
+        return cash;
     }
 
 }
@@ -74,10 +75,10 @@ bool Automata::check(int drink)
         else return false;
     }
     else 
-        {
-            cout << "You are not able check it" << endl;
-            return false;
-        }
+    {
+        cout << "You are not able check it" << endl;
+        return false;
+    }
 }
 
 int Automata::cancel()
