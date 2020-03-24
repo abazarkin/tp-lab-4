@@ -1,6 +1,8 @@
 #ifndef AutomataH
 #define AutomataH
 
+#include <vector>
+#include <string>
 #include <iostream>
 
 using namespace std;
@@ -13,31 +15,31 @@ private:
 	int drink;
 
 public:
+
 	Automata();
 
-	bool on();
+	bool ON();
 
-	bool off();
+	bool OFF();
 
-	bool coin(int coins);
+	bool MENU();
 
-	bool printMenu();
+	bool COOK();
 
-	string printState();
+	bool CHECK();
 
-	bool choice(int typeOfDrink);
+	bool CANCEL();
 
-	bool check();
+	bool FINISH();
 
-	bool cancel();
+	bool CHOICE(int typeOfDrink);
 
-	bool cook();
+	bool cash(unsigned int coins);
 
-	bool finish();
+	string curState() const;
 
-	void information();
+	void information() const;
 
 	void processing();
 };
-
 #endif
