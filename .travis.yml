@@ -28,7 +28,6 @@ matrix:
            # Misc
            - python-yaml
            - lcov
-           - libopencv-dev
          sources: &precise_latest_boost_sources
            - ubuntu-toolchain-r-test
            - llvm-toolchain-precise-3.7
@@ -63,7 +62,7 @@ script:
      - cd build
      - cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON .. 
      - make
-     - make task1_coverage
+     - make lab4_coverage
      - ctest
 
 
