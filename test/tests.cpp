@@ -1,104 +1,215 @@
 #include "gtest/gtest.h"
-#include "task1.h"
-#include "task2.h"
-#include "task3.h"
-#include "task4.h"
-#include "task5.h"
+#include "automata.h"
 
-// task1
-TEST(lab1,task1_1)
-{
-    unsigned long res=findValue(1,20);
-    EXPECT_EQ(232792560,res);
-}
-TEST(lab1,task1_2)
-{
-    unsigned long res=findValue(1,10);
-    EXPECT_EQ(2520,res);
-}
+#include <string>
+#include <vector>
 
-// task2
-TEST(lab1,task2_1)
+TEST(automata, no_menu)
 {
-   EXPECT_EQ(true,checkPrime(2));
-}
-TEST(lab1,task2_2)
-{
-   EXPECT_EQ(true,checkPrime(3));
-}
-TEST(lab1,task2_3)
-{
-   EXPECT_EQ(false,checkPrime(12));
-}
-TEST(lab1,task2_4)
-{
-   unsigned long long res=nPrime(6);
-   EXPECT_EQ(13,res);
-}
-TEST(lab1,task2_5)
-{
-   unsigned long long res=nPrime(500);
-   EXPECT_EQ(3571,res);
-}
-TEST(lab1,task2_6)
-{
-   unsigned long long res=nextPrime(1031);
-   EXPECT_EQ(1033,res);
-}
-TEST(lab1,task2_7)
-{
-   unsigned long long res=nextPrime(3559);
-   EXPECT_EQ(3571,res);
-}
-TEST(lab1,task2_8)
-{
-   unsigned long long res=nextPrime(2);
-   EXPECT_EQ(3,res);
+   std::vector<std::string> menu = {};
+	std::vector<int>        prise = {};
+
+   Automata automata(menu, prise);
+
+   const char* expect       ="NODRINKS";
+   std::string get    = automata.getState();
+
+   EXPECT_STREQ(expect, get.c_str());
 }
 
-// task3
-TEST(lab1,task3_1)
+TEST(automata, stay_off)
 {
-   unsigned long long res=sumPrime(2000000);
-   unsigned long long expected=142913828922;
-   EXPECT_EQ(expected,res);
-}
-TEST(lab1,task3_2)
-{
-   unsigned long long res=sumPrime(10);
-   unsigned long long expected=17;
-   EXPECT_EQ(expected,res);
-}
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {0};
 
-// task4
-TEST(lab1,task4_1)
-{
-   char *x="123456789";
-   char *y="000000001";
-   char *expected="123456790";
-   char *z=sum(x,y);
-   EXPECT_STREQ(expected,z);
-}
-TEST(lab1,task4_2)
-{
-   char *x="99999999999999999999";
-   char *y="1";
-   char *expected="100000000000000000000";
-   char *z=sum(x,y);
-   EXPECT_STREQ(expected,z);
-}
+   Automata automata(menu, prise);
 
-//task5
-TEST(lab1,task5)
-{
-   char *buf="123,456,789";
-   int N=0;
-   char **result=nullptr;
-   split(&result, &N, buf, ',');
+   const char* expect = "OFF";
+   std::string get;    
    
-   EXPECT_EQ(3,N);
-   EXPECT_NE(nullptr,result);
-   EXPECT_STREQ("123",result[0]);
-   EXPECT_STREQ("456",result[1]);
-   EXPECT_STREQ("789",result[2]);
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+
+   automata.coin(0);
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+	automata.choise(0);
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+	automata.cancel();
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+	automata.cook();
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+}
+
+TEST(automata, turn_on)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {0};
+
+   Automata automata(menu, prise);
+
+   const char* expect = "WAIT";
+   std::string get;    
+   
+   automata.on();
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+}
+
+TEST(automata, get_coins)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {0};
+
+   Automata automata(menu, prise);
+
+   const char* expect = "ACCEPT";
+   std::string get;    
+   
+   automata.on();
+   automata.coin(12);
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+}
+
+TEST(automata, out_of_menu)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {0};
+
+   Automata automata(menu, prise);
+
+   const char* expect = "ACCEPT";
+   std::string get;    
+   
+   automata.on();
+   automata.coin(12);
+   automata.choise(2);
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+}
+
+TEST(automata, in_menu)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {0};
+
+   Automata automata(menu, prise);
+
+   const char* expect = "CHECK";
+   std::string get;    
+   
+   automata.on();
+   automata.coin(12);
+   automata.choise(0);
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+}
+
+TEST(automata, not_enough_money)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {13};
+
+   Automata automata(menu, prise);  
+   
+   automata.on();
+   automata.coin(12);
+   automata.choise(0);
+   ASSERT_FALSE(automata.check());
+}
+
+TEST(automata, enough_money)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {11};
+
+   Automata automata(menu, prise);   
+   
+   automata.on();
+   automata.coin(12);
+   automata.choise(0);
+   ASSERT_TRUE(automata.check());
+}
+
+TEST(automata, not_enough_money_try_to_cook)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {13};
+
+   Automata automata(menu, prise);
+
+   const char* expect = "CHECK";
+   std::string get;    
+   
+   automata.on();
+   automata.coin(12);
+   automata.choise(0);
+   automata.cook();
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+}
+
+TEST(automata, choose_without_cancel)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {13};
+
+   Automata automata(menu, prise);
+
+   const char* expect = "COOK";
+   std::string get;    
+   
+   automata.on();
+   automata.coin(12);
+   automata.cancel();
+   automata.coin(15);
+   automata.choise(0);
+   automata.cook();
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+}
+
+TEST(automata, choose_with_cancel)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {13};
+
+   Automata automata(menu, prise);
+
+   const char* expect = "COOK";
+   std::string get;    
+   
+   automata.on();
+   automata.coin(12);
+   automata.cancel();
+   automata.coin(15);
+   automata.choise(0);
+   automata.cook();
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
+}
+
+TEST(automata, finish_cook)
+{
+   std::vector<std::string> menu = {"smt"};
+	std::vector<int>        prise = {13};
+
+   Automata automata(menu, prise);
+
+   const char* expect = "WAIT";
+   std::string get;    
+   
+   automata.on();
+   automata.coin(12);
+   automata.cancel();
+   automata.coin(15);
+   automata.choise(0);
+   automata.cook();
+   automata.finish();
+   get = automata.getState();
+   EXPECT_STREQ(expect, get.c_str());
 }
