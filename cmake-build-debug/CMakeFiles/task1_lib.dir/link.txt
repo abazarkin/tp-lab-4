@@ -1,0 +1,2 @@
+C:\mingw1\bin\ar.exe qc libtask1_lib.a  CMakeFiles/task1_lib.dir/src/Automata.cpp.obj
+C:\mingw1\bin\ranlib.exe libtask1_lib.a
