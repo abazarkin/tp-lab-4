@@ -1,14 +1,14 @@
 #include "gtest/gtest.h"
 #include "../include/Automata.h"
 
-TEST(TestS, task1)
+TEST(Test1, task1)
 {
 	Automata test;
 	test.on();
 	EXPECT_EQ(300, test.coin(300));
 	test.off();
 }
-TEST(TestS, task2)
+TEST(Test1, task2)
 {
 	Automata test;
 	test.on();
@@ -16,7 +16,7 @@ TEST(TestS, task2)
 	EXPECT_EQ(110, test.coin(100));
 	test.off();
 }
-TEST(TestS, task3)
+TEST(Test1, task3)
 {
 	Automata test;
 	test.on();
