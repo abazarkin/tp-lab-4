@@ -3,6 +3,12 @@
 Automata::Automata(){
 	cash = 0;
 	state = OFF;
+	menu[0] = "tea";
+	menu[1] = "coffe";
+	menu[2] = "cola";
+	prices[0] = 2;
+	prices[1] = 1;
+	prices[2] = 5;
 }
 
 void Automata::on(){
@@ -23,7 +29,7 @@ void Automata::coin(int income){
 		state = ACCEPT;
 		printState();
 		cash += income;
-		cout << "balance is " << cash << endl; 
+		cout << "balance is" << cash << endl;
 	}
 }
 
@@ -32,7 +38,7 @@ void Automata::printMenu(){
 		cout << "turn on the automata" << endl;
 	else{
 		cout << "drinks: ";
-		for (int i = 0; i < menu.size(); i++)
+		for (int i = 0; i < sizeof(menu)/sizeof(menu[0]); i++)
 			cout << menu[i] << ", ";
 		cout << endl;
 	}
@@ -51,11 +57,11 @@ void Automata::printState(){
 		cout << "cook" << endl;
 }
 
-int Automata::choice(DRINKS drink){
+void Automata::choice(DRINKS drink){
 	if (state == OFF)
 		cout << "turn on the automata" << endl;
 	else{
-		if ( drink == TEA || drink == COFFE || drink == COLA ){
+		if (drink == TEA || drink == COFFE || drink == COLA){
 			if (check(drink))
 				cook(drink);
 			else
@@ -63,7 +69,7 @@ int Automata::choice(DRINKS drink){
 		}
 		else{
 			cout << "choose drink from the list" << endl;
-			printMenu();
+				printMenu();
 		}
 	}
 }

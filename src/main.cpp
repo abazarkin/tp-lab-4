@@ -7,4 +7,5 @@ int main(){
 	a.coin(6);
 	a.choice(COLA);
 	a.returnMoney();
+	getchar();
 }
