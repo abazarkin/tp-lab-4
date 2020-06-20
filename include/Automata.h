@@ -33,4 +33,5 @@ public:
 	//void cook(DRINKS drink);
 	//void finish();
 	void returnMoney();
+	int getCash();
 };

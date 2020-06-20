@@ -114,3 +114,7 @@ void Automata::returnMoney(){
 	else
 		cout << "you have no change" << endl;
 }
+
+int Automata::getCash(){
+	return cash;
+}
