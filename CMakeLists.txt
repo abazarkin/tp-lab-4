@@ -50,7 +50,7 @@ if (BUILD_TESTS)
   add_executable(runUnitTests ${TEST_SRC_FILES})
 
   # Standard linking to gtest stuff.
-  target_link_libraries(runUnitTests task_lib)
+  target_link_libraries(runUnitTests gtest gtest_main task task_lib)
 
   # Extra linking for the project.
   #target_link_libraries(runUnitTests task1_lib task2_lib task3_lib)
