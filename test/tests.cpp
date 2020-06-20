@@ -5,7 +5,7 @@
 //#include "task4.h"
 //#include "task5.h"
 #include "Automata.h"
-
+/*
 TEST(automata_working, test1){
 	Automata a = Automata();
 	a.on();
@@ -13,7 +13,8 @@ TEST(automata_working, test1){
 	a.choice(COLA);
 	EXPECT_EQ(1, a.getCash());
 }
-/*
+*/
+
 // task1
 TEST(lab1,task1_1)
 {
@@ -111,4 +112,3 @@ TEST(lab1,task5)
    EXPECT_STREQ("456",result[1]);
    EXPECT_STREQ("789",result[2]);
 }
-*/
